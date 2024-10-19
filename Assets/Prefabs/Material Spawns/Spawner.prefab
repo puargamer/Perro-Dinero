@@ -100,3 +100,6 @@ MonoBehaviour:
   currMatType: 0
   spawnRadius: 2
   respawnDelay: 2
+  validSpawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 1

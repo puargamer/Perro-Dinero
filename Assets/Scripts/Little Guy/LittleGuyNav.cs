@@ -50,6 +50,9 @@ public class LittleGuyNav : ColorUtility
                 {
                     navMeshAgent.speed = 5f;
                     currentState = State.Following;
+                    FollowPlayer(distanceToPlayer);
+                    // add a tamed notification or something to tell the player
+                    // that it is now following you
                 }
                 break;
         }

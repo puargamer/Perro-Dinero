@@ -4,12 +4,7 @@ using UnityEngine;
 
 // spawninitspawners and materialtype should be modified as we progress
 // garbage code rn
-public enum MaterialType 
-{
-    Red,
-    Blue,
-    Yellow
-}
+
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -22,14 +17,15 @@ public class SpawnerManager : MonoBehaviour
     [Header("Spawn Radius")]
     public float spawnRangeX = 15f;
     public float spawnRangeZ = 15f;
-
+    [Header("Exclude Ground")]
+    public LayerMask validSpawnLayerMask;
     private int materialTypeCount;
-    private List<Transform> spawnerTransforms = new List<Transform>(); // keep track of all spawners
+    private List<Transform> activeSpawnerTransforms = new List<Transform>(); // keep track of all spawners
 
     // Start is called before the first frame update
     void Start()
     {
-        materialTypeCount = System.Enum.GetNames(typeof(MaterialType)).Length; // change this garbage
+        materialTypeCount = 3; // first 3 colors base
         SpawnInitialSpawners();
     }
 
@@ -39,7 +35,7 @@ public class SpawnerManager : MonoBehaviour
         {
             Vector3 randomPos = GetValidRandomSpawnPosition();
             GameObject spawner = Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
-            spawnerTransforms.Add(spawner.transform);
+            activeSpawnerTransforms.Add(spawner.transform);
 
             // guaranteed first 3 material spawn if possible
             // spawn random material for remaining
@@ -53,7 +49,7 @@ public class SpawnerManager : MonoBehaviour
 
     public void SpawnerDestroyed(GameObject gameObject)
     {
-        spawnerTransforms.Remove(gameObject.transform);
+        activeSpawnerTransforms.Remove(gameObject.transform);
         StartCoroutine(SpawnNewSpawnerAfterDelay());
     }
 
@@ -63,7 +59,7 @@ public class SpawnerManager : MonoBehaviour
 
         Vector3 randomPos = GetValidRandomSpawnPosition();
         GameObject newSpawner = Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
-        spawnerTransforms.Add(newSpawner.transform);
+        activeSpawnerTransforms.Add(newSpawner.transform);
 
         // choose random material
         MaterialType randomType = (MaterialType)Random.Range(0, materialTypeCount);
@@ -82,7 +78,8 @@ public class SpawnerManager : MonoBehaviour
             attempts++;
             if (attempts >= 150)
             {
-                Debug.Log("BROOOO YOU SCREWED UP");
+                Debug.Log("BROOOO YOU SCREWED UP, lower the min spawner gap in inspector" +
+                    "or this is colliding w the ground");
                 break;
             }
         } while (!IsValidSpawnPosition(randomPos));
@@ -92,14 +89,17 @@ public class SpawnerManager : MonoBehaviour
 
     private bool IsValidSpawnPosition(Vector3 position)
     {
-        foreach (Transform spawnerTransform in spawnerTransforms)
+        foreach (Transform spawnerTransform in activeSpawnerTransforms) // if it will spawn near another spawner
         { // temporary trash code, too many calculations if high spawner count
             if (Vector3.Distance(position, spawnerTransform.position) < minSpawnerGap)
             {
                 return false; // too close
             }
         }
-        return true;
+
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f, validSpawnLayerMask);
+        return colliders.Length == 0; // no colliders overlapping the position
+        //return true;
     }
 
     private Vector3 GetRandomSpawnPosition()

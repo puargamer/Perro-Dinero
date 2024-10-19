@@ -47,6 +47,10 @@ MonoBehaviour:
   spawnerPrefab: {fileID: 1624208453279228581, guid: 4db76506cb06c344ea5172ba8ffaf17f, type: 3}
   initialSpawnerCount: 3
   newSpawnerDelay: 10
-  spawnRangeX: 15
+  minSpawnerGap: 2
   spawnYValue: 0
+  spawnRangeX: 15
   spawnRangeZ: 15
+  validSpawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
