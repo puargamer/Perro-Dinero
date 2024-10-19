@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &166525853958024890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8998462266578161826}
-  m_Layer: 0
-  m_Name: Raycast Origin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8998462266578161826
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166525853958024890}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5799999, z: -6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4598300771778322930}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3243035608172439875
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +518,6 @@ Transform:
   - {fileID: 7616090718719056834}
   - {fileID: 6748027371739452726}
   - {fileID: 5440624669243473323}
-  - {fileID: 8998462266578161826}
   - {fileID: 5049648295851741941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -610,12 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffcee5d178293c40865069793b78e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  RaycastOrigin: {fileID: 166525853958024890}
-  Length: 2
-  hitbox: {fileID: 9123015366879793910}
   hitboxActive: 0
   objectInHitbox: {fileID: 0}
 --- !u!1 &8798118140294388324
