@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MaterialType
+{
+    Red,
+    Blue,
+    Yellow
+}
+
 public class SpawnerManager : MonoBehaviour
 {
     public GameObject spawnerPrefab;
@@ -12,9 +19,12 @@ public class SpawnerManager : MonoBehaviour
     public float spawnYValue = 0f;
     public float spawnRangeZ = 10f;
 
+    private int materialTypeCount;
+
     // Start is called before the first frame update
     void Start()
     {
+        materialTypeCount = System.Enum.GetNames(typeof(MaterialType)).Length;
         SpawnInitialSpawners();
     }
 
@@ -22,13 +32,17 @@ public class SpawnerManager : MonoBehaviour
     {
         for (int i = 0; i < initialSpawnerCount; i++)
         {
-            Vector3 randomPos = new Vector3(
-                Random.Range(-spawnRangeX, spawnRangeX),
-                0,
-                Random.Range(-spawnRangeZ, spawnRangeZ)
-            );
+            Vector3 randomPos = GetRandomSpawnPosition();
 
-            Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
+            GameObject spawner = Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
+
+            // guaranteed first 3 material spawn if possible
+            // spawn random material for remaining
+            MaterialType typeToSpawn = (i < materialTypeCount) ? (MaterialType)i :
+                                        (MaterialType)Random.Range(0, materialTypeCount);
+
+            MaterialSpawner spawnerScript = spawner.GetComponent<MaterialSpawner>();
+            spawnerScript.SetupSpawner(typeToSpawn);
         }
     }
 
@@ -40,13 +54,29 @@ public class SpawnerManager : MonoBehaviour
     private IEnumerator SpawnNewSpawnerAfterDelay()
     {
         yield return new WaitForSeconds(newSpawnerDelay);
-        
-        Vector3 randomPos = new Vector3(
+
+        Vector3 randomPos = GetRandomSpawnPosition();
+
+        GameObject newSpawner = Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
+
+        // choose random material
+        MaterialType randomType = (MaterialType)Random.Range(0, materialTypeCount);
+
+        MaterialSpawner newSpawnerScript = newSpawner.GetComponent<MaterialSpawner>();
+        newSpawnerScript.SetupSpawner(randomType);
+    }
+
+    //private Vector3 checkForValidSpawn()
+    //{
+    //    return null;
+    //}
+
+    private Vector3 GetRandomSpawnPosition()
+    {
+        return new Vector3(
             Random.Range(-spawnRangeX, spawnRangeX),
-            spawnYValue, 
+            spawnYValue,
             Random.Range(-spawnRangeZ, spawnRangeZ)
         );
-
-        Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
     }
 }

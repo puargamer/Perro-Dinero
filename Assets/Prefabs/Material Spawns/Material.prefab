@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6713447362327187893}
   - component: {fileID: 160829363118562578}
   - component: {fileID: 2928554842513156996}
+  - component: {fileID: 2199500467595858063}
   m_Layer: 0
   m_Name: Material
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 386b1189686290e4fa78027f259b3cb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2199500467595858063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016502764239666061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd3addcde918a04fb4de97013bd2d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialType: 0
