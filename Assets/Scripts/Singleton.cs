@@ -23,6 +23,15 @@ public class Singleton : MonoBehaviour
     //call Singleton.instance.testInt to access 
     public int testInt;
     public int fishCount;
+    public int redMat;
+    public int yellowMat;
+    public int blueMat;
+    public List<GameObject> redLittleGuys;
+    public List<GameObject> yellowLittleGuys;
+    public List<GameObject> blueLittleGuys;
+    public List<GameObject> greenLittleGuys;
+    public List<GameObject> purpleLittleGuys;
+    public List<GameObject> orangeLittleGuys;
 
     public void test()
     {
