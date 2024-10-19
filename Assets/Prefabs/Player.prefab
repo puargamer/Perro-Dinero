@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 1133341746001736266}
   - component: {fileID: 1148497041443584004}
   - component: {fileID: 5866825382222337911}
+  - component: {fileID: 8198051736874239848}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -580,6 +581,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxActive: 0
   objectInHitbox: {fileID: 0}
+  inventory: {fileID: 8198051736874239848}
+--- !u!114 &8198051736874239848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336462387602305269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db43caaed85fbbd4fb80400bb20d6be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldSpace: {fileID: 5049648295851741941}
+  ObjectHeld: {fileID: 0}
+  InventoryList: []
+  PikminList: []
 --- !u!1 &8798118140294388324
 GameObject:
   m_ObjectHideFlags: 0
