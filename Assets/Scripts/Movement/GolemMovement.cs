@@ -8,6 +8,7 @@ public class GolemMovement : MonoBehaviour
     private Transform golemTr;
     public float speed;
     private Vector3 move;
+    public bool hasFish = false;
 
     // Start is called before the first frame update
     void Start()

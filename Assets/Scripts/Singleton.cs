@@ -22,6 +22,7 @@ public class Singleton : MonoBehaviour
     //sample globally available variable and method
     //call Singleton.instance.testInt to access 
     public int testInt;
+    public int fishCount;
 
     public void test()
     {
