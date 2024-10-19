@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 // spawninitspawners and materialtype should be modified as we progress
@@ -18,11 +17,11 @@ public class SpawnerManager : MonoBehaviour
     [Header("Spawn Settings")]
     public int initialSpawnerCount = 5;
     public float newSpawnerDelay = 10f;
-    public float minSpawnerGap = 15f;
+    public float minSpawnerGap = 2f;
     public float spawnYValue = 0f;
     [Header("Spawn Radius")]
-    public float spawnRangeX = 10f;
-    public float spawnRangeZ = 10f;
+    public float spawnRangeX = 15f;
+    public float spawnRangeZ = 15f;
 
     private int materialTypeCount;
     private List<Transform> spawnerTransforms = new List<Transform>(); // keep track of all spawners
@@ -76,9 +75,16 @@ public class SpawnerManager : MonoBehaviour
     private Vector3 GetValidRandomSpawnPosition()
     {
         Vector3 randomPos;
+        int attempts = 0;
         do
         {
             randomPos = GetRandomSpawnPosition();
+            attempts++;
+            if (attempts >= 150)
+            {
+                Debug.Log("BROOOO YOU SCREWED UP");
+                break;
+            }
         } while (!IsValidSpawnPosition(randomPos));
 
         return randomPos;
