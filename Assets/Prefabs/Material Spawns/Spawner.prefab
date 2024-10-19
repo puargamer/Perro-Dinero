@@ -97,5 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialPrefab: {fileID: 4016502764239666061, guid: 0ab9f69f556a6b54d8bd0da63b6fe919, type: 3}
-  spawnRadius: 5
+  currMatType: 0
+  spawnRadius: 2
   respawnDelay: 2
