@@ -60,4 +60,6 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(EndDialogue());
         }
     }
+    //cuh
+
 }
