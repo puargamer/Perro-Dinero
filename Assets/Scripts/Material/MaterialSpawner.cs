@@ -6,6 +6,7 @@ public class MaterialSpawner : MonoBehaviour
     private SpawnerManager spawnerManager;
     public MaterialType currMatType;
 
+    [Header("Spawn Options")]
     private int numberOfSpawns = 3;
     public float spawnRadius = 5f;
     public float respawnDelay = 2f;
@@ -47,7 +48,7 @@ public class MaterialSpawner : MonoBehaviour
     void DestroySpawner()
     {
         // tell the manager that its been destroyed
-        spawnerManager.SpawnerDestroyed();
+        spawnerManager.SpawnerDestroyed(gameObject);
         Destroy(gameObject);
     }
 

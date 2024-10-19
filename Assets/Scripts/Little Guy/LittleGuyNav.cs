@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LittleGuyNav : MonoBehaviour
+public class LittleGuyNav : ColorUtility
 {
-    private MaterialType materialType;
+    [Header("Distance")]
     public float followDistance = 3f;
     public float fleeDistance = 8f;
+
+    private MaterialType materialType;
     private Transform player;
     private enum State { Following, Fleeing }
+    [Header("States")]
     [SerializeField] private State currentState;
 
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
@@ -19,9 +22,15 @@ public class LittleGuyNav : MonoBehaviour
     {
         materialRenderer = GetComponent<Renderer>();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // wtf? it forced me to update the line to this
-        //navMeshAgent.speed = 3f; // force to 3 prob dont need ig if i just put in inspector
+        //navMeshAgent.speed = 3.5f; // force to 3.5 prob dont need ig if i just put in inspector
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentState = State.Fleeing;
+    }
+
+    public void Setup(MaterialType type)
+    {
+        materialType = type;
+        SetColor(materialRenderer, materialType);
     }
 
     // Update is called once per frame
@@ -37,7 +46,7 @@ public class LittleGuyNav : MonoBehaviour
 
             case State.Fleeing:
                 FleeFromPlayer(distanceToPlayer);
-                if (distanceToPlayer < 1f) // if you next to it
+                if (distanceToPlayer < 1.5f) // if you next to/near it
                 {
                     navMeshAgent.speed = 5f;
                     currentState = State.Following;
@@ -66,4 +75,5 @@ public class LittleGuyNav : MonoBehaviour
             navMeshAgent.SetDestination(fleeTarget);
         }
     }
+
 }

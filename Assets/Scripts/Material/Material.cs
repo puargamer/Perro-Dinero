@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Material : MonoBehaviour
+public class Material : ColorUtility
 {
     public MaterialType materialType; // set an enum
     [SerializeField] private MaterialSpawner spawner;
@@ -14,30 +14,7 @@ public class Material : MonoBehaviour
         this.spawner = spawner;
         materialType = type;
         materialRenderer = GetComponent<Renderer>();
-        SetMaterialColor();
-    }
-
-    private void SetMaterialColor()
-    {
-        Color wantedColor;
-
-        switch (materialType)
-        {
-            case MaterialType.Red:
-                wantedColor = Color.red;
-                break;
-            case MaterialType.Blue:
-                wantedColor = Color.blue;
-                break;
-            case MaterialType.Yellow:
-                wantedColor = Color.yellow;
-                break;
-            default:
-                wantedColor = Color.white;
-                break;
-        }
-
-        materialRenderer.material.color = wantedColor;
+        SetColor(materialRenderer, materialType);
     }
 
     void OnTriggerEnter(Collider other)
