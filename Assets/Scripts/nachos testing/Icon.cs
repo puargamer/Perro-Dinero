@@ -19,8 +19,8 @@ public class Icon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        yMin = new Vector3(0, transform.position.y - yDiff, 0);
-        yMax = new Vector3(0, transform.position.y + yDiff, 0);
+        yMin = new Vector3(transform.position.x, transform.position.y - yDiff, transform.position.z);
+        yMax = new Vector3(transform.position.x, transform.position.y + yDiff, transform.position.z);
     }
 
     // Update is called once per frame
