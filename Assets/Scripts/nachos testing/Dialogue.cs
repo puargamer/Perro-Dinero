@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     private int index;
 
+    public DialogueSounds dialogueSounds;   //sound
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class Dialogue : MonoBehaviour
         foreach (char  c in lines[index].ToCharArray()) 
         {
             text.text += c;
+            dialogueSounds.PlayCharSound(c);    //play sound
             yield return new WaitForSeconds(textSpeed);
         }
     }
@@ -52,14 +55,20 @@ public class Dialogue : MonoBehaviour
         if (index < lines.Length - 1)
         {
             index++;
-            text.text = "";
-            StartCoroutine (TypeLine());
+            //text.text = "";
+            //StartCoroutine (TypeLine());
+            StartCoroutine(NextLineWait());
         }
         else
         {
             StartCoroutine(EndDialogue());
         }
     }
-    //cuh
 
+    IEnumerator NextLineWait()
+    {
+        yield return new WaitForSeconds(2);
+        text.text = "";
+        StartCoroutine(TypeLine());
+    }
 }
