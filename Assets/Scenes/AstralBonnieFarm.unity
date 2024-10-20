@@ -1640,8 +1640,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445487956}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21579722, y: -0.0067, z: 5.117608e-25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.21579725, y: -0.0067, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6122,7 +6122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1718326350
 Transform:
   m_ObjectHideFlags: 0
@@ -6361,7 +6361,7 @@ PrefabInstance:
     - target: {fileID: 596168779263024228, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 549d1d3e811123d49ac343574f5cd751, type: 2}
+      objectReference: {fileID: 2100000, guid: 99bb37748dac474429fa96e32c9ed238, type: 2}
     - target: {fileID: 919132149155446097, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_Name
       value: map_plane_gamejam
