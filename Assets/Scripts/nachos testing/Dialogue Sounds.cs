@@ -12,7 +12,7 @@ public class DialogueSounds : MonoBehaviour
     public void PlayCharSound(char c)        //plays sound of a char
     {
         index = char.ToUpper(c) - 65;
-        if (index < 0) { index = 26; }
+        if (index < 0 || index > 26) { index = 26; }
 
         audioSource.clip = dialogueSounds[index];
         audioSource.Play();

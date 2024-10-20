@@ -12,11 +12,24 @@ public class Dialogue : MonoBehaviour
 
     public DialogueSounds dialogueSounds;   //sound
 
+    [Header("squish character")]
+    public Transform character;
+    public float originalyScale;
+    public float originalyPos;
+
+    public float scaleDiff;
+    public float posDiff;
+    public bool flip = false;
+
     // Start is called before the first frame update
     void Start()
     {
         text.text = "";
         StartDialogue();
+
+        //squish
+        originalyScale = character.transform.localScale.y;
+        originalyPos = character.transform.position.y;
     }
 
     // Update is called once per frame
@@ -40,12 +53,37 @@ public class Dialogue : MonoBehaviour
         {
             text.text += c;
             dialogueSounds.PlayCharSound(c);    //play sound
+
+            //squish
+            float tempYScale = 0;
+            float tempYPos = 0;
+
+            if (flip)
+            {
+                tempYScale = character.transform.localScale.y - scaleDiff;
+                tempYPos = character.transform.position.y - posDiff;
+            }
+            else
+            {
+                tempYScale = character.transform.localScale.y + scaleDiff;
+                tempYPos = character.transform.position.y + posDiff;
+            }
+            flip = !flip;
+
+            character.transform.localScale = new Vector3(character.transform.localScale.x, tempYScale, character.transform.localScale.z);
+            character.transform.position = new Vector3(character.transform.position.x, tempYPos, character.transform.position.z);
+
+
             yield return new WaitForSeconds(textSpeed);
         }
     }
 
     IEnumerator EndDialogue()
     {
+        //reset squish
+        character.transform.localScale = new Vector3(character.transform.localScale.x, originalyScale, character.transform.localScale.z);
+        character.transform.position = new Vector3(character.transform.position.x, originalyPos, character.transform.position.z);
+
         yield return new WaitForSeconds(5);
         gameObject.SetActive(false);
     }
