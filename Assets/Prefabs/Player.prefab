@@ -338,7 +338,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864960577934241437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
   speed: 8
   gravityValue: -1
   sens: 400
-  AngleMin: -30
+  AngleMin: -20
   AngleMax: 80
   CameraPositionParent: {fileID: 3243035608172439875}
   audioSource: {fileID: 7519058212961163012}
@@ -925,10 +925,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6722411908749958877, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
+    - target: {fileID: -5867621867836553369, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
+    - target: {fileID: -3518304218168505135, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
+    - target: {fileID: -3377426332696538689, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
       propertyPath: m_Name
       value: Jotchua2
       objectReference: {fileID: 0}
+    - target: {fileID: 7190829025255951154, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
+    - target: {fileID: 8449996119470504636, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a36a143f600e46340821c8c9fc8e13c2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

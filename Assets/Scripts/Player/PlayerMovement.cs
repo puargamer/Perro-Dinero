@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
+    public GameObject face;     //object that points where the cam is looking without y data
+    public GameObject playerModel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +52,20 @@ public class PlayerMovement : MonoBehaviour
     }
     void MoveCheck()
     {
-        move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
+        move = Input.GetAxis("Vertical") * face.transform.forward + Input.GetAxis("Horizontal") * face.transform.right;
         characterController.Move(move * speed * Time.deltaTime);
 
+        bool moving = move != Vector3.zero ? true : false;
+
         //make sounds when moving
-        if (move != Vector3.zero) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(1f, 1.5f); audioSource.Play(); } }
+        if (moving) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(1f, 1.5f); audioSource.Play(); } }
+
+
+        if (moving)
+        {
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, move, 5 * Time.deltaTime, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
     }
     void GravityCheck()
     {
@@ -69,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, AngleMin, AngleMax);
-        this.gameObject.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        face.gameObject.transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
         CameraPositionParent.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
