@@ -21,11 +21,12 @@ public class SpawnerManager : MonoBehaviour
     private List<Transform> activeSpawners = new List<Transform>(); // keep track of all spawners
 
     [SerializeField] // for debugging
-    private int[] materialLikelihood = new int[3] {0, 0, 0};
+    private int[] materialLikelihood;
     // Start is called before the first frame update
     void Start()
     {
-        materialTypeCount = 3; // first 3 colors base, hard coded rn
+        materialTypeCount = MaterialTypeHelper.Count;
+        materialLikelihood = new int[materialTypeCount]; // init to 0s
         SpawnInitialSpawners();
     }
 

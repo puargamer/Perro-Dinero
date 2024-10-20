@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Material : ColorUtility
+public class Material : MonoBehaviour
 {
     public MaterialType materialType; // set an enum
     [SerializeField] private MaterialSpawner spawner;
 
     private SpriteRenderer spriteRenderer;
-    private Renderer materialRenderer;
+    //private Renderer materialRenderer;
 
     public void Setup(MaterialSpawner spawner, MaterialType type, Sprite sprite)
     {
         this.spawner = spawner;
         materialType = type;
-        materialRenderer = GetComponent<Renderer>();
+        //materialRenderer = GetComponent<Renderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        SetColor(materialRenderer, materialType);
+        //SetColor(materialRenderer, materialType);
         spriteRenderer.sprite = sprite;
     }
 
@@ -26,7 +26,7 @@ public class Material : ColorUtility
         if (other.CompareTag("Player"))
         {
             // uncomment this when singleton is ready!
-            //Singleton.Instance.CollectMat((int)materialType); 
+            //Singleton.Instance.CollectMat((int)materialType);
             spawner.CollectMaterial();
             Destroy(gameObject);
             // collected!

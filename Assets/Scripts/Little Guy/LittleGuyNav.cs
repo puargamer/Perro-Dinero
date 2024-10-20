@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LittleGuyNav : ColorUtility
+public class LittleGuyNav : MonoBehaviour
 {
     [Header("Distance")]
     public float followDistance = 3f;
     public float fleeDistance = 8f;
 
     private MaterialType materialType;
-    private MaterialType wantedGiftType;
+    private MaterialType wantedGiftType; // wanted item from spawns
     private Transform player;
     private enum MovementState { Following, Fleeing, Still }
     private enum DesireState { None, Unwilling, Willing } // willing or unwilling to do work
@@ -40,7 +40,7 @@ public class LittleGuyNav : ColorUtility
     public void Setup(MaterialType type)
     {
         materialType = type;
-        SetColor(materialRenderer, materialType);
+        //SetColor(materialRenderer, materialType);
     }
 
     // Update is called once per frame

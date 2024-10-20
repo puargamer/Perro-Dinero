@@ -7,7 +7,7 @@ public class MaterialSpawner : MonoBehaviour
     public MaterialType currMatType;
 
     [Header("Spawn Options")]
-    private int numberOfSpawns = 3;
+    private int numberOfSpawns = 1;
     public float spawnRadius = 5f;
     public float respawnDelay = 2f;
     [Header("Exclude Ground")]
