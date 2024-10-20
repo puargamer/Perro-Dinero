@@ -55,3 +55,18 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a656664071f2e3c44b0991a97cf0fcbe, type: 3}
   - type: 4
     sprite: {fileID: 21300000, guid: 3f5860301e5896244a259b2a9d697dc4, type: 3}
+  littleGuySprites:
+  - type: 0
+    sprite: {fileID: 21300000, guid: 783e71bfbc22bd84297a9373b0ab33af, type: 3}
+  - type: 1
+    sprite: {fileID: 21300000, guid: 8fa6d9447d840314084d5f022d3245d9, type: 3}
+  - type: 2
+    sprite: {fileID: 21300000, guid: acd93bc8748acb142b7595ee8ea27093, type: 3}
+  - type: 3
+    sprite: {fileID: 21300000, guid: 5bdcbdc3a5b254c42b8771741dfb54dc, type: 3}
+  - type: 4
+    sprite: {fileID: 21300000, guid: 21bc864adfb99ea4195295e59b060b93, type: 3}
+  - type: 5
+    sprite: {fileID: 21300000, guid: abd84cfb2ac4bc845bc7963176d048ed, type: 3}
+  - type: 6
+    sprite: {fileID: 21300000, guid: e15786c1dbf159c4fa858c9c1155814f, type: 3}

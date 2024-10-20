@@ -19,6 +19,8 @@ public class LittleGuyNav : MonoBehaviour
 
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private Renderer materialRenderer;
+    private SpriteRenderer spriteRenderer;
+    private SpriteUtility spriteUtility;
     [Header("Desire Settings")]
     [SerializeField] private float unwillingChance = 0.05f;
     [SerializeField] private float checkInterval = 5f;
@@ -26,7 +28,8 @@ public class LittleGuyNav : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        materialRenderer = GetComponent<Renderer>();
+        spriteUtility = FindObjectOfType<SpriteUtility>();
+        materialRenderer = GetComponent<Renderer>(); // not sure if needed still prob not
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // wtf? it forced me to update the line to this
         //navMeshAgent.speed = 3.5f; // force to 3.5 prob dont need ig if i just put in inspector
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -41,6 +44,8 @@ public class LittleGuyNav : MonoBehaviour
     {
         combinationType = type;
         //SetColor(materialRenderer, materialType);
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = spriteUtility.GetSprite(type);
     }
 
     // Update is called once per frame
@@ -141,5 +146,10 @@ public class LittleGuyNav : MonoBehaviour
     public void CaughtFish() // allows the little guy to start being bad
     {
         currentDesireState = DesireState.Willing;
+    }
+
+    public void PutInPen()
+    {
+        //currentMovementState
     }
  }
