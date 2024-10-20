@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class collectFish : MonoBehaviour
@@ -26,6 +27,8 @@ public class collectFish : MonoBehaviour
             {
                 Debug.Log("goonsesh complete");
                 singleton.GetComponent<Singleton>().fishCount++;
+                Destroy(other.transform.GetChild(other.transform.childCount - 1).gameObject);
+                other.GetComponent<GolemMovement>().hasFish = false;
             }
         }
     }

@@ -21,7 +21,7 @@ public class Fish : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("goon goon fruit");
-        if (other.tag == "Golem")
+        if (other.tag == "Golem" && !other.GetComponent<GolemMovement>().hasFish)
         {
             Debug.Log("sussy balls among us");
             fishNVM.enabled = false;
@@ -37,7 +37,8 @@ public class Fish : MonoBehaviour
     {
         while (true)
         {
-            fishNVM.SetDestination(new Vector3(Random.Range(-13, 20), 0.3f, Random.Range(54, 73)));
+            Debug.Log("fish is goonsesh maxxing");
+            fishNVM.SetDestination(new Vector3(Random.Range(-29, 42), 0.3f, Random.Range(60, 92)));
             yield return new WaitForSeconds(Random.Range(1, 3));
         }
     }
