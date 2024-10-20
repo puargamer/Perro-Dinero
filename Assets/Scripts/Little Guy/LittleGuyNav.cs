@@ -34,7 +34,7 @@ public class LittleGuyNav : ColorUtility
 
         currentDesireState = DesireState.None;
         StartCoroutine(CheckDesireStateRoutine());
-        Debug.Log("little guy has started: desirestate " + currentDesireState);
+        //Debug.Log("little guy has started: desirestate " + currentDesireState);
     }
 
     public void Setup(MaterialType type)
@@ -94,7 +94,7 @@ public class LittleGuyNav : ColorUtility
 
     private void CheckDesireState() // somehow run this every X
     {
-        Debug.Log("checking desire state of " + currentDesireState);
+        //Debug.Log("checking desire state of " + currentDesireState);
         if (currentDesireState == DesireState.Willing && Random.value < unwillingChance)
         {
             currentDesireState = DesireState.Unwilling;

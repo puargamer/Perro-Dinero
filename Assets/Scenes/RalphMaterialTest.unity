@@ -800,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90.91016
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1155,15 +1155,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4368814068180164100, guid: 8f01c2de315561d43ac550f968415659, type: 3}
       propertyPath: spawnRangeX
-      value: 70
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4368814068180164100, guid: 8f01c2de315561d43ac550f968415659, type: 3}
       propertyPath: spawnRangeZ
-      value: 70
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4368814068180164100, guid: 8f01c2de315561d43ac550f968415659, type: 3}
       propertyPath: minSpawnerGap
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4368814068180164100, guid: 8f01c2de315561d43ac550f968415659, type: 3}
       propertyPath: newSpawnerDelay
