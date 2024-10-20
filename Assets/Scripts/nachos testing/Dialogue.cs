@@ -14,22 +14,22 @@ public class Dialogue : MonoBehaviour
 
     [Header("squish character")]
     public Transform character;
-    public float originalyScale;
-    public float originalyPos;
+    float originalyScale;
+    float originalyPos;
 
     public float scaleDiff;
     public float posDiff;
-    public bool flip = false;
+    private bool flip = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "";
-        StartDialogue();
-
         //squish
         originalyScale = character.transform.localScale.y;
         originalyPos = character.transform.position.y;
+
+        text.text = "";
+        StartDialogue();
     }
 
     // Update is called once per frame
