@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5440624669243473323
 Transform:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7066736140844078540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -535,7 +535,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -626,6 +626,8 @@ MonoBehaviour:
   AngleMax: 80
   CameraPositionParent: {fileID: 3243035608172439875}
   audioSource: {fileID: 7519058212961163012}
+  face: {fileID: 7066736140844078540}
+  playerModel: {fileID: 1480847662355757010}
 --- !u!114 &5866825382222337911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +960,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+--- !u!1 &1480847662355757010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+  m_PrefabInstance: {fileID: 1750896175531395715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2289754641469992296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}

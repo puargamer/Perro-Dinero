@@ -22,6 +22,8 @@ public class InventoryUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+
         this.gameObject.SetActive(false);
     }
 
