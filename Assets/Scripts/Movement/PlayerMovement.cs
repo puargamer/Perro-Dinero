@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(move * speed * Time.deltaTime);
 
         //make sounds when moving
-        if (move != Vector3.zero) { if (!audioSource.isPlaying) { audioSource.Play(); } }
+        if (move != Vector3.zero) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(-1, 1); audioSource.Play(); } }
     }
     void GravityCheck()
     {
