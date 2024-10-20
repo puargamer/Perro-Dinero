@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class craftUI : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class craftUI : MonoBehaviour
     public List<TMP_Text> textCounts;
     public List<int> counts;
     private int currSelected;
-    public LittleGuyFactory lGF;
+    public LittleGuyFactory littleGuyFactory;
+
     [SerializeField]
     private Transform littleGuySpawnArea;
-    
+
+    private int totalMaterials = System.Enum.GetValues(typeof(MaterialType)).Length;
+
+    private List<MaterialType> selectedMaterials = new List<MaterialType>(); // store curr materials used
 
     void Start()
     {
@@ -25,12 +30,11 @@ public class craftUI : MonoBehaviour
 
     private void ScrapeFromInventory()
     {
-        counts[0] = Singleton.Instance.mats[0];
-        textCounts[0].text = counts[0].ToString();
-        counts[1] = Singleton.Instance.mats[1];
-        textCounts[1].text = counts[1].ToString();
-        counts[2] = Singleton.Instance.mats[2];
-        textCounts[2].text = counts[2].ToString();
+        for (int i = 0; i < counts.Count; i++)
+        {
+            counts[i] = Singleton.Instance.mats[i];
+            textCounts[i].text = counts[i].ToString();   
+        }
     }
 
     public void CloseCraft()
@@ -44,60 +48,100 @@ public class craftUI : MonoBehaviour
 
     public void ResetCraft()
     {
-        craftIngredients[0].texture = null;
-        craftIngredients[0].color = Color.white;
-        craftIngredients[1].texture = null;
-        craftIngredients[1].color = Color.white;
+        for (int i = 0; i < craftIngredients.Length; i++)
+        {
+            craftIngredients[i].texture = null;
+        }
         currSelected = 0;
+        selectedMaterials.Clear();
         ScrapeFromInventory();
     }
 
-    public void AddRed()
+    public void AddMaterial(MaterialType materialType)
     {
-        if (currSelected <= 1 && counts[0] >= 1)
-        {
-            textCounts[0].text = (counts[0] - 1).ToString();
-            counts[0]--;
-            craftIngredients[currSelected].texture = items[0];
-            craftIngredients[currSelected].color = Color.red;
-            currSelected++;
-        }
-    }
+        int index = (int)materialType;
 
-    public void AddBlue()
-    {
-        if (currSelected <= 1 && counts[1] >= 1)
+        if (currSelected <= 1 && counts[index] >= 1)
         {
-            textCounts[1].text = (counts[1] - 1).ToString();
-            counts[1]--;
-            craftIngredients[currSelected].texture = items[1];
-            craftIngredients[currSelected].color = Color.blue;
+            textCounts[index].text = (--counts[index]).ToString();
+            craftIngredients[currSelected].texture = items[index];
+            selectedMaterials.Add(materialType);
             currSelected++;
         }
     }
+    // LMAO
+    public void AddCobweb() => AddMaterial(MaterialType.Cobweb);
+    public void AddFeather() => AddMaterial(MaterialType.Feather);
+    public void AddFlower() => AddMaterial(MaterialType.Flower);
+    public void AddStones() => AddMaterial(MaterialType.Stones);
+    public void AddTwig() => AddMaterial(MaterialType.Twig);
 
-    public void AddYellow()
-    {
-        if (currSelected <= 1 && counts[2] >= 1)
-        {
-            textCounts[2].text = (counts[2] - 1).ToString();
-            counts[2]--;
-            craftIngredients[currSelected].texture = items[2];
-            craftIngredients[currSelected].color = Color.yellow;
-            currSelected++;
-        }
-    }
+
+    //private MaterialType GetSelectedMaterial(int index) // prob not needed idk what i was doing
+    //{ // if not null, return index else return wtf am i looking at
+    //    return (MaterialType)(craftIngredients[index].texture != null ? index : -1);
+    //}
 
     public void CraftGuy()
     {
         if (currSelected == 2)
         {
-            Singleton.Instance.mats[0] = counts[0];
-            Singleton.Instance.mats[1] = counts[1];
-            Singleton.Instance.mats[2] = counts[2];
+            MaterialType firstMaterial = selectedMaterials[0];
+            MaterialType secondMaterial = selectedMaterials[1];
+
+            Singleton.Instance.mats[(int)firstMaterial]--; // bye bye mats
+            Singleton.Instance.mats[(int)secondMaterial]--;
+
+            CombinationType combination = GetCombination(firstMaterial, secondMaterial);
+
+            GameObject createdLittleGuy = littleGuyFactory.CreateLittleGuy(littleGuySpawnArea.position, combination);
+
+            UpdateLittleGuyList(combination, createdLittleGuy);
+
             ResetCraft();
-            MaterialType mat = (MaterialType)2;
-            Singleton.Instance.redLittleGuys.Add(lGF.CreateLittleGuy(littleGuySpawnArea.position, mat));
+        }
+    }
+
+    private CombinationType GetCombination(MaterialType first, MaterialType second)
+    {
+        int indexFirst = (int)first;
+        int indexSecond = (int)second;
+
+        int combinationIndex = indexFirst + indexSecond;
+        int max = System.Enum.GetValues(typeof(CombinationType)).Length - 1;
+        combinationIndex = (combinationIndex > max) ? max : combinationIndex;
+
+        return (CombinationType)combinationIndex;
+    }
+
+    private void UpdateLittleGuyList(CombinationType combination, GameObject littleGuy)
+    {
+        switch (combination)
+        {
+            case CombinationType.BaitA:
+                Singleton.Instance.BaitALittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitB:
+                Singleton.Instance.BaitBLittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitC:
+                Singleton.Instance.BaitCLittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitD:
+                Singleton.Instance.BaitDLittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitE:
+                Singleton.Instance.BaitELittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitF:
+                Singleton.Instance.BaitFLittleGuys.Add(littleGuy);
+                break;
+            case CombinationType.BaitG:
+                Singleton.Instance.BaitGLittleGuys.Add(littleGuy);
+                break;
+            default:
+                Debug.LogWarning("Unknown combination type: " + combination);
+                break;
         }
     }
 }

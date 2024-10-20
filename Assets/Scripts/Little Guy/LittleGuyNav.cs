@@ -7,8 +7,8 @@ public class LittleGuyNav : MonoBehaviour
     [Header("Distance")]
     public float followDistance = 3f;
     public float fleeDistance = 8f;
-
-    private MaterialType materialType;
+    [SerializeField]
+    private CombinationType combinationType; // this is what the little guy should be
     private MaterialType wantedGiftType; // wanted item from spawns
     private Transform player;
     private enum MovementState { Following, Fleeing, Still }
@@ -37,9 +37,9 @@ public class LittleGuyNav : MonoBehaviour
         //Debug.Log("little guy has started: desirestate " + currentDesireState);
     }
 
-    public void Setup(MaterialType type)
+    public void Setup(CombinationType type)
     {
-        materialType = type;
+        combinationType = type;
         //SetColor(materialRenderer, materialType);
     }
 
@@ -83,7 +83,7 @@ public class LittleGuyNav : MonoBehaviour
 
     private IEnumerator CheckDesireStateRoutine()
     {
-        Debug.Log("starting desirestateroutine");
+        //Debug.Log("starting desirestateroutine");
         while (true) {
             {
                 yield return new WaitForSeconds(checkInterval);

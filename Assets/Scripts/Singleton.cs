@@ -32,6 +32,7 @@ public class Singleton : MonoBehaviour
                 mats.Add(0);
                 goon--;
             }
+            Debug.Log("mat count: " + mats.Count);
         }
     }
 
@@ -41,12 +42,13 @@ public class Singleton : MonoBehaviour
     public int testInt;
     public int fishCount;
     public List<int> mats;
-    public List<GameObject> redLittleGuys;
-    public List<GameObject> yellowLittleGuys;
-    public List<GameObject> blueLittleGuys;
-    public List<GameObject> greenLittleGuys;
-    public List<GameObject> purpleLittleGuys;
-    public List<GameObject> orangeLittleGuys;
+    public List<GameObject> BaitALittleGuys;
+    public List<GameObject> BaitBLittleGuys;
+    public List<GameObject> BaitCLittleGuys;
+    public List<GameObject> BaitDLittleGuys;
+    public List<GameObject> BaitELittleGuys;
+    public List<GameObject> BaitFLittleGuys;
+    public List<GameObject> BaitGLittleGuys;
 
     public void test()
     {

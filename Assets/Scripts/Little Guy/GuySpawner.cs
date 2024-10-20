@@ -16,7 +16,8 @@ public class GuySpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            littleGuyFactory.CreateLittleGuy(new Vector3(0f, 1.5f, 0f), (MaterialType)0);
+            //littleGuyFactory.CreateLittleGuy(new Vector3(0f, 1.5f, 0f), (MaterialType)0);
+            // nuked for now
         }
     }
 
