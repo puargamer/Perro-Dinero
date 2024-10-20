@@ -11,7 +11,6 @@ public class DeploymentUI : MonoBehaviour
     private bool deployUIopen = false;
     public GameObject deployGrid;
     public GameObject lurePrefab;
-    public Sprite fishsticks;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +30,9 @@ public class DeploymentUI : MonoBehaviour
             Cursor.lockState = deployUIopen ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = deployUIopen;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddToGrid(2);
-        }
     }
 
-    public void AddToGrid(int lureType)
+    public void AddToGrid(Sprite fishsticks)
     {
         GameObject newLure = Instantiate(lurePrefab, Vector3.zero, Quaternion.identity, deployGrid.transform);
         newLure.GetComponentInChildren<Image>().sprite = fishsticks;

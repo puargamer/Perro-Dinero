@@ -19,12 +19,17 @@ public class craftUI : MonoBehaviour
     [SerializeField]
     private Transform littleGuySpawnArea;
 
+    private SpriteUtility spriteUtility;
+    private DeploymentUI deploymentUI;
+
     private int totalMaterials = System.Enum.GetValues(typeof(MaterialType)).Length;
 
     private List<MaterialType> selectedMaterials = new List<MaterialType>(); // store curr materials used
 
     void Start()
     {
+        spriteUtility = FindObjectOfType<SpriteUtility>();
+        deploymentUI = FindObjectOfType<DeploymentUI>();
         ResetCraft();
         ScrapeFromInventory();
     }
@@ -145,5 +150,6 @@ public class craftUI : MonoBehaviour
                 Debug.LogWarning("Unknown combination type: " + combination);
                 break;
         }
+        deploymentUI.AddToGrid(spriteUtility.GetSprite(combination));
     }
 }
