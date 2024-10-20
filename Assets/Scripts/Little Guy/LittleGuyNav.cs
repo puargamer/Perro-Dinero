@@ -21,7 +21,7 @@ public class LittleGuyNav : ColorUtility
     private Renderer materialRenderer;
     [Header("Desire Settings")]
     [SerializeField] private float unwillingChance = 0.05f;
-    [SerializeField] private float checkInterval = 30f;
+    [SerializeField] private float checkInterval = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,8 @@ public class LittleGuyNav : ColorUtility
         currentMovementState = MovementState.Fleeing;
 
         currentDesireState = DesireState.None;
-        CheckDesireStateRoutine();
+        StartCoroutine(CheckDesireStateRoutine());
+        Debug.Log("little guy has started: desirestate " + currentDesireState);
     }
 
     public void Setup(MaterialType type)
@@ -82,6 +83,7 @@ public class LittleGuyNav : ColorUtility
 
     private IEnumerator CheckDesireStateRoutine()
     {
+        Debug.Log("starting desirestateroutine");
         while (true) {
             {
                 yield return new WaitForSeconds(checkInterval);
@@ -92,6 +94,7 @@ public class LittleGuyNav : ColorUtility
 
     private void CheckDesireState() // somehow run this every X
     {
+        Debug.Log("checking desire state of " + currentDesireState);
         if (currentDesireState == DesireState.Willing && Random.value < unwillingChance)
         {
             currentDesireState = DesireState.Unwilling;
@@ -101,10 +104,17 @@ public class LittleGuyNav : ColorUtility
         }
     }
 
-    public void ReceiveGift()
+    public void ReceiveGift(MaterialType gift)
     {
-        currentDesireState = DesireState.None;
-        Debug.Log("mr cuh got the gift and is now good til you catch another fish");
+        if (gift == wantedGiftType)
+        {
+            // subtract one from inventory
+            currentDesireState = DesireState.None;
+            Debug.Log("mr cuh got the gift and is now good til you catch another fish");
+        } else
+        {
+            Debug.Log("wrong gift type! he wants a " + wantedGiftType);
+        }
     }
 
     private void FollowPlayer(float distanceToPlayer)
@@ -128,7 +138,7 @@ public class LittleGuyNav : ColorUtility
         }
     }
 
-    public void CaughtFish()
+    public void CaughtFish() // allows the little guy to start being bad
     {
         currentDesireState = DesireState.Willing;
     }
