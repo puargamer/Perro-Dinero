@@ -908,7 +908,7 @@ Transform:
   m_GameObject: {fileID: 153110652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.92, y: 0, z: 54.13}
+  m_LocalPosition: {x: 0, y: 0, z: 54.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1092,6 +1092,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187992774}
   m_CullTransparentMesh: 1
+--- !u!1 &249404682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249404683}
+  - component: {fileID: 249404684}
+  - component: {fileID: 249404685}
+  m_Layer: 6
+  m_Name: littleGuySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249404683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249404682}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.88, y: 3.2, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1278119518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249404684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249404682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d04b81da143ad42a86b509474d3a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  littleGuyPrefab: {fileID: 5929718078234512488, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
+--- !u!114 &249404685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249404682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d561f250c2d6f7488152eb56ca4549b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &283206704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,12 +2512,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 2
+  m_CollectObjects: 0
   m_Size: {x: 60, y: 10, z: 96.44}
   m_Center: {x: 0, y: 2, z: 1.1}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 144
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -4377,6 +4435,7 @@ Transform:
   - {fileID: 66722522}
   - {fileID: 1557558679}
   - {fileID: 1214921910}
+  - {fileID: 249404683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1278119519
@@ -4438,6 +4497,8 @@ MonoBehaviour:
   - {fileID: 523724514}
   - {fileID: 1021453204}
   counts: 000000000000000000000000
+  lGF: {fileID: 249404684}
+  littleGuySpawnArea: {fileID: 249404683}
 --- !u!1001 &1284645120
 PrefabInstance:
   m_ObjectHideFlags: 0

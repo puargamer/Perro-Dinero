@@ -12,6 +12,10 @@ public class craftUI : MonoBehaviour
     public List<TMP_Text> textCounts;
     public List<int> counts;
     private int currSelected;
+    public LittleGuyFactory lGF;
+    [SerializeField]
+    private Transform littleGuySpawnArea;
+    
 
     void Start()
     {
@@ -92,6 +96,8 @@ public class craftUI : MonoBehaviour
             Singleton.Instance.mats[1] = counts[1];
             Singleton.Instance.mats[2] = counts[2];
             ResetCraft();
+            MaterialType mat = (MaterialType)2;
+            Singleton.Instance.redLittleGuys.Add(lGF.CreateLittleGuy(littleGuySpawnArea.position, mat));
         }
     }
 }

@@ -21,7 +21,7 @@ public class Fish : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("goon goon fruit");
-        if (other.tag == "Player")
+        if (other.tag == "Golem")
         {
             Debug.Log("sussy balls among us");
             fishNVM.enabled = false;
