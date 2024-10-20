@@ -102,7 +102,7 @@ public class craftUI : MonoBehaviour
         }
     }
 
-    private CombinationType GetCombination(MaterialType first, MaterialType second)
+    private CombinationType GetCombination(MaterialType first, MaterialType second) // TODO: fix this
     {
         int indexFirst = (int)first;
         int indexSecond = (int)second;

@@ -13,7 +13,9 @@ public class SpawnerManager : MonoBehaviour
 
     [Header("Spawn Radius")]
     public float spawnRangeX = 15f;
+    public float xOffset = 0f;
     public float spawnRangeZ = 15f;
+    public float zOffset = 0f;
 
     [Header("Exclude Ground")]
     public LayerMask validSpawnLayerMask;
@@ -105,9 +107,9 @@ public class SpawnerManager : MonoBehaviour
     private Vector3 GetRandomSpawnPosition()
     {
         return new Vector3(
-            Random.Range(-spawnRangeX, spawnRangeX),
+            Random.Range(-spawnRangeX, spawnRangeX) + xOffset,
             spawnYValue,
-            Random.Range(-spawnRangeZ, spawnRangeZ)
+            Random.Range(-spawnRangeZ, spawnRangeZ) + zOffset
         );
     }
 
