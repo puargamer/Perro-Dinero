@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpriteFaceCam : MonoBehaviour
 {
+
     //makes sprite face camera
     GameObject player;
 
@@ -15,6 +16,6 @@ public class SpriteFaceCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.forward = Camera.main.transform.forward;
+        this.gameObject.transform.forward = player.GetComponent<PlayerMovement>().face.transform.forward;
     }
 }

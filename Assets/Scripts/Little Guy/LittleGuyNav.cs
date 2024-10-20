@@ -25,6 +25,9 @@ public class LittleGuyNav : MonoBehaviour
     [SerializeField] private float unwillingChance = 0.05f;
     [SerializeField] private float checkInterval = 5f;
 
+    [Header("Animator")]
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,9 @@ public class LittleGuyNav : MonoBehaviour
         currentDesireState = DesireState.None;
         StartCoroutine(CheckDesireStateRoutine());
         //Debug.Log("little guy has started: desirestate " + currentDesireState);
+
+        //random animation speed
+        animator.speed = Random.Range(.8f, 1.2f);
     }
 
     public void Setup(CombinationType type)
