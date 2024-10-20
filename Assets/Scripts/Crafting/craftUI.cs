@@ -15,7 +15,7 @@ public class craftUI : MonoBehaviour
     private int currSelected;
     public LittleGuyFactory littleGuyFactory; // shouldnt need to be filled in inspector
     public RecipeBook recipeBook; // shouldnt need to be filled in inspector
-
+    public GameObject deployUI;
     [SerializeField]
     private Transform littleGuySpawnArea;
 
@@ -40,6 +40,7 @@ public class craftUI : MonoBehaviour
 
     public void CloseCraft()
     {
+        deployUI.SetActive(true);
         player.GetComponent<PlayerMovement>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
