@@ -20,7 +20,7 @@ public class collectFish : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other);
-        if (other.tag == "Player")
+        if (other.tag == "Golem")
         {
             if (other.GetComponent<GolemMovement>().hasFish)
             {

@@ -37,7 +37,7 @@ public class Fish : MonoBehaviour
     {
         while (true)
         {
-            fishNVM.SetDestination(new Vector3(Random.Range(-6, 6), 0.3f, Random.Range(-2, 6)));
+            fishNVM.SetDestination(new Vector3(Random.Range(-13, 20), 0.3f, Random.Range(54, 73)));
             yield return new WaitForSeconds(Random.Range(1, 3));
         }
     }
