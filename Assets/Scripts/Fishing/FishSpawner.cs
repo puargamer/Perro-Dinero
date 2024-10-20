@@ -14,10 +14,16 @@ public class FishSpawner : MonoBehaviour
         //movement locations
         //x: -29 to 42
         //z: 60 to 92
+        //new movement locations
+        //x: -93 to -60
+        //z: -27 to 39
 
         //initial spawns
         //x: -7 to 15
         //z: 52 to 67
+        //new initial spawns
+        //x: -67 to -53
+        //z: -9 to 16
         InitalFishSpawn();
     }
 
@@ -31,7 +37,7 @@ public class FishSpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 randPos = new Vector3(Random.Range(-7, 15), 0, Random.Range(52, 67));
+            Vector3 randPos = new Vector3(Random.Range(-67, -53), 0, Random.Range(-9, 16));
             Instantiate(fishPrefab, randPos, Quaternion.identity);
         }
     }

@@ -33,7 +33,7 @@ public class log : MonoBehaviour
     {
         while (true)
         {
-            logNVM.SetDestination(new Vector3(Random.Range(-15, 32), 0.3f, Random.Range(70, 82)));
+            logNVM.SetDestination(new Vector3(Random.Range(-83, -70), 0.3f, Random.Range(-17, 29)));
             yield return new WaitForSeconds(Random.Range(5, 7));
         }
     }

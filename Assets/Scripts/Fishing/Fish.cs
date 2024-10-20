@@ -37,9 +37,9 @@ public class Fish : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("fish is goonsesh maxxing");
-            fishNVM.SetDestination(new Vector3(Random.Range(-29, 42), 0.3f, Random.Range(60, 92)));
-            yield return new WaitForSeconds(Random.Range(1, 3));
+            //Debug.Log("fish is goonsesh maxxing");
+            fishNVM.SetDestination(new Vector3(Random.Range(-93, -60), 0.3f, Random.Range(-27, 39)));
+            yield return new WaitForSeconds(Random.Range(1, 7));
         }
     }
 

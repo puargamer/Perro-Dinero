@@ -26,7 +26,7 @@ public class Material : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // uncomment this when singleton is ready!
-            //Singleton.Instance.CollectMat((int)materialType);
+            Singleton.Instance.CollectMat((int)materialType);
             spawner.CollectMaterial();
             Destroy(gameObject);
             // collected!
