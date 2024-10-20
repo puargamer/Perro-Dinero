@@ -13,7 +13,8 @@ public class craftUI : MonoBehaviour
     public List<TMP_Text> textCounts;
     public List<int> counts;
     private int currSelected;
-    public LittleGuyFactory littleGuyFactory;
+    public LittleGuyFactory littleGuyFactory; // shouldnt need to be filled in inspector
+    public RecipeBook recipeBook; // shouldnt need to be filled in inspector
 
     [SerializeField]
     private Transform littleGuySpawnArea;
@@ -92,7 +93,7 @@ public class craftUI : MonoBehaviour
             Singleton.Instance.mats[(int)firstMaterial]--; // bye bye mats
             Singleton.Instance.mats[(int)secondMaterial]--;
 
-            CombinationType combination = GetCombination(firstMaterial, secondMaterial);
+            CombinationType combination = recipeBook.UseRecipe(firstMaterial, secondMaterial);
 
             GameObject createdLittleGuy = littleGuyFactory.CreateLittleGuy(littleGuySpawnArea.position, combination);
 
@@ -102,17 +103,17 @@ public class craftUI : MonoBehaviour
         }
     }
 
-    private CombinationType GetCombination(MaterialType first, MaterialType second) // TODO: fix this
-    {
-        int indexFirst = (int)first;
-        int indexSecond = (int)second;
+    //private CombinationType GetCombination(MaterialType first, MaterialType second) // TODO: fix this
+    //{
+    //    int indexFirst = (int)first;
+    //    int indexSecond = (int)second;
 
-        int combinationIndex = indexFirst + indexSecond;
-        int max = System.Enum.GetValues(typeof(CombinationType)).Length - 1;
-        combinationIndex = (combinationIndex > max) ? max : combinationIndex;
+    //    int combinationIndex = indexFirst + indexSecond;
+    //    int max = System.Enum.GetValues(typeof(CombinationType)).Length - 1;
+    //    combinationIndex = (combinationIndex > max) ? max : combinationIndex;
 
-        return (CombinationType)combinationIndex;
-    }
+    //    return (CombinationType)combinationIndex;
+    //}
 
     private void UpdateLittleGuyList(CombinationType combination, GameObject littleGuy)
     {

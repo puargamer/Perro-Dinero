@@ -15,7 +15,8 @@ public class Material : MonoBehaviour
         this.spawner = spawner;
         materialType = type;
         //materialRenderer = GetComponent<Renderer>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //SetColor(materialRenderer, materialType);
         spriteRenderer.sprite = sprite;
     }

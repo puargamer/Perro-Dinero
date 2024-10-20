@@ -3,7 +3,7 @@ using UnityEngine;
 public class MaterialSpawner : MonoBehaviour
 {
     public GameObject materialPrefab;
-    private SpawnerManager spawnerManager;
+    private AreaSpawnerManager spawnerManager;
     public MaterialType currMatType;
 
     [Header("Spawn Options")]
@@ -19,7 +19,7 @@ public class MaterialSpawner : MonoBehaviour
     void Start()
     {
         spriteUtility = FindObjectOfType<SpriteUtility>();
-        spawnerManager = FindObjectOfType<SpawnerManager>();
+        spawnerManager = FindObjectOfType<AreaSpawnerManager>();
         SpawnMaterials();
     }
 

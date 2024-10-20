@@ -3,7 +3,11 @@ guid: ee32e47eb1bb5bb479d2b3f07fe26efb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - littleGuyFactory: {instanceID: 0}
+  - recipeBook: {fileID: 8003710201292494445, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
+  - littleGuySpawnArea: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

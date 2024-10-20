@@ -15,6 +15,6 @@ public class SpriteFaceCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.forward = player.transform.forward;
+        this.gameObject.transform.forward = Camera.main.transform.forward;
     }
 }
