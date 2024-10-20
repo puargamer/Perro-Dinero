@@ -13,9 +13,12 @@ public class MaterialSpawner : MonoBehaviour
     [Header("Exclude Ground")]
     public LayerMask validSpawnLayerMask;
 
+    private SpriteUtility spriteUtility;
+
     // Start is called before the first frame update
     void Start()
     {
+        spriteUtility = FindObjectOfType<SpriteUtility>();
         spawnerManager = FindObjectOfType<SpawnerManager>();
         SpawnMaterials();
     }
@@ -43,10 +46,15 @@ public class MaterialSpawner : MonoBehaviour
                 }
             } while (!IsValidSpawnPosition(randomPos));
 
-
+            // grab the material type
             GameObject newMat = Instantiate(materialPrefab, randomPos, Quaternion.identity);
             Material matScript = newMat.GetComponent<Material>();
-            matScript.Setup(this, currMatType);
+
+            //
+            //grab the sprite for it
+            Sprite currSprite = spriteUtility.GetSprite(currMatType);
+
+            matScript.Setup(this, currMatType, currSprite);
         }
     }
 
