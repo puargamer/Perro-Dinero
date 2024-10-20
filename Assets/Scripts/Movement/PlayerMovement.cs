@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject CameraPositionParent;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     {
         move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
         characterController.Move(move * speed * Time.deltaTime);
+
+        //make sounds when moving
+        if (move != Vector3.zero) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(-1, 1); audioSource.Play(); } }
     }
     void GravityCheck()
     {
