@@ -5,7 +5,12 @@ using UnityEngine;
 public class SpriteFaceCam : MonoBehaviour
 {
     //makes sprite face camera
-    public GameObject player;
+    GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void Update()
