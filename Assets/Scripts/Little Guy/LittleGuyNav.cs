@@ -9,13 +9,19 @@ public class LittleGuyNav : ColorUtility
     public float fleeDistance = 8f;
 
     private MaterialType materialType;
+    private MaterialType wantedGiftType;
     private Transform player;
-    private enum State { Following, Fleeing }
+    private enum MovementState { Following, Fleeing, Still }
+    private enum DesireState { None, Unwilling, Willing } // willing or unwilling to do work
     [Header("States")]
-    [SerializeField] private State currentState;
+    [SerializeField] private MovementState currentMovementState;
+    [SerializeField] private DesireState currentDesireState;
 
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private Renderer materialRenderer;
+
+    [SerializeField] private float unwillingChance = 0.1f;
+    private bool hasFished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +30,9 @@ public class LittleGuyNav : ColorUtility
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // wtf? it forced me to update the line to this
         //navMeshAgent.speed = 3.5f; // force to 3.5 prob dont need ig if i just put in inspector
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentState = State.Fleeing;
+        currentMovementState = MovementState.Fleeing;
+
+        currentDesireState = DesireState.None;
     }
 
     public void Setup(MaterialType type)
@@ -38,24 +46,63 @@ public class LittleGuyNav : ColorUtility
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        switch (currentState)
+        MovementStateAction(distanceToPlayer);
+
+        if (hasFished) // if it has done work before
         {
-            case State.Following:
-                FollowPlayer(distanceToPlayer);
+            // check the of desire and if applicable roll the chance to be unwilling after the set amount of time
+            CheckDesireState();
+        }
+
+    }
+
+    private void MovementStateAction(float dist)
+    {
+        switch (currentMovementState)
+        {
+            case MovementState.Following:
+                FollowPlayer(dist);
+                // can also not want to work in here
                 break;
 
-            case State.Fleeing:
-                FleeFromPlayer(distanceToPlayer);
-                if (distanceToPlayer < 1.5f) // if you next to/near it
+            case MovementState.Fleeing:
+                FleeFromPlayer(dist);
+                if (dist < 1.5f) // if you next to/near it
                 {
                     navMeshAgent.speed = 5f;
-                    currentState = State.Following;
-                    FollowPlayer(distanceToPlayer);
+                    currentMovementState = MovementState.Following;
+                    FollowPlayer(dist);
                     // add a tamed notification or something to tell the player
                     // that it is now following you
                 }
                 break;
+
+            case MovementState.Still:
+                // if in pen/after first fish, chance to be unwilling and want a material from the world
+                // after it gets material, update desire state to willing to work again
+
+                // condiition
+                
+                break;
         }
+    }
+
+    private void CheckDesireState() // somehow run this every X
+    {
+        if (currentDesireState == DesireState.Willing && Random.value < unwillingChance)
+        {
+            currentDesireState = DesireState.Unwilling;
+
+            wantedGiftType = (MaterialType)Random.Range(0, 3);
+            Debug.Log("mr cuh is now unwilling and wants a gift of " + wantedGiftType);
+        }
+    }
+
+    public void ReceiveGift()
+    {
+        currentDesireState = DesireState.Willing;
+        hasFished = false;
+        Debug.Log("mr cuh got the gift and is now willing");
     }
 
     private void FollowPlayer(float distanceToPlayer)
@@ -78,5 +125,18 @@ public class LittleGuyNav : ColorUtility
             navMeshAgent.SetDestination(fleeTarget);
         }
     }
+
+    public bool isWilling()
+    {
+        return currentDesireState == DesireState.Willing;
+    }
+
+    public void CaughtFish()
+    {
+        this.hasFished = true;
+    }
+
+    /// every X ticks, after a pikmin has caught a fish for the first time chance to roll for a successful something
+    /// if it succeeds then the player needs to get something for it to get back to a willing state
 
 }

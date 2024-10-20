@@ -22,6 +22,7 @@ public class SpawnerManager : MonoBehaviour
     private int materialTypeCount;
     private List<Transform> activeSpawnerTransforms = new List<Transform>(); // keep track of all spawners
 
+    private int[] materialLikelihood = new int[3] {0, 0, 0};
     // Start is called before the first frame update
     void Start()
     {
@@ -61,8 +62,9 @@ public class SpawnerManager : MonoBehaviour
         GameObject newSpawner = Instantiate(spawnerPrefab, randomPos, Quaternion.identity);
         activeSpawnerTransforms.Add(newSpawner.transform);
 
-        // choose random material
+        // modified choose random material
         MaterialType randomType = (MaterialType)Random.Range(0, materialTypeCount);
+
 
         MaterialSpawner newSpawnerScript = newSpawner.GetComponent<MaterialSpawner>();
         newSpawnerScript.SetupSpawner(randomType);
@@ -78,8 +80,8 @@ public class SpawnerManager : MonoBehaviour
             attempts++;
             if (attempts >= 150)
             {
-                Debug.Log("BROOOO YOU SCREWED UP, lower the min spawner gap in inspector" +
-                    "or this is colliding w the ground");
+                Debug.Log("Failed to find spawn location: lower the min spawner gap in inspector" +
+                    " or this is colliding w the ground");
                 break;
             }
         } while (!IsValidSpawnPosition(randomPos));
@@ -110,4 +112,9 @@ public class SpawnerManager : MonoBehaviour
             Random.Range(-spawnRangeZ, spawnRangeZ)
         );
     }
+
+    //private modifyLikelihood(int index)
+    //{
+    //    materialLikelihood
+    //}
 }
