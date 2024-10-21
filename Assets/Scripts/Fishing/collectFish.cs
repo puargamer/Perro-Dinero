@@ -25,8 +25,10 @@ public class collectFish : MonoBehaviour
             if (other.GetComponent<GolemMovement>().hasFish)
             {
                 Debug.Log("goonsesh complete");
-                Singleton.Instance.fishCount++;
-                Destroy(other.transform.GetChild(other.transform.childCount - 1).gameObject);
+                //Singleton.Instance.fishCount++;
+                //Destroy(other.transform.GetChild(other.transform.childCount - 1).gameObject);
+                other.transform.GetChild(other.transform.childCount - 1).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                other.transform.GetChild(other.transform.childCount - 1).parent = null;
                 other.GetComponent<GolemMovement>().hasFish = false;
             }
         }

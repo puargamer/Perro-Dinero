@@ -27,11 +27,6 @@ public class NachosFish : Interact
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && isHeld && throwDelay == false) { isHeld = false; }
-        if (Input.GetMouseButtonDown(0) && Singleton.Instance.isLure && !fishNVM.enabled)
-        {
-            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            transform.parent = null;
-        }
     }
 
     void LateUpdate()
