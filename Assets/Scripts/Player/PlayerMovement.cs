@@ -87,4 +87,10 @@ public class PlayerMovement : MonoBehaviour
 
         CameraPositionParent.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
+    //public void Respawn()
+    //{
+    //    Debug.Log("called respawn within player!");
+    //    yVelocity = 0f;
+    //    gameObject.transform.position = new Vector3(83f, 4f, 40f);
+    //}
 }
