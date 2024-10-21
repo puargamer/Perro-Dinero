@@ -12,6 +12,10 @@ public class DeploymentUI : MonoBehaviour
     public GameObject deployGrid;
     public GameObject lurePrefab;
 
+    public GameObject playerCam;
+    public GameObject tempGoon;
+    public GameObject tempParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +40,15 @@ public class DeploymentUI : MonoBehaviour
     {
         GameObject newLure = Instantiate(lurePrefab, Vector3.zero, Quaternion.identity, deployGrid.transform);
         newLure.GetComponentInChildren<Image>().sprite = fishsticks;
+    }
+
+    void deploy()
+    {
+        deployUIopen = false;
+        childCanvas.SetActive(false);
+        player.GetComponent<PlayerMovement>().enabled = false;
+        playerCam.SetActive(false);
+        tempGoon.SetActive(true);
+        tempParent.SetActive(false);
     }
 }
