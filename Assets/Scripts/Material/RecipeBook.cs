@@ -47,6 +47,19 @@ public class RecipeBook : MonoBehaviour
         Debug.Log("invalid recipe, defaulting to BaitG");
         return CombinationType.BaitG;  // default value
     }
+
+    public List<string> GetValidRecipes()
+    {
+        List<string> validRecipes = new List<string>();
+
+        foreach (var recipe in recipes)
+        {
+            string formattedRecipe = $"{recipe.MaterialOne} + {recipe.MaterialTwo} = {recipe.Result}";
+            validRecipes.Add(formattedRecipe);
+        }
+
+        return validRecipes;
+    }
 }
 
 /// example usage:

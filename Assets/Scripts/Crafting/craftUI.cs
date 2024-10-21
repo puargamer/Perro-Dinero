@@ -19,6 +19,9 @@ public class craftUI : MonoBehaviour
     [SerializeField]
     private Transform littleGuySpawnArea;
 
+    public TMP_Text recipeText;
+    public GameObject recipePanel;
+
     private SpriteUtility spriteUtility;
     private DeploymentUI deploymentUI;
 
@@ -26,12 +29,15 @@ public class craftUI : MonoBehaviour
 
     private List<MaterialType> selectedMaterials = new List<MaterialType>(); // store curr materials used
 
+    private bool openPanel = false;
+
     void Start()
     {
         spriteUtility = FindObjectOfType<SpriteUtility>();
         deploymentUI = FindObjectOfType<DeploymentUI>();
         ResetCraft();
         ScrapeFromInventory();
+        DisplayRecipes();
     }
 
     public void ScrapeFromInventory()
@@ -111,6 +117,23 @@ public class craftUI : MonoBehaviour
             UpdateLittleGuyList(combination, createdLittleGuy);
 
             ResetCraft();
+        }
+    }
+
+    public void DisplayRecipes()
+    {
+        var recipes = recipeBook.GetValidRecipes();
+        string recipeList = string.Join("\n", recipes);
+        recipeText.text = recipeList;
+
+        if (!openPanel)
+        {
+            recipeText.text = recipeList;
+            recipePanel.SetActive(true);
+        }
+        else
+        {
+            recipePanel.SetActive(false);
         }
     }
 
