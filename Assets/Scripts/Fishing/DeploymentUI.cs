@@ -15,6 +15,7 @@ public class DeploymentUI : MonoBehaviour
     public GameObject playerCam;
     public GameObject tempGoon;
     public GameObject tempParent;
+    public GameObject tabText;
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +43,11 @@ public class DeploymentUI : MonoBehaviour
         newLure.GetComponentInChildren<Image>().sprite = fishsticks;
     }
 
-    void deploy()
+    public void deploy()
     {
+        tabText.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         deployUIopen = false;
         childCanvas.SetActive(false);
         player.GetComponent<PlayerMovement>().enabled = false;
