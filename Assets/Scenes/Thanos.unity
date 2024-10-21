@@ -2489,6 +2489,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4745827956446670323, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
+--- !u!114 &656511435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656511427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -334000983
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.13888
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: c2e49ad941f226543aa6a0711f3f9d52, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &658325512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,7 +4929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1346369550762627069, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 312798698618953876, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4922,6 +4953,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6519009750602378086, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 656511431}
+    - targetCorrespondingSourceObject: {fileID: -6519009750602378086, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 656511435}
     - targetCorrespondingSourceObject: {fileID: -1346369550762627069, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2001557205}
@@ -7870,12 +7904,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 16
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0

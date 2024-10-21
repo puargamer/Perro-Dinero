@@ -30,6 +30,7 @@ public class GolemMovement : MonoBehaviour
     void Update()
     {
         RotationCheck();
+        doIdropFish();
         move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
         golemTr.position += move * speed * Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -54,5 +55,10 @@ public class GolemMovement : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, AngleMin, AngleMax);
         LureCamPos.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
+
+    public void doIdropFish()
+    {
+        if (transform.GetChild(transform.childCount - 1).gameObject.tag != "Fish") { hasFish = false; }
     }
 }
