@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Golem
   - Fish
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

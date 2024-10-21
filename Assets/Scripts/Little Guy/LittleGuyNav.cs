@@ -40,7 +40,7 @@ public class LittleGuyNav : MonoBehaviour
         materialRenderer = GetComponent<Renderer>(); // not sure if needed still prob not
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // wtf? it forced me to update the line to this
         //navMeshAgent.speed = 3.5f; // force to 3.5 prob dont need ig if i just put in inspector
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         currentMovementState = MovementState.Fleeing;
 
         currentDesireState = DesireState.None;

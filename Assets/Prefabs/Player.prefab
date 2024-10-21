@@ -996,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jotchua2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBody
+      objectReference: {fileID: 0}
     - target: {fileID: 7190829025255951154, guid: 2bd49c99fee9bc142a734a7113d12d0e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
