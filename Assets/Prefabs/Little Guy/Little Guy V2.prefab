@@ -190,12 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a3ab687a4008b4a827448a53e36edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpHeight: 0
+  speed: 7
+  jumpHeight: 10
   hasFish: 0
   sens: 400
-  AngleMin: 0
-  AngleMax: 0
+  AngleMin: -20
+  AngleMax: 80
   LureCamPos: {fileID: 0}
 --- !u!54 &-5437965023208946735
 Rigidbody:
@@ -222,7 +222,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &7592258927311421840
 GameObject:

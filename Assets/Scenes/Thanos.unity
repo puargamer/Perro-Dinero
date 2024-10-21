@@ -1820,7 +1820,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1073261584}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99842621 stripped
@@ -30911,10 +30912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8073191137442453198, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1073261584}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5929718078234512488, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
       insertIndex: -1
@@ -35013,7 +35011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1073261584
 Transform:
   m_ObjectHideFlags: 0
@@ -35022,14 +35020,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073261583}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: -40.03071, y: 0.41664097, z: 2.7911353}
+  m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1930494540}
-  m_Father: {fileID: 1654372184}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 99771795}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1074846845 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8652618769262694401, guid: d606cfc1979724c4d879ea29882830a2, type: 3}
@@ -35731,6 +35729,8 @@ MonoBehaviour:
   goon: {fileID: 1654372177}
   otherMenu: {fileID: 660196304}
   tabText: {fileID: 1651431175}
+  fishingCam: {fileID: 1073261583}
+  fishingCamParent: {fileID: 99771794}
 --- !u!4 &1107076970
 Transform:
   m_ObjectHideFlags: 0
@@ -38428,9 +38428,11 @@ MonoBehaviour:
   deployGrid: {fileID: 1100812832}
   lurePrefab: {fileID: 7545618598767143588, guid: d9d9ac4785be2b245a5226c0a299cc4f, type: 3}
   playerCam: {fileID: 1933633290}
-  tempGoon: {fileID: 1654372177}
+  fishingCam: {fileID: 1930494539}
   tempParent: {fileID: 660196304}
   tabText: {fileID: 1651431175}
+  deploySelection: {fileID: 0}
+  startFishingManager: {fileID: 1107076969}
 --- !u!4 &1296389317
 Transform:
   m_ObjectHideFlags: 0
@@ -44994,11 +44996,6 @@ NavMeshObstacle:
 --- !u!1 &1654372177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5929718078234512488, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
-  m_PrefabInstance: {fileID: 813173407}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1654372184 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8073191137442453198, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
   m_PrefabInstance: {fileID: 813173407}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &1654372186

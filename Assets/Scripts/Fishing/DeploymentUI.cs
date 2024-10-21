@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AI;
 
 public class DeploymentUI : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class DeploymentUI : MonoBehaviour
     public GameObject lurePrefab;
 
     public GameObject playerCam;
-    public GameObject tempGoon;
+    public GameObject fishingCam;
+    //public GameObject tempGoon;
     public GameObject tempParent;
     public GameObject tabText;
-    private GameObject selection;
+    public GameObject deploySelection;
+    public tempStartFishing startFishingManager;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class DeploymentUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && !Singleton.Instance.isLure)
         {
             Debug.Log("q worked");
+            deploySelection = null;
             deployUIopen = !deployUIopen;
             childCanvas.SetActive(deployUIopen);
             //if (Singleton.Instance.menuInt <= 1) 
@@ -59,11 +63,12 @@ public class DeploymentUI : MonoBehaviour
         }
     }
 
-    public void AddToGrid(Sprite fishsticks)
+    public void AddToGrid(Sprite fishsticks, GameObject littleGuy)
     {
         GameObject newLure = Instantiate(lurePrefab, Vector3.zero, Quaternion.identity, deployGrid.transform);
         newLure.GetComponentInChildren<Image>().sprite = fishsticks;
-        Debug.Log(fishsticks.name);
+        newLure.GetComponent<ButtonReferenceHolder>().littleGuy = littleGuy;
+        //Debug.Log(fishsticks.name);
     }
 
     public void deploy()
@@ -76,12 +81,19 @@ public class DeploymentUI : MonoBehaviour
         childCanvas.SetActive(false);
         player.GetComponent<PlayerMovement>().enabled = false;
         playerCam.SetActive(false);
-        tempGoon.SetActive(true);
+        fishingCam.SetActive(true);
+        fishingCam.transform.parent = deploySelection.transform;
+        fishingCam.transform.localPosition = new Vector3(0f, 10f, -15f);
+        fishingCam.transform.localRotation = Quaternion.identity;
+        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
+        deploySelection.transform.position = new Vector3(0f, 5f, 0f) + deploySelection.transform.position;
+        deploySelection.transform.rotation = Quaternion.identity;
+        deploySelection.GetComponent<LittleGuyNav>().enabled = false;
+        deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
+        deploySelection.GetComponent<GolemMovement>().enabled = true;
+        deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam;
+        //tempGoon.SetActive(true);
+        startFishingManager.UpdateGoon(deploySelection);
         tempParent.SetActive(false);
-    }
-
-    public void deploySelect()
-    {
-        
     }
 }

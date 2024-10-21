@@ -178,7 +178,7 @@ public class craftUI : MonoBehaviour
                 Debug.LogWarning("Unknown combination type: " + combination);
                 break;
         }
-        deploymentUI.AddToGrid(spriteUtility.GetSprite(combination));
+        deploymentUI.AddToGrid(spriteUtility.GetSprite(combination), littleGuy);
         Singleton.Instance.EquipGuy(littleGuy);
     }
 }

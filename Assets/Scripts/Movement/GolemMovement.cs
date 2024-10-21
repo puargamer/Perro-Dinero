@@ -7,14 +7,14 @@ public class GolemMovement : MonoBehaviour
     private Rigidbody rb;
     private Transform golemTr;
     private Collider fishCol;
-    public float speed;
-    public float jumpHeight;
+    public float speed = 7;
+    public float jumpHeight = 10;
     private Vector3 move;
     public bool hasFish = false;
 
     public float sens = 400;
-    public float AngleMin;
-    public float AngleMax;
+    public float AngleMin = -20;
+    public float AngleMax = 80;
     float xRotation, yRotation;
     public GameObject LureCamPos;
 
