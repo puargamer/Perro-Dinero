@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
+    public GameObject textbox;
     public TMP_Text text;
     public string[] lines;
     public float textSpeed;
@@ -28,7 +29,6 @@ public class Dialogue : MonoBehaviour
         originalyScale = character.transform.localScale.y;
         originalyPos = character.transform.position.y;
 
-        text.text = "";
         //StartDialogue();
     }
 
@@ -43,6 +43,9 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        text.text = "";
+        StopAllCoroutines();
+        textbox.SetActive(true);
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -85,7 +88,7 @@ public class Dialogue : MonoBehaviour
         character.transform.position = new Vector3(character.transform.position.x, originalyPos, character.transform.position.z);
 
         yield return new WaitForSeconds(5);
-        gameObject.SetActive(false);
+        textbox.SetActive(false);
     }
 
     void nextLine()

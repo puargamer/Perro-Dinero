@@ -8,6 +8,8 @@ public class FishStand : MonoBehaviour
     public TMP_Text text;
     public int score;
     public FishStandHitbox hitbox;
+    public Dialogue dialogue;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()

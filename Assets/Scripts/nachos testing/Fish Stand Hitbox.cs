@@ -12,6 +12,8 @@ public class FishStandHitbox : MonoBehaviour
         if (other.gameObject.tag == "Fish")
         {
             fishStand.score++;
+            fishStand.dialogue.StartDialogue();
+            fishStand.audioSource.Play();
             Destroy(other.gameObject);
         }
     }
