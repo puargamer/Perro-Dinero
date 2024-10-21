@@ -8,7 +8,6 @@ public class FishStand : MonoBehaviour
     public TMP_Text text;
     public int score;
     public FishStandHitbox hitbox;
-    public GameObject objectInHitbox;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +19,7 @@ public class FishStand : MonoBehaviour
     void Update()
     {
 
-        if (hitbox.HitboxActive)
-        {
-            score++;
-
-            Destroy(objectInHitbox);
-
-        }
-
         text.text = "Score: " + score;
+        
     }
 }

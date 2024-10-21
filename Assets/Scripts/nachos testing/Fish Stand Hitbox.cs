@@ -11,8 +11,8 @@ public class FishStandHitbox : MonoBehaviour
     {
         if (other.gameObject.tag == "Fish")
         {
-            HitboxActive = true;
-            fishStand.objectInHitbox = other.gameObject;
+            fishStand.score++;
+            Destroy(other.gameObject);
         }
     }
 
