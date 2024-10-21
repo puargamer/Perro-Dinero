@@ -32,8 +32,26 @@ public class DeploymentUI : MonoBehaviour
             deployUIopen = !deployUIopen;
             childCanvas.SetActive(deployUIopen);
             player.GetComponent<PlayerMovement>().enabled = !deployUIopen;
+            if (!deployUIopen)
+            {
+                Singleton.Instance.menuInt--;
+            } 
+            else
+            {
+                Singleton.Instance.menuInt++;
+            }
             Cursor.lockState = deployUIopen ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = deployUIopen;
+            if (Singleton.Instance.menuInt == 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
     }
 
@@ -46,6 +64,7 @@ public class DeploymentUI : MonoBehaviour
     public void deploy()
     {
         tabText.SetActive(true);
+        Singleton.Instance.menuInt--;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         deployUIopen = false;

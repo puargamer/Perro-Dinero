@@ -19,8 +19,13 @@ public class InventoryUI : MonoBehaviour
     //button methods
     public void Exit()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Singleton.Instance.menuInt--;
+        if (Singleton.Instance.menuInt == 0 )
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
 

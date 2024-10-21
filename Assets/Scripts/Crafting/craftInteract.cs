@@ -9,10 +9,14 @@ public class craftTable : Interact
 
     public override void interact()
     {
-        deployUI.SetActive(false);
-        player.GetComponent<PlayerMovement>().enabled = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        GetComponentInChildren<Canvas>().enabled = true;
+        if (Singleton.Instance.menuInt == 0)
+        {
+            deployUI.SetActive(false);
+            player.GetComponent<PlayerMovement>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GetComponentInChildren<Canvas>().enabled = true;
+            Singleton.Instance.menuInt++;
+        }
     }
 }

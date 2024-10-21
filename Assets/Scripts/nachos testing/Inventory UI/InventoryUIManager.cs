@@ -19,13 +19,14 @@ public class InventoryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(1)) { OpenMenu(); }
+        if (Input.GetMouseButtonDown(1) && Singleton.Instance.menuInt == 0) { OpenMenu(); }
     }
 
     void OpenMenu()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Singleton.Instance.menuInt++;
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
 
