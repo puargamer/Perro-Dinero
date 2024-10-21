@@ -29,7 +29,7 @@ public class Dialogue : MonoBehaviour
         originalyPos = character.transform.position.y;
 
         text.text = "";
-        StartDialogue();
+        //StartDialogue();
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());

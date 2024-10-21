@@ -50,6 +50,10 @@ public class Singleton : MonoBehaviour
     public List<GameObject> BaitFLittleGuys;
     public List<GameObject> BaitGLittleGuys;
 
+    public List<GameObject> equippedLittleGuys;
+    public List<GameObject> stashedLittleGuys;
+
+
     public void test()
     {
         Debug.Log("hello");
@@ -59,6 +63,28 @@ public class Singleton : MonoBehaviour
     {
         mats[index]++;
     }
+
+    public void RemoveMat(int index)
+    {
+        mats[index]--;
+    }
+
+    // we are changing these post demo this is so garbage rn
+    public void EquipGuy(GameObject guy)
+    {
+        if (stashedLittleGuys.Contains(guy)) {
+            stashedLittleGuys.Remove(guy);
+        }
+        equippedLittleGuys.Add(guy);
+
+    }
+
+    public void StashGuy(GameObject guy)
+    {
+        equippedLittleGuys.Remove(guy);
+        stashedLittleGuys.Add(guy);
+    }
+
 }
 
 

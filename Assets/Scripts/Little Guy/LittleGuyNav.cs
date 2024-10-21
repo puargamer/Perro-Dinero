@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LittleGuyNav : MonoBehaviour
 {
+    public Transform pen; // prob can define later
     [Header("Distance")]
     public float followDistance = 3f;
     public float fleeDistance = 8f;
@@ -83,10 +84,11 @@ public class LittleGuyNav : MonoBehaviour
                 break;
 
             case MovementState.Still:
+
                 // if in pen/after a fish, chance to be unwilling and want a material from the world
                 // after it gets material, update desire state to willing to work again
 
-                // condiition
+                // literally do nothing in this state
 
                 break;
         }
@@ -119,7 +121,8 @@ public class LittleGuyNav : MonoBehaviour
     {
         if (gift == wantedGiftType)
         {
-            // subtract one from inventory
+            // subtract one from inventory in the singleton
+            Singleton.Instance.RemoveMat((int)wantedGiftType);
             currentDesireState = DesireState.None;
             Debug.Log("mr cuh got the gift and is now good til you catch another fish");
         } else
@@ -154,8 +157,35 @@ public class LittleGuyNav : MonoBehaviour
         currentDesireState = DesireState.Willing;
     }
 
+    public bool IsWillingToFish()
+    {
+        return DesireState.Willing == currentDesireState;
+    }
+
     public void PutInPen()
     {
-        //currentMovementState
+        currentMovementState = MovementState.Still;
+        navMeshAgent.isStopped = true;
+
+        transform.position = pen.position;
+        gameObject.SetActive(false);
+        Singleton.Instance.StashGuy(gameObject);
+        // set the destination to within the pen
+        // hide the little guy
+        // update the singleton
+    }
+
+    public void TakeOutPen()
+    {
+        gameObject.SetActive(false);
+        navMeshAgent.isStopped = false;
+        // current movement state
+        // unhide it within the pen and set destination to anywhere outside,
+        // afterward set state to following
+        // update the singleton
+        Vector3 outsidePenPosition = pen.position + new Vector3(1, 0, 1); // idk here yet can hard code outside the thingy
+        navMeshAgent.SetDestination(outsidePenPosition);
+        currentMovementState = MovementState.Following;
+        Singleton.Instance.EquipGuy(gameObject);
     }
  }

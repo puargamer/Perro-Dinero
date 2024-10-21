@@ -1,0 +1,219 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6521489627453095802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8149629793539206976}
+  - component: {fileID: 281371882107259541}
+  - component: {fileID: 5837662852172618784}
+  - component: {fileID: 8139871056367964400}
+  - component: {fileID: 2152282351135072738}
+  m_Layer: 0
+  m_Name: button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8149629793539206976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521489627453095802}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70670676, z: -0, w: 0.70750666}
+  m_LocalPosition: {x: 0.82, y: -4.09, z: -5.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6091725351873413044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &281371882107259541
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521489627453095802}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5837662852172618784
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521489627453095802}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 386b1189686290e4fa78027f259b3cb8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8139871056367964400
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521489627453095802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2152282351135072738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521489627453095802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123c9957e09c4694195bbf4a303992c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 6065824783710496071}
+  asd: {fileID: 1518563123117316453}
+--- !u!1001 &2015894817174415590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1074918553507934595, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074918553507934595, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: collect materials around the map
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074918553507934595, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: craft lures using the materials you get at the crafting station
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671946012723187298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9612538cc62a02a478bb3c29f860f1a1, type: 3}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.226507
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70750666
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70670676
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -89.935
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019940815234972967, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      propertyPath: m_Name
+      value: tutorial npc Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 8149629793539206976}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+--- !u!114 &1518563123117316453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1074918553507934595, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+  m_PrefabInstance: {fileID: 2015894817174415590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065824783710496071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea5cc92665142d4fbb31a512c7d5cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6065824783710496071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5753284921890721185, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+  m_PrefabInstance: {fileID: 2015894817174415590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6091725351873413044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5725133172012521298, guid: 015b8722f5cb7b448bb8d5e2b1195f3c, type: 3}
+  m_PrefabInstance: {fileID: 2015894817174415590}
+  m_PrefabAsset: {fileID: 0}
