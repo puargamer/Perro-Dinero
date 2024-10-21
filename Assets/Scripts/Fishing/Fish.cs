@@ -7,12 +7,14 @@ public class Fish : MonoBehaviour
 {
     private Transform fishTr;
     private NavMeshAgent fishNVM;
+    private Collider fishCol;
     IEnumerator cor;
     // Start is called before the first frame update
     void Start()
     {
         fishTr = GetComponent<Transform>();
         fishNVM = GetComponent<NavMeshAgent>();
+        fishCol = GetComponent<Collider>();
         cor = goonWalk();
         StartCoroutine(cor);
     }
@@ -24,6 +26,7 @@ public class Fish : MonoBehaviour
         if (other.tag == "Golem" && !other.GetComponent<GolemMovement>().hasFish)
         {
             Debug.Log("sussy balls among us");
+            fishCol.isTrigger = false;
             fishNVM.enabled = false;
             StopCoroutine(cor);
             fishTr.SetParent(other.transform);
@@ -48,7 +51,7 @@ public class Fish : MonoBehaviour
         int collectTime = 50;
         while (collectTime > 0) 
         {
-            currY = Mathf.Lerp(currY, 20f, .1f);
+            currY = Mathf.Lerp(currY, 1.2f, .1f);
             fishTr.localPosition = new Vector3(0, currY, 0);
             yield return new WaitForSeconds(.02f);
             collectTime--;

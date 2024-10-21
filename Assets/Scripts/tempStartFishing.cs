@@ -20,10 +20,12 @@ public class tempStartFishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.isLure)
         {
             Debug.Log("tab pressed");
+            Singleton.Instance.menuInt--;
             tabText.SetActive(false);
+            Singleton.Instance.isLure = false;
             player.GetComponent<PlayerMovement>().enabled = true;
             playerCam.SetActive(true);
             goon.SetActive(false);

@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject fishMenu;
 
     private GameObject currentMenu;
+    public GameObject deployUI;
 
 
     //button methods
@@ -28,7 +29,7 @@ public class InventoryUI : MonoBehaviour
         
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-
+        deployUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
 

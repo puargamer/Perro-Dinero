@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class collectFish : MonoBehaviour
 {
-    public GameObject singleton;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +25,7 @@ public class collectFish : MonoBehaviour
             if (other.GetComponent<GolemMovement>().hasFish)
             {
                 Debug.Log("goonsesh complete");
-                singleton.GetComponent<Singleton>().fishCount++;
+                Singleton.Instance.fishCount++;
                 Destroy(other.transform.GetChild(other.transform.childCount - 1).gameObject);
                 other.GetComponent<GolemMovement>().hasFish = false;
             }

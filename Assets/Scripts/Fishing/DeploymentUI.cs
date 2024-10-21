@@ -26,12 +26,15 @@ public class DeploymentUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !Singleton.Instance.isLure)
         {
             Debug.Log("q worked");
             deployUIopen = !deployUIopen;
             childCanvas.SetActive(deployUIopen);
+            //if (Singleton.Instance.menuInt <= 1) 
+            //{
             player.GetComponent<PlayerMovement>().enabled = !deployUIopen;
+            //}
             if (!deployUIopen)
             {
                 Singleton.Instance.menuInt--;
@@ -64,7 +67,7 @@ public class DeploymentUI : MonoBehaviour
     public void deploy()
     {
         tabText.SetActive(true);
-        Singleton.Instance.menuInt--;
+        Singleton.Instance.isLure = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         deployUIopen = false;

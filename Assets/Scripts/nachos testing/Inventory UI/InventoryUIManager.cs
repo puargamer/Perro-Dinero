@@ -9,6 +9,7 @@ public class InventoryUIManager : MonoBehaviour
     /// </summary>
 
     public GameObject inventoryUI;
+    public GameObject deployUI;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class InventoryUIManager : MonoBehaviour
 
     void OpenMenu()
     {
+        deployUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Singleton.Instance.menuInt++;

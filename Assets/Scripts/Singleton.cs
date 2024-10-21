@@ -54,6 +54,7 @@ public class Singleton : MonoBehaviour
     public List<GameObject> stashedLittleGuys;
 
     public int menuInt = 0;
+    public bool isLure = false;
 
     public void test()
     {
