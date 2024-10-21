@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject face;     //object that points where the cam is looking without y data
     public GameObject playerModel;
 
+    public GameObject heldObjectPos;
+
     // Start is called before the first frame update
     void Start()
     {
