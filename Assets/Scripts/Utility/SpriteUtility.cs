@@ -21,8 +21,16 @@ public class SpriteUtility : MonoBehaviour
         public Sprite sprite;
     }
 
+    [System.Serializable]
+    public class FishSprite
+    {
+        public CombinationType type;
+        public Sprite sprite;
+    }
+
     public List<MaterialSprite> materialSprites;
     public List<LittleGuySprite> littleGuySprites;
+    public List<FishSprite> fishSprites;
 
     private void Awake()
     {

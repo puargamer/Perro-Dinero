@@ -16,6 +16,7 @@ public class DeploymentUI : MonoBehaviour
     public GameObject tempGoon;
     public GameObject tempParent;
     public GameObject tabText;
+    private GameObject selection;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class DeploymentUI : MonoBehaviour
     {
         GameObject newLure = Instantiate(lurePrefab, Vector3.zero, Quaternion.identity, deployGrid.transform);
         newLure.GetComponentInChildren<Image>().sprite = fishsticks;
+        Debug.Log(fishsticks.name);
     }
 
     public void deploy()
@@ -76,5 +78,10 @@ public class DeploymentUI : MonoBehaviour
         playerCam.SetActive(false);
         tempGoon.SetActive(true);
         tempParent.SetActive(false);
+    }
+
+    public void deploySelect()
+    {
+        
     }
 }

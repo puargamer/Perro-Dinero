@@ -70,3 +70,18 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: abd84cfb2ac4bc845bc7963176d048ed, type: 3}
   - type: 6
     sprite: {fileID: 21300000, guid: e15786c1dbf159c4fa858c9c1155814f, type: 3}
+  fishSprites:
+  - type: 0
+    sprite: {fileID: 21300000, guid: f9c69ea0eca3e6b4793c236c0aca0bc8, type: 3}
+  - type: 1
+    sprite: {fileID: 21300000, guid: ff26157167e07d34daff121ca50055bd, type: 3}
+  - type: 2
+    sprite: {fileID: 21300000, guid: f97bfa3b0850e914db09ba5c36bf37b9, type: 3}
+  - type: 3
+    sprite: {fileID: 21300000, guid: 41a78db048ef732459ac1157cac328d2, type: 3}
+  - type: 4
+    sprite: {fileID: 21300000, guid: 69c78fecd74e41540a86c2ca4babf790, type: 3}
+  - type: 5
+    sprite: {fileID: 21300000, guid: 3949c03e6a1072349b689249797010fe, type: 3}
+  - type: 6
+    sprite: {fileID: 21300000, guid: 1edb4241e77982a48b0f5058b16981fe, type: 3}
