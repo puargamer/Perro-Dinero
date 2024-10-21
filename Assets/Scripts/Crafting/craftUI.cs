@@ -156,5 +156,6 @@ public class craftUI : MonoBehaviour
                 break;
         }
         deploymentUI.AddToGrid(spriteUtility.GetSprite(combination));
+        Singleton.Instance.EquipGuy(littleGuy);
     }
 }

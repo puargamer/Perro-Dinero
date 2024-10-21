@@ -121,7 +121,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929718078234512488}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.49999997
   m_Speed: 3.2
   m_Acceleration: 8
@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba5cf7bd577c544d8156e8080099bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pen: {fileID: 0}
+  cooldown: 1
   followDistance: 3
   fleeDistance: 6
   combinationType: 0
@@ -191,6 +193,10 @@ MonoBehaviour:
   speed: 0
   jumpHeight: 0
   hasFish: 0
+  sens: 400
+  AngleMin: 0
+  AngleMax: 0
+  LureCamPos: {fileID: 0}
 --- !u!54 &-5437965023208946735
 Rigidbody:
   m_ObjectHideFlags: 0

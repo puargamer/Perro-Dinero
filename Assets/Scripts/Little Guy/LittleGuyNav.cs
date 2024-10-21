@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class LittleGuyNav : MonoBehaviour
 {
     public Transform pen; // prob can define later
+    public float cooldown = 2f;
+    private bool isCooldownActive = false;
+    private bool isInPen = false;
     [Header("Distance")]
     public float followDistance = 3f;
     public float fleeDistance = 8f;
@@ -75,7 +79,8 @@ public class LittleGuyNav : MonoBehaviour
                 FleeFromPlayer(dist);
                 if (dist < 1.5f) // if you next to/near it
                 {
-                    navMeshAgent.speed = 5f;
+                    navMeshAgent.speed = 9f;
+                    navMeshAgent.acceleration = 18f;
                     currentMovementState = MovementState.Following;
                     FollowPlayer(dist);
                     // add a tamed notification or something to tell the player
@@ -152,6 +157,11 @@ public class LittleGuyNav : MonoBehaviour
         }
     }
 
+    public void SetPen(Transform pen) // manually set pen ig :sob:
+    {
+        this.pen = pen;
+    }
+
     public void CaughtFish() // allows the little guy to start being bad
     {
         currentDesireState = DesireState.Willing;
@@ -162,30 +172,63 @@ public class LittleGuyNav : MonoBehaviour
         return DesireState.Willing == currentDesireState;
     }
 
-    public void PutInPen()
-    {
+    // going into pen logic
+
+    public bool PutInPen()
+    { // returns false if on cooldown or in pen, returns true if executed properly
+        if (isCooldownActive || isInPen) return false;
+        navMeshAgent.speed = 25f;
+        navMeshAgent.acceleration = 35f;
+        isCooldownActive = true;
+        isInPen = true;
+
         currentMovementState = MovementState.Still;
+        navMeshAgent.SetDestination(pen.position);
+        StartCoroutine(StashSequence());
+        StartCoroutine(CooldownRoutine());
+        return true;
+    }
+
+    public bool TakeOutPen()
+    { // returns false if on cooldown or not in pen, returns true if executed
+        if (isCooldownActive || !isInPen) return false;
+        navMeshAgent.speed = 9f;
+        navMeshAgent.acceleration = 18f;
+        isCooldownActive = true;
+        isInPen = false;
+
+        gameObject.SetActive(true);
+        navMeshAgent.isStopped = false;
+
+        //Vector3 outsidePenPosition = pen.position + new Vector3(1, 0, 1); // idk here yet can hard code outside the thingy
+        //navMeshAgent.SetDestination(outsidePenPosition);
+        StartCoroutine(SetMovementStateFollow());
+        Singleton.Instance.EquipGuy(gameObject);
+
+        StartCoroutine(CooldownRoutine());
+        return true;
+    }
+
+    public IEnumerator SetMovementStateFollow()
+    {
+        yield return new WaitForSeconds(0.5f);
+        currentMovementState = MovementState.Following;
+    }
+
+    public IEnumerator StashSequence()
+    {
+        yield return new WaitForSeconds(2f);
         navMeshAgent.isStopped = true;
+        isInPen = true;
 
         transform.position = pen.position;
         gameObject.SetActive(false);
         Singleton.Instance.StashGuy(gameObject);
-        // set the destination to within the pen
-        // hide the little guy
-        // update the singleton
     }
 
-    public void TakeOutPen()
+    private IEnumerator CooldownRoutine()
     {
-        gameObject.SetActive(false);
-        navMeshAgent.isStopped = false;
-        // current movement state
-        // unhide it within the pen and set destination to anywhere outside,
-        // afterward set state to following
-        // update the singleton
-        Vector3 outsidePenPosition = pen.position + new Vector3(1, 0, 1); // idk here yet can hard code outside the thingy
-        navMeshAgent.SetDestination(outsidePenPosition);
-        currentMovementState = MovementState.Following;
-        Singleton.Instance.EquipGuy(gameObject);
+        yield return new WaitForSeconds(cooldown);
+        isCooldownActive = false;
     }
  }
