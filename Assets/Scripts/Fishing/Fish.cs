@@ -22,7 +22,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("goon goon fruit");
+        //Debug.Log("goon goon fruit");
         if (other.tag == "Golem" && !other.GetComponent<GolemMovement>().hasFish)
         {
             Debug.Log("sussy balls among us");
