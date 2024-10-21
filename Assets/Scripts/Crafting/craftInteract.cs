@@ -12,6 +12,7 @@ public class craftTable : Interact
         if (Singleton.Instance.menuInt == 0)
         {
             deployUI.SetActive(false);
+            gameObject.GetComponent<craftUI>().ScrapeFromInventory();
             player.GetComponent<PlayerMovement>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -34,7 +34,7 @@ public class craftUI : MonoBehaviour
         ScrapeFromInventory();
     }
 
-    private void ScrapeFromInventory()
+    public void ScrapeFromInventory()
     {
         for (int i = 0; i < counts.Count; i++)
         {
