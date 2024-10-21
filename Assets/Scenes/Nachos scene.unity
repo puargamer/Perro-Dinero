@@ -1632,6 +1632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   throwDelay: 0
+  golem: {fileID: 0}
 --- !u!54 &809174627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3629,6 +3630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   throwDelay: 0
+  golem: {fileID: 0}
 --- !u!1 &2085668026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,9 +3923,17 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 628150933}
+    - target: {fileID: 4212553321259258824, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.84
+      objectReference: {fileID: 0}
     - target: {fileID: 6023548447890370224, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773219486437296518, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8959825176127618704, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
       propertyPath: m_LocalPosition.x
