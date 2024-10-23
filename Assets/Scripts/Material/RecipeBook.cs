@@ -6,12 +6,14 @@ public class MaterialRecipe
     public MaterialType MaterialOne { get; }
     public MaterialType MaterialTwo { get; }
     public CombinationType Result { get; }
+    public string FishColor { get; }
 
-    public MaterialRecipe(MaterialType materialOne, MaterialType materialTwo, CombinationType result)
+    public MaterialRecipe(MaterialType materialOne, MaterialType materialTwo, CombinationType result, string fColor)
     {
         MaterialOne = materialOne;
         MaterialTwo = materialTwo;
         Result = result;
+        FishColor = fColor;
     }
 }
 
@@ -23,13 +25,13 @@ public class RecipeBook : MonoBehaviour
     {
         recipes = new List<MaterialRecipe>
         {
-            new MaterialRecipe(MaterialType.Cobweb, MaterialType.Twig, CombinationType.BaitA), // brown lookin idiot
-            new MaterialRecipe(MaterialType.Feather, MaterialType.Cobweb, CombinationType.BaitB), // red clam
-            new MaterialRecipe(MaterialType.Flower, MaterialType.Stones, CombinationType.BaitC), // shrimp
-            new MaterialRecipe(MaterialType.Flower, MaterialType.Twig, CombinationType.BaitD), // yellow marionette
-            new MaterialRecipe(MaterialType.Stones, MaterialType.Feather, CombinationType.BaitE), // blue wooper
-            new MaterialRecipe(MaterialType.Cobweb, MaterialType.Stones, CombinationType.BaitF), // christmas tree
-            new MaterialRecipe(MaterialType.Feather, MaterialType.Flower, CombinationType.BaitG), // cockroach
+            new MaterialRecipe(MaterialType.Cobweb, MaterialType.Twig, CombinationType.BaitA, "Brown Lure"), // brown lookin idiot
+            new MaterialRecipe(MaterialType.Feather, MaterialType.Cobweb, CombinationType.BaitB, "Red Lure"), // red clam
+            new MaterialRecipe(MaterialType.Flower, MaterialType.Stones, CombinationType.BaitC, "Orange Lure"), // shrimp
+            new MaterialRecipe(MaterialType.Flower, MaterialType.Twig, CombinationType.BaitD, "Yellow Lure"), // yellow marionette
+            new MaterialRecipe(MaterialType.Stones, MaterialType.Feather, CombinationType.BaitE, "Blue Lure"), // blue wooper
+            new MaterialRecipe(MaterialType.Cobweb, MaterialType.Stones, CombinationType.BaitF, "Green Lure"), // christmas tree
+            new MaterialRecipe(MaterialType.Feather, MaterialType.Flower, CombinationType.BaitG, "Purple Lure"), // cockroach
         };
     }
 
@@ -54,7 +56,7 @@ public class RecipeBook : MonoBehaviour
 
         foreach (var recipe in recipes)
         {
-            string formattedRecipe = $"{recipe.MaterialOne} + {recipe.MaterialTwo} = {recipe.Result}";
+            string formattedRecipe = $"{recipe.MaterialOne} + {recipe.MaterialTwo} = {recipe.FishColor}";
             validRecipes.Add(formattedRecipe);
         }
 

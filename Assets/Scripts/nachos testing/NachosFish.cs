@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +13,7 @@ public class NachosFish : Interact
     public GameObject golem;
     private Vector3 fishOffset = new Vector3(0f, 0f, 2f);
     private Transform playerPos;
+    public CombinationType fishType;
     IEnumerator cor;
 
     // Start is called before the first frame update
@@ -60,6 +60,8 @@ public class NachosFish : Interact
         if (other.tag == "Golem" && !other.GetComponent<GolemMovement>().hasFish)
         {
             Debug.Log("sussy balls among us");
+            other.GetComponent<LittleGuyNav>().CaughtFish();
+            fishType = other.GetComponent<LittleGuyNav>().combinationType;
             fishCol.isTrigger = false;
             fishNVM.enabled = false;
             StopCoroutine(cor);

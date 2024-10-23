@@ -36,7 +36,7 @@ public class tempStartFishing : MonoBehaviour
             goon.GetComponent<GolemMovement>().enabled = false;
             goon.transform.position = new Vector3(goon.transform.position.x, .1f, goon.transform.position.z);
             goon.GetComponent<NavMeshAgent>().enabled = true;
-            goon.GetComponent<LittleGuyNav>().enabled = true;
+            goon.GetComponent<LittleGuyNav>().isBeingControlled = false;
             goon.GetComponentInChildren<SpriteFaceCam>().enabled = true;
             otherMenu.SetActive(true);
             goon.GetComponentInChildren<Camera>().enabled = false;

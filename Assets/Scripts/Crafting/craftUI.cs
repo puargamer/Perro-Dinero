@@ -21,6 +21,7 @@ public class craftUI : MonoBehaviour
 
     public TMP_Text recipeText;
     public GameObject recipePanel;
+    public TMP_Text recipeButtonText;
 
     private SpriteUtility spriteUtility;
     private DeploymentUI deploymentUI;
@@ -124,16 +125,20 @@ public class craftUI : MonoBehaviour
     {
         var recipes = recipeBook.GetValidRecipes();
         string recipeList = string.Join("\n", recipes);
-        recipeText.text = recipeList;
+        //recipeText.text = recipeList;
+
+        openPanel = !openPanel;
 
         if (!openPanel)
         {
             recipeText.text = recipeList;
             recipePanel.SetActive(true);
+            recipeButtonText.text = "Close Recipes";
         }
         else
         {
             recipePanel.SetActive(false);
+            recipeButtonText.text = "Open Recipes";
         }
     }
 

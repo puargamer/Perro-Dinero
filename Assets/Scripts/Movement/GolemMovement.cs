@@ -38,7 +38,6 @@ public class GolemMovement : MonoBehaviour
             rb.AddForce(new Vector3(0f, jumpHeight, 0), ForceMode.Impulse);
         }
         transform.forward = LureCamPos.transform.forward;
-        Debug.Log(transform.forward);
     }
 
     bool IsGrounded()

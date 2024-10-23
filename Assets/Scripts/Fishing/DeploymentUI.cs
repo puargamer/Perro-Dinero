@@ -89,7 +89,7 @@ public class DeploymentUI : MonoBehaviour
         //fishingCamParent.transform.parent = deploySelection.transform;
         //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);
         //fishingCamParent.transform.localRotation = Quaternion.identity;
-        deploySelection.GetComponent<LittleGuyNav>().enabled = false;
+        deploySelection.GetComponent<LittleGuyNav>().isBeingControlled = true;
         deploySelection.GetComponent<GolemMovement>().enabled = true;
         deploySelection.GetComponent<NavMeshAgent>().enabled = false;
         //deploySelection.transform.rotation = Quaternion.identity;

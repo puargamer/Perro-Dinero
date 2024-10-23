@@ -13,7 +13,7 @@ public class LittleGuyNav : MonoBehaviour
     public float followDistance = 3f;
     public float fleeDistance = 8f;
     [SerializeField]
-    private CombinationType combinationType; // this is what the little guy should be
+    public CombinationType combinationType; // this is what the little guy should be
     private MaterialType wantedGiftType; // wanted item from spawns
     private Transform player;
     private enum MovementState { Following, Fleeing, Still }
@@ -32,6 +32,8 @@ public class LittleGuyNav : MonoBehaviour
 
     [Header("Animator")]
     public Animator animator;
+
+    public bool isBeingControlled = false;
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +64,11 @@ public class LittleGuyNav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        MovementStateAction(distanceToPlayer);
+        if (!isBeingControlled) 
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            MovementStateAction(distanceToPlayer); 
+        }
     }
 
     private void MovementStateAction(float dist)
