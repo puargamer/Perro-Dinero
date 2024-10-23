@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 9141814449541478200}
   - component: {fileID: 7252159379138792112}
   - component: {fileID: 3439238507000515019}
-  - component: {fileID: 125741973225124709}
   - component: {fileID: 8482855909067519468}
+  - component: {fileID: 2593175234825595704}
   m_Layer: 6
   m_Name: Fish
   m_TagString: Fish
@@ -157,27 +157,6 @@ MonoBehaviour:
   isHeld: 0
   throwDelay: 0
   golem: {fileID: 0}
---- !u!65 &125741973225124709
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848032467747590983}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 3.5980885, z: 11.34281}
-  m_Center: {x: -0.058218956, y: 0.10760534, z: 0.00000035803103}
 --- !u!54 &8482855909067519468
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,3 +184,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!136 &2593175234825595704
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6848032467747590983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.8122473
+  m_Height: 12.426006
+  m_Direction: 2
+  m_Center: {x: 0.072579384, y: 0.2890458, z: 0}

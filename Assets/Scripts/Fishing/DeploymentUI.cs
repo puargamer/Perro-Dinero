@@ -90,12 +90,13 @@ public class DeploymentUI : MonoBehaviour
         //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);
         //fishingCamParent.transform.localRotation = Quaternion.identity;
         deploySelection.GetComponent<LittleGuyNav>().enabled = false;
-        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
-        deploySelection.transform.position = new Vector3(0f, 10f, 0f) + deploySelection.transform.position;
-        deploySelection.transform.rotation = Quaternion.identity;
-        deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
         deploySelection.GetComponent<GolemMovement>().enabled = true;
+        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
+        //deploySelection.transform.rotation = Quaternion.identity;
+        deploySelection.GetComponentInChildren<SpriteRenderer>().gameObject.transform.localRotation = Quaternion.identity;
+        deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
         deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
+        //deploySelection.transform.position = new Vector3(deploySelection.transform.position.x, .1f, deploySelection.transform.position.z);
         //tempGoon.SetActive(true);
         startFishingManager.UpdateGoon(deploySelection);
         tempParent.SetActive(false);

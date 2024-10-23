@@ -12,6 +12,8 @@ public class NachosFish : Interact
     private Collider fishCol;
     private Transform fishTr;
     public GameObject golem;
+    private Vector3 fishOffset = new Vector3(0f, 0f, 2f);
+    private Transform playerPos;
     IEnumerator cor;
 
     // Start is called before the first frame update
@@ -20,24 +22,29 @@ public class NachosFish : Interact
         fishTr = GetComponent<Transform>();
         fishNVM = GetComponent<NavMeshAgent>();
         fishCol = GetComponent<Collider>();
+        playerPos = GameObject.Find("Player").GetComponent<PlayerMovement>().heldObjectPos.transform;
         cor = goonWalk();
         StartCoroutine(cor);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isHeld && throwDelay == false) { isHeld = false; }
+        if (Input.GetMouseButtonDown(0) && isHeld && throwDelay == false) { isHeld = false; Debug.Log("let yo bih go thru yo phone"); }
     }
 
     void LateUpdate()
     {
-        if (isHeld) { transform.position = GameObject.Find("Player").GetComponent<PlayerMovement>().heldObjectPos.transform.position; }
+        if (isHeld) {
+            transform.position = playerPos.position;// + fishOffset;
+        }
     }
 
     public override void interact()
     {
         isHeld = true;
         throwDelay = true;
+        transform.parent = null;
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         StartCoroutine(NextLineWait());
     }
 

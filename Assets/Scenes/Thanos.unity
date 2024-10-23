@@ -9081,7 +9081,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 4745827956446670323, guid: 63ad77b3fc3fdb841b505dc04865bbf4, type: 3}
 --- !u!1 &211710229 stripped
 GameObject:
@@ -28318,6 +28318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish Stand
       objectReference: {fileID: 0}
+    - target: {fileID: 3641890396593853301, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8959825176127618704, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 451.3438
@@ -45569,6 +45573,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1775828762102865135, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3243035608172439875, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -45583,7 +45591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4598300771778322930, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.41
+      value: 35.53
       objectReference: {fileID: 0}
     - target: {fileID: 4598300771778322930, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_LocalRotation.w
@@ -45618,7 +45626,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2237546118473110654, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+    - {fileID: 1775828762102865135, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
