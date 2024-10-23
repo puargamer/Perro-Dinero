@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Order : MonoBehaviour
 {
-    public List<MaterialType> requests = new List<MaterialType>();
+    public List<CombinationType> requests = new List<CombinationType>();
     public bool isComplete;
 
-    // Start is called before the first frame update
-    void Start()
+    public void InitOrder(int difficulty)
     {
-        RandomizeOrder(3);
+        RandomizeOrder(difficulty);
         isComplete = false;
     }
 
@@ -25,14 +24,14 @@ public class Order : MonoBehaviour
     {
         requests.Clear();
 
-        Array allColors = Enum.GetValues(typeof(MaterialType));
+        Array allColors = Enum.GetValues(typeof(CombinationType));
         for (int i = 0; i < length; i++)
         {
-            requests.Add((MaterialType)UnityEngine.Random.Range(0, allColors.Length));
+            requests.Add((CombinationType)UnityEngine.Random.Range(0, allColors.Length));
         }
     }
 
-    void FinishRequest(MaterialType submit)
+    void FinishRequest(CombinationType submit)
     {
         requests.Remove(submit);
     }

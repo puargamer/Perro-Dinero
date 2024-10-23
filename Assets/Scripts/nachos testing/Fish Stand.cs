@@ -10,6 +10,7 @@ public class FishStand : MonoBehaviour
     public FishStandHitbox hitbox;
     public Dialogue dialogue;
     public AudioSource audioSource;
+    public OrderSign orderSign;
 
     // Start is called before the first frame update
     void Start()
