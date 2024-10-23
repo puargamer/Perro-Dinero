@@ -31,13 +31,28 @@ public class GolemMovement : MonoBehaviour
     {
         RotationCheck();
         doIdropFish();
-        move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
-        golemTr.position += move * speed * Time.deltaTime;
+        move = Input.GetAxis("Vertical") * LureCamPos.transform.forward + Input.GetAxis("Horizontal") * LureCamPos.transform.right;
+        move = new Vector3(move.x, 0f, move.z);
+        //move = move.normalized;   
+        //move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        //golemTr.position += move * speed * Time.deltaTime;
+        var speedFactor = (speed - rb.velocity.magnitude) / speed; // hard coded
+        //rb.AddForce(move, ForceMode.Impulse); //  * speedFactor
+        rb.AddForce(move * speed, ForceMode.Force);
+        //rb.AddForce(move, ForceMode.Impulse); // last working
+        //moveCharacter(move);
+        //transform.Translate(move * speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(new Vector3(0f, jumpHeight, 0), ForceMode.Impulse);
         }
         transform.forward = LureCamPos.transform.forward;
+    }
+
+    void moveCharacter(Vector3 direction)
+    {
+        //rb.velocity += direction * speed * Time.deltaTime;
+        rb.AddForce(direction, ForceMode.Impulse);
     }
 
     bool IsGrounded()
