@@ -31,7 +31,7 @@ public class Order : MonoBehaviour
         }
     }
 
-    void FinishRequest(CombinationType submit)
+    public void FinishRequest(CombinationType submit)
     {
         requests.Remove(submit);
     }

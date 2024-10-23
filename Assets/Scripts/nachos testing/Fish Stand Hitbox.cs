@@ -24,6 +24,7 @@ public class FishStandHitbox : MonoBehaviour
                 //follow quest
                 if (fishStand.orderSign.order.GetComponent<Order>().requests.Contains(other.gameObject.GetComponent<NachosFish>().fishType))
                 {
+                    fishStand.orderSign.order.GetComponent<Order>().FinishRequest(other.gameObject.GetComponent<NachosFish>().fishType);
                     fishStand.score++;
                     fishStand.dialogue.StartDialogue();
                     fishStand.audioSource.Play();
