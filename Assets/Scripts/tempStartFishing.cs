@@ -11,8 +11,9 @@ public class tempStartFishing : MonoBehaviour
     //private bool goonState = false;
     public GameObject otherMenu;
     public GameObject tabText;
-    public GameObject fishingCam;
-    public GameObject fishingCamParent;
+    //public GameObject fishingCam;
+    //public GameObject fishingCamother;
+    //public GameObject fishingCamParent;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,8 @@ public class tempStartFishing : MonoBehaviour
             goon.GetComponentInChildren<SpriteFaceCam>().enabled = true;
             goon.GetComponent<GolemMovement>().enabled = false;
             otherMenu.SetActive(true);
-            fishingCam.SetActive(false);
+            goon.GetComponentInChildren<Camera>().enabled = false;
+            //fishingCamother.SetActive(false);
             //fishingCam.transform.parent = fishingCamParent.transform;
         }
     }

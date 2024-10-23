@@ -14,7 +14,8 @@ public class DeploymentUI : MonoBehaviour
     public GameObject lurePrefab;
 
     public GameObject playerCam;
-    public GameObject fishingCam;
+    //public GameObject fishingCamParent;
+    public Camera fishingCam;
     //public GameObject tempGoon;
     public GameObject tempParent;
     public GameObject tabText;
@@ -81,17 +82,19 @@ public class DeploymentUI : MonoBehaviour
         childCanvas.SetActive(false);
         player.GetComponent<PlayerMovement>().enabled = false;
         playerCam.SetActive(false);
-        fishingCam.SetActive(true);
-        fishingCam.transform.parent = deploySelection.transform;
-        fishingCam.transform.localPosition = new Vector3(0f, 10f, -15f);
-        fishingCam.transform.localRotation = Quaternion.identity;
-        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
-        deploySelection.transform.position = new Vector3(0f, 5f, 0f) + deploySelection.transform.position;
-        deploySelection.transform.rotation = Quaternion.identity;
+        fishingCam = deploySelection.GetComponentInChildren<Camera>();
+        fishingCam.enabled = true;
+        //fishingCamParent.SetActive(true);
+        //fishingCamParent.transform.parent = deploySelection.transform;
+        //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);
+        //fishingCamParent.transform.localRotation = Quaternion.identity;
         deploySelection.GetComponent<LittleGuyNav>().enabled = false;
+        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
+        deploySelection.transform.position = new Vector3(0f, 10f, 0f) + deploySelection.transform.position;
+        deploySelection.transform.rotation = Quaternion.identity;
         deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
         deploySelection.GetComponent<GolemMovement>().enabled = true;
-        deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam;
+        deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
         //tempGoon.SetActive(true);
         startFishingManager.UpdateGoon(deploySelection);
         tempParent.SetActive(false);
