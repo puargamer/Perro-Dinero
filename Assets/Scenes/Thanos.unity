@@ -28322,6 +28322,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7821826294956891330, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8959825176127618704, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 451.3438
@@ -28367,6 +28371,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6407784505416241996, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 141736472255193740, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1d7c675727cf90845b0549cc5f588cee, type: 3}

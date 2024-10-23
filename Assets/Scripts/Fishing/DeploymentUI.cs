@@ -74,31 +74,34 @@ public class DeploymentUI : MonoBehaviour
 
     public void deploy()
     {
-        tabText.SetActive(true);
-        Singleton.Instance.isLure = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        deployUIopen = false;
-        childCanvas.SetActive(false);
-        player.GetComponent<PlayerMovement>().enabled = false;
-        playerCam.SetActive(false);
-        fishingCam = deploySelection.GetComponentInChildren<Camera>();
-        fishingCam.enabled = true;
-        deploySelection.GetComponentInChildren<lureCam>().enabled = true;
-        //fishingCamParent.SetActive(true);
-        //fishingCamParent.transform.parent = deploySelection.transform;
-        //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);
-        //fishingCamParent.transform.localRotation = Quaternion.identity;
-        deploySelection.GetComponent<LittleGuyNav>().isBeingControlled = true;
-        deploySelection.GetComponent<GolemMovement>().enabled = true;
-        deploySelection.GetComponent<NavMeshAgent>().enabled = false;
-        //deploySelection.transform.rotation = Quaternion.identity;
-        deploySelection.GetComponentInChildren<SpriteRenderer>().gameObject.transform.localRotation = Quaternion.identity;
-        deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
-        deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
-        //deploySelection.transform.position = new Vector3(deploySelection.transform.position.x, .1f, deploySelection.transform.position.z);
-        //tempGoon.SetActive(true);
-        startFishingManager.UpdateGoon(deploySelection);
-        tempParent.SetActive(false);
+        if (deploySelection != null)
+        {
+            tabText.SetActive(true);
+            Singleton.Instance.isLure = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            deployUIopen = false;
+            childCanvas.SetActive(false);
+            player.GetComponent<PlayerMovement>().enabled = false;
+            playerCam.SetActive(false);
+            fishingCam = deploySelection.GetComponentInChildren<Camera>();
+            fishingCam.enabled = true;
+            deploySelection.GetComponentInChildren<lureCam>().enabled = true;
+            //fishingCamParent.SetActive(true);
+            //fishingCamParent.transform.parent = deploySelection.transform;
+            //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);
+            //fishingCamParent.transform.localRotation = Quaternion.identity;
+            deploySelection.GetComponent<LittleGuyNav>().isBeingControlled = true;
+            deploySelection.GetComponent<GolemMovement>().enabled = true;
+            deploySelection.GetComponent<NavMeshAgent>().enabled = false;
+            //deploySelection.transform.rotation = Quaternion.identity;
+            deploySelection.GetComponentInChildren<SpriteRenderer>().gameObject.transform.localRotation = Quaternion.identity;
+            deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
+            deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
+            //deploySelection.transform.position = new Vector3(deploySelection.transform.position.x, .1f, deploySelection.transform.position.z);
+            //tempGoon.SetActive(true);
+            startFishingManager.UpdateGoon(deploySelection);
+            tempParent.SetActive(false);
+        }
     }
 }

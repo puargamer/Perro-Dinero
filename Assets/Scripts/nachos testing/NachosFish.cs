@@ -14,6 +14,7 @@ public class NachosFish : Interact
     private Vector3 fishOffset = new Vector3(0f, 0f, 2f);
     private Transform playerPos;
     public CombinationType fishType;
+    private SpriteUtility spriteUtility;
     IEnumerator cor;
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class NachosFish : Interact
         fishTr = GetComponent<Transform>();
         fishNVM = GetComponent<NavMeshAgent>();
         fishCol = GetComponent<Collider>();
+        spriteUtility = FindObjectOfType<SpriteUtility>();
         playerPos = GameObject.Find("Player").GetComponent<PlayerMovement>().heldObjectPos.transform;
         cor = goonWalk();
         StartCoroutine(cor);
@@ -29,7 +31,7 @@ public class NachosFish : Interact
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isHeld && throwDelay == false) { isHeld = false; Debug.Log("let yo bih go thru yo phone"); }
+        if (Input.GetMouseButtonDown(1) && isHeld && throwDelay == false) { isHeld = false; Debug.Log("let yo bih go thru yo phone"); gameObject.GetComponent<Rigidbody>().AddForce(playerPos.forward * .5f); }
     }
 
     void LateUpdate()
@@ -62,6 +64,7 @@ public class NachosFish : Interact
             Debug.Log("sussy balls among us");
             other.GetComponent<LittleGuyNav>().CaughtFish();
             fishType = other.GetComponent<LittleGuyNav>().combinationType;
+            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = spriteUtility.GetFishSprite(fishType);
             fishCol.isTrigger = false;
             fishNVM.enabled = false;
             StopCoroutine(cor);

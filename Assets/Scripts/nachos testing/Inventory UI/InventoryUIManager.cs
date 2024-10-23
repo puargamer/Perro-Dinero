@@ -20,7 +20,7 @@ public class InventoryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && Singleton.Instance.menuInt == 0) { OpenMenu(); }
+        if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.menuInt == 0) { OpenMenu(); }
     }
 
     void OpenMenu()

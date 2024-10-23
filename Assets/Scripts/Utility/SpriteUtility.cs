@@ -65,4 +65,13 @@ public class SpriteUtility : MonoBehaviour
         }
         return null;
     }
+
+    public Sprite GetFishSprite(CombinationType type)
+    {     
+        foreach (var item in fishSprites)
+        {
+            if (item.type == type) { return item.sprite; }
+        }
+        return null;
+    }
 }
