@@ -16,7 +16,6 @@ public class lureCam : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        this.transform.position = lureCamPos.transform.position;
         transform.forward = lureCamPos.transform.forward;
     }
 }

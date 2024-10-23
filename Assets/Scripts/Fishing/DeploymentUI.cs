@@ -97,7 +97,7 @@ public class DeploymentUI : MonoBehaviour
             //deploySelection.transform.rotation = Quaternion.identity;
             deploySelection.GetComponentInChildren<SpriteRenderer>().gameObject.transform.localRotation = Quaternion.identity;
             deploySelection.GetComponentInChildren<SpriteFaceCam>().enabled = false;
-            deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
+            //deploySelection.GetComponent<GolemMovement>().LureCamPos = fishingCam.gameObject;
             //deploySelection.transform.position = new Vector3(deploySelection.transform.position.x, .1f, deploySelection.transform.position.z);
             //tempGoon.SetActive(true);
             startFishingManager.UpdateGoon(deploySelection);

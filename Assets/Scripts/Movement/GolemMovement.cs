@@ -13,7 +13,7 @@ public class GolemMovement : MonoBehaviour
     public bool hasFish = false;
 
     public float sens = 400;
-    public float AngleMin = -20;
+    public float AngleMin = -10;
     public float AngleMax = 80;
     float xRotation, yRotation;
     public GameObject LureCamPos;
@@ -31,22 +31,15 @@ public class GolemMovement : MonoBehaviour
     {
         RotationCheck();
         doIdropFish();
-        move = Input.GetAxis("Vertical") * LureCamPos.transform.forward + Input.GetAxis("Horizontal") * LureCamPos.transform.right;
+        move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
         move = new Vector3(move.x, 0f, move.z);
-        //move = move.normalized;   
-        //move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //golemTr.position += move * speed * Time.deltaTime;
-        var speedFactor = (speed - rb.velocity.magnitude) / speed; // hard coded
-        //rb.AddForce(move, ForceMode.Impulse); //  * speedFactor
+        //var speedFactor = (speed - rb.velocity.magnitude) / speed;
         rb.AddForce(move * speed, ForceMode.Force);
-        //rb.AddForce(move, ForceMode.Impulse); // last working
-        //moveCharacter(move);
-        //transform.Translate(move * speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(new Vector3(0f, jumpHeight, 0), ForceMode.Impulse);
         }
-        transform.forward = LureCamPos.transform.forward;
+        transform.forward = new Vector3(LureCamPos.transform.forward.x, transform.forward.y, LureCamPos.transform.forward.z);
     }
 
     void moveCharacter(Vector3 direction)
@@ -69,6 +62,7 @@ public class GolemMovement : MonoBehaviour
         xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, AngleMin, AngleMax);
+        gameObject.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         LureCamPos.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 

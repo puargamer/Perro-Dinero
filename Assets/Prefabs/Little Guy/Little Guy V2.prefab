@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4391539732464946601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -228,9 +228,9 @@ MonoBehaviour:
   jumpHeight: 10
   hasFish: 0
   sens: 400
-  AngleMin: -20
+  AngleMin: -10
   AngleMax: 80
-  LureCamPos: {fileID: 0}
+  LureCamPos: {fileID: 4391539732464946601}
 --- !u!54 &-5437965023208946735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 6616384483997092376}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: -20}
   m_LocalScale: {x: 2.4001532, y: 2.4001532, z: 2.4001532}
   m_ConstrainProportionsScale: 0
   m_Children: []
