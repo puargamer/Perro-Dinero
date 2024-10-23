@@ -84,6 +84,7 @@ public class DeploymentUI : MonoBehaviour
         playerCam.SetActive(false);
         fishingCam = deploySelection.GetComponentInChildren<Camera>();
         fishingCam.enabled = true;
+        deploySelection.GetComponentInChildren<lureCam>().enabled = true;
         //fishingCamParent.SetActive(true);
         //fishingCamParent.transform.parent = deploySelection.transform;
         //fishingCamParent.transform.localPosition = new Vector3(0f, 5f, -15f);

@@ -38,6 +38,7 @@ public class tempStartFishing : MonoBehaviour
             goon.GetComponent<GolemMovement>().enabled = false;
             otherMenu.SetActive(true);
             goon.GetComponentInChildren<Camera>().enabled = false;
+            goon.GetComponentInChildren<lureCam>().enabled = false;
             //fishingCamother.SetActive(false);
             //fishingCam.transform.parent = fishingCamParent.transform;
         }
