@@ -6,14 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
     private Vector3 move;
+    [SerializeField]
     private float yVelocity;
 
     [Header("States")]
     public bool isGrounded;
+    public bool isSprinting;
 
     [Header("Speed")]
     public float speed;
+    public float sprintSpeed;
     public float gravityValue;
+    public float jumpHeight;
 
     [Header("Camera")]
     public float sens = 400;
@@ -42,7 +46,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GroundCheck();
+        SprintCheck();
         MoveCheck();
+        JumpCheck();
         GravityCheck();
         RotationCheck();
     }
@@ -52,10 +58,22 @@ public class PlayerMovement : MonoBehaviour
         if (characterController.isGrounded) { isGrounded = true; }
         else { isGrounded = false; }
     }
+
+    void SprintCheck()
+    {
+        if (Input.GetKey(KeyCode.LeftShift)) { isSprinting = true; }
+        else { isSprinting = false; }
+    }
+
     void MoveCheck()
     {
         move = Input.GetAxis("Vertical") * face.transform.forward + Input.GetAxis("Horizontal") * face.transform.right;
-        characterController.Move(move * speed * Time.deltaTime);
+
+        //move player
+        float _speed = speed;
+        if (isSprinting) { _speed = sprintSpeed; }
+
+        characterController.Move(move * _speed * Time.deltaTime);
 
         bool moving = move != Vector3.zero ? true : false;
 
@@ -69,6 +87,12 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
+
+    void JumpCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) { yVelocity = jumpHeight; }
+    }
+
     void GravityCheck()
     {
         if (!isGrounded) { yVelocity += gravityValue * Time.deltaTime; }

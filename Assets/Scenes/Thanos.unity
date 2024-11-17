@@ -45550,16 +45550,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148497041443584004, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: jumpHeight
+      value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 1775828762102865135, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3243035608172439875, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1148497041443584004, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: sprintSpeed
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4598300771778322930, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45606,9 +45602,7 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2237546118473110654, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
-    - {fileID: 1775828762102865135, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}

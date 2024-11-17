@@ -650,9 +650,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacec76e4ee6cb6478d5003ae9225005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yVelocity: 0
   isGrounded: 0
+  isSprinting: 0
   speed: 8
+  sprintSpeed: 12
   gravityValue: -1
+  jumpHeight: 0.25
   sens: 400
   AngleMin: -20
   AngleMax: 80
