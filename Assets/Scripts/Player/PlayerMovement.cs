@@ -48,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         SprintCheck();
         MoveCheck();
-        JumpCheck();
         GravityCheck();
+        JumpCheck();
         RotationCheck();
     }
 
@@ -68,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
     void MoveCheck()
     {
         move = Input.GetAxis("Vertical") * face.transform.forward + Input.GetAxis("Horizontal") * face.transform.right;
+
+        if (move.magnitude > 1) { move = move.normalized; }
 
         //move player
         float _speed = speed;
@@ -88,16 +90,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void JumpCheck()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) { yVelocity = jumpHeight; }
-    }
-
     void GravityCheck()
     {
         if (!isGrounded) { yVelocity += gravityValue * Time.deltaTime; }
+        else { yVelocity = -.25f; }
+    }
+
+    void JumpCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) { yVelocity = jumpHeight; }
         characterController.Move(new Vector3(0, yVelocity, 0));
     }
+
     void RotationCheck()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sens;
