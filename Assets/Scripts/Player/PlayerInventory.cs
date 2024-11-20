@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,10 @@ public class PlayerInventory : MonoBehaviour
     public GameObject ObjectHeld;
     public bool isHoldingObject;
 
-    public List<ItemData> InventoryList = new List<ItemData>();
+    [Header("Inventory")]
+    public float money;
+    public ItemData[] InventoryArray = new ItemData[3];
+    public List<SuperItem> SuperItems = new List<SuperItem>();
     //public List<GameObject> PikminList;       //currently being held in singleton
 
     [Header("Hotbar")]
@@ -27,6 +31,11 @@ public class PlayerInventory : MonoBehaviour
         hotbar.Add(0, hotbar1);
         hotbar.Add(1, hotbar2);
         hotbar.Add(2, hotbar3);
+
+        SuperItems.Add(new SuperItem("name", "description"));
+
+        InventoryArray = new ItemData[3];
+
     }
 
     // Update is called once per frame
@@ -36,7 +45,8 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Equip(0);
-        }else if (Input.GetKeyDown(KeyCode.Alpha2))
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Equip(1);
         }
@@ -59,23 +69,48 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    #region Inventory Search
+    #region Inventory Search Methods
     public void AddItem(ItemData itemData)
     {
-        InventoryList.Add(itemData);
+        Debug.Log("additem called");
+        for(int i = 0; i < InventoryArray.Length; i++) 
+        {
+            Debug.Log("i is " + i);
+            if (InventoryArray[i] == null)
+            {
+                InventoryArray[i] = itemData;
+                break;
+            }
+        }
+
         UpdateHotbar();
     }
 
     public void RemoveItem(ItemData itemData)
     {
-        InventoryList.Remove(itemData);
+        for (int i = 0; i < InventoryArray.Length; i++)
+        {
+            if (InventoryArray[i] == itemData)
+            {
+                InventoryArray[i] = null;
+                break;
+            }
+        }
+
         UpdateHotbar();
     }
 
     public bool InInventory(ItemData itemData)
     {
-        if (InventoryList.Contains(itemData)) return true;
-        else return false;
+        for (int i = 0; i < InventoryArray.Length; i++)
+        {
+            if (InventoryArray[i] == itemData)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
     #endregion 
 
@@ -83,10 +118,10 @@ public class PlayerInventory : MonoBehaviour
     {
         Unequip();
 
-        if (i < InventoryList.Count && InventoryList[i])
+        if (i < InventoryArray.Length && InventoryArray[i])
         {
             Debug.Log("equipping item");
-            ObjectHeld = Instantiate(InventoryList[i].item);
+            ObjectHeld = Instantiate(InventoryArray[i].item);
 
             heldObjectIndex = i;
             hotbar[i].GetComponent<Image>().color = Color.green;
@@ -117,7 +152,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void UpdateHotbar()
     {
-        Debug.Log("count is " + InventoryList.Count);
+        Debug.Log("Length is " + InventoryArray.Length);
 
         //clear hotbar
         for (int i = 0; i < hotbar.Count; i++)
@@ -127,13 +162,13 @@ public class PlayerInventory : MonoBehaviour
         }
 
 
-            //update hotbar
-            for (int i = 0;  i < InventoryList.Count; i++)
+        //update hotbar
+        for (int i = 0;  i < InventoryArray.Length; i++)
         {
-            if (InventoryList[i] != null)
+            if (InventoryArray[i] != null)
             {
                 hotbar[i].SetActive(true);
-                hotbar[i].GetComponent<Image>().sprite = InventoryList[i].icon;
+                hotbar[i].GetComponent<Image>().sprite = InventoryArray[i].icon;
             }
             else
             {

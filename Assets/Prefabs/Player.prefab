@@ -348,8 +348,8 @@ Transform:
   m_GameObject: {fileID: 4864960577934241437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4641, z: 0.836}
-  m_LocalScale: {x: 2, y: 3.1042, z: 1.7415395}
+  m_LocalPosition: {x: 0, y: 0.4641, z: 0.0903}
+  m_LocalScale: {x: 2.5692, y: 3.1042, z: 3.2329938}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598300771778322930}
@@ -694,7 +694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObjectPosition: {fileID: 2443245651025622602}
   ObjectHeld: {fileID: 0}
+  isHoldingObject: 0
   InventoryList: []
+  SuperItems: []
   hotbar1: {fileID: 0}
   hotbar2: {fileID: 0}
   hotbar3: {fileID: 0}

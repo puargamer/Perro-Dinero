@@ -15,9 +15,10 @@ public class ExampleItem : Item
     void Update()
     {
         if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log("i am speaking"); }
-        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse1))
-        {
+    }
 
-        }
+    public override void Use()
+    {
+        Debug.Log("i am speaking");
     }
 }

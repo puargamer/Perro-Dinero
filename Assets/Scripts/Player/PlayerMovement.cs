@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
-    private Vector3 move;
+    [SerializeField]private Vector3 move;
     [SerializeField]
     private float yVelocity;
+
+    public float vertical;
+    public float horizontal;
 
     [Header("States")]
     public bool isGrounded;
@@ -35,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerModel;
 
     public GameObject heldObjectPos;
+
+    public bool cuh;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCheck()
     {
+        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
         move = Input.GetAxis("Vertical") * face.transform.forward + Input.GetAxis("Horizontal") * face.transform.right;
 
         if (move.magnitude > 1) { move = move.normalized; }
@@ -77,15 +84,15 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(move * _speed * Time.deltaTime);
 
-        bool moving = move != Vector3.zero ? true : false;
+        bool moving = vertical != 0 || horizontal != 0;
 
         //make sounds when moving
         if (moving) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(1f, 1.5f); audioSource.Play(); } }
 
-
+        //rotate player
         if (moving)
         {
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, move, 5 * Time.deltaTime, 0.0f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, move, 10 * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }

@@ -46937,6 +46937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670975421829263405, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7336462387602305269, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_Name
       value: Player
@@ -46953,6 +46957,10 @@ PrefabInstance:
       propertyPath: hotbar3
       value: 
       objectReference: {fileID: 536628996}
+    - target: {fileID: 8983158575765236666, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
