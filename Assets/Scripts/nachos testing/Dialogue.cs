@@ -47,10 +47,9 @@ public class Dialogue : MonoBehaviour
 
         //skip text animation
         else if (text.text != lines[index])
-        {
+        {       //currently is getting called even when no dialogue is happening
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("cuh");
                 StopCoroutine(_TypeLine);
                 text.text = lines[index];
             }

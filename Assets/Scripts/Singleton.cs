@@ -57,8 +57,9 @@ public class Singleton : MonoBehaviour
     public int menuInt = 0;
     public bool isLure = false;
 
+    #region Prefab List
     public GameObject ExampleItem;
-
+    #endregion
 
     public void test()
     {
