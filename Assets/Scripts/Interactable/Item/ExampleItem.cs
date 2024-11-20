@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExampleItem : ItemWorld
+public class ExampleItem : Item
 {
 
     // Start is called before the first frame update
@@ -14,6 +14,10 @@ public class ExampleItem : ItemWorld
     // Update is called once per frame
     void Update()
     {
-        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(item) && Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log("i am speaking"); }
+        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log("i am speaking"); }
+        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse1))
+        {
+
+        }
     }
 }

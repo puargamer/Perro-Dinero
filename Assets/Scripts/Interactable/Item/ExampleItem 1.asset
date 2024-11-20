@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0597d082d99804f4f97f37b7cd370371, type: 3}
-  m_Name: ExampleItem
+  m_Name: ExampleItem 1
   m_EditorClassIdentifier: 
   name: Cylinder
-  description: I am a white cylinder
-  icon: {fileID: 21300000, guid: 687edd7d98c2e434c8bdb78ac80e6765, type: 3}
-  item: {fileID: 1570542071395944737, guid: 73298ea453dce554b9171fae7f7300b5, type: 3}
+  description: I am a blue cylinder
+  icon: {fileID: 21300000, guid: 69c78fecd74e41540a86c2ca4babf790, type: 3}
+  item: {fileID: 6429485360910330230, guid: 132bacb61e1dd404e9b89a58bcf895c3, type: 3}
