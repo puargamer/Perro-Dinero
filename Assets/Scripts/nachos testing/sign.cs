@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sign : Interact
+public class sign : Interactable
 {
     public GameObject SignObject;
 
@@ -18,7 +18,7 @@ public class sign : Interact
         
     }
 
-    public override void interact()
+    public override void Interact()
     {
         SignObject.GetComponent<Renderer>().material.color = Color.red;
     }

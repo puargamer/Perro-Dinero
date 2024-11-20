@@ -22,9 +22,9 @@ public class PlayerInteract : MonoBehaviour
         //on click, calls target obj's interact()
         if (Input.GetMouseButtonDown(0) && objectInHitbox != null && inventory.ObjectHeld == null)
         {
-            if (objectInHitbox.TryGetComponent<Interact>(out Interact _interact))
+            if (objectInHitbox.TryGetComponent<Interactable>(out Interactable _interact))
             {
-                _interact.interact();
+                _interact.Interact();
             }
         }
     }

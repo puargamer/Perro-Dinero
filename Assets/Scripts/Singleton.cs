@@ -40,6 +40,7 @@ public class Singleton : MonoBehaviour
     //sample globally available variable and method
     //call Singleton.instance.testInt to access 
     public int testInt;
+    public GameObject player;
     public int fishCount;
     public List<int> mats;
     public List<GameObject> BaitALittleGuys;
@@ -55,6 +56,9 @@ public class Singleton : MonoBehaviour
 
     public int menuInt = 0;
     public bool isLure = false;
+
+    public GameObject ExampleItem;
+
 
     public void test()
     {

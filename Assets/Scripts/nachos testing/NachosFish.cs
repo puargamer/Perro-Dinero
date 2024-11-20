@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NachosFish : Interact
+public class NachosFish : Interactable
 {
     public bool isHeld;
     public bool throwDelay;
@@ -41,7 +41,7 @@ public class NachosFish : Interact
         }
     }
 
-    public override void interact()
+    public override void Interact()
     {
         isHeld = true;
         throwDelay = true;

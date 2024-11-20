@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class craftTable : Interact
+public class craftTable : Interactable
 {
     public GameObject player;
     public GameObject deployUI;
 
-    public override void interact()
+    public override void Interact()
     {
         if (Singleton.Instance.menuInt == 0)
         {
