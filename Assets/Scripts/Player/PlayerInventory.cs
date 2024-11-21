@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +11,20 @@ public class PlayerInventory : MonoBehaviour
     public GameObject ObjectHeld;
     public bool isHoldingObject;
 
+    [Header("Money")]
+    public int money;
+
     [Header("Inventory")]
-    public float money;
     public ItemData[] InventoryArray = new ItemData[3];
     public List<SuperItem> SuperItems = new List<SuperItem>();
     //public List<GameObject> PikminList;       //currently being held in singleton
 
-    [Header("Hotbar")]
+    [Header("UI")]
     public GameObject hotbar1;
     public GameObject hotbar2;
     public GameObject hotbar3;
+
+    public TMP_Text moneyUI;
 
     private int heldObjectIndex;
 
@@ -61,15 +66,24 @@ public class PlayerInventory : MonoBehaviour
             Drop();
         }
 
-        //"hold" object
-        if (ObjectHeld != null)
-        {
-            ObjectHeld.transform.position = heldObjectPosition.position;
-        }
+        
         
     }
 
-    #region Inventory Search Methods
+    private void LateUpdate()
+    {
+        //"hold" object
+        //must be in lateupdate to remove stuttering
+        if (ObjectHeld != null)
+        {
+            ObjectHeld.transform.position = heldObjectPosition.position;
+            ObjectHeld.transform.rotation = heldObjectPosition.rotation;
+            ObjectHeld.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
+
+    #region Inventory Methods
     public void AddItem(ItemData itemData)
     {
         Debug.Log("additem called");
@@ -114,6 +128,7 @@ public class PlayerInventory : MonoBehaviour
     }
     #endregion 
 
+    //hold item
     public void Equip(int i)
     {
         Unequip();
@@ -129,6 +144,7 @@ public class PlayerInventory : MonoBehaviour
 
     }
 
+    //unhold item
     public void Unequip()
     {
         if (ObjectHeld != null)
@@ -136,16 +152,19 @@ public class PlayerInventory : MonoBehaviour
             hotbar[heldObjectIndex].GetComponent<Image>().color = Color.white;
 
             Debug.Log("unequipping item");
+            ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
             Destroy(ObjectHeld);
 
         }
     }
 
+    //drop item back to world space, remove from inventory
     public void Drop()
     {
         if (ObjectHeld != null)
         {
             RemoveItem(ObjectHeld.GetComponent<Item>().itemData);
+            ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
             ObjectHeld = null;
         }
     }
@@ -177,4 +196,12 @@ public class PlayerInventory : MonoBehaviour
         }
 
     }
+
+    #region Money
+    public void ChangeMoney(int change)
+    {
+        money += change;
+        moneyUI.text = "Money: " + money;
+    }
+    #endregion
 }

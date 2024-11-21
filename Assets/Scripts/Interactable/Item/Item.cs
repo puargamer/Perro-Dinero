@@ -15,10 +15,11 @@ public abstract class Item : Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Debug.Log("01j2");
             Use();
         }
     }
@@ -29,8 +30,9 @@ public abstract class Item : Interactable
     }
 
     public void PickUp()
-    {
+    {//too many references, but works lmao
         Singleton.Instance.player.GetComponent<PlayerInventory>().AddItem(itemData);
+        Singleton.Instance.player.GetComponentInChildren<PlayerInteractHitbox>().RemoveFromList(this.gameObject);
         Destroy(this.gameObject);
     }
 

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//allows player to interact with list of interactables in PlayerInteractHitbox
 public class PlayerInteract : MonoBehaviour
 {
-    public bool hitboxActive;
+    public PlayerInteractHitbox playerInteractHitbox;
 
-    public GameObject objectInHitbox;
+    //public bool hitboxActive;
+
+    //public GameObject objectInHitbox;
     public PlayerInventory inventory;
 
     // Start is called before the first frame update
@@ -20,9 +23,10 @@ public class PlayerInteract : MonoBehaviour
     {
 
         //on click, calls target obj's interact()
-        if (Input.GetMouseButtonDown(0) && objectInHitbox != null && inventory.ObjectHeld == null)
+        if (Input.GetMouseButtonDown(0) && playerInteractHitbox.interactablesInHitbox.Count != 0  && inventory.ObjectHeld == null)
         {
-            if (objectInHitbox.TryGetComponent<Interactable>(out Interactable _interact))
+            Debug.Log("thingy called");
+            if (playerInteractHitbox.interactablesInHitbox[0].TryGetComponent<Interactable>(out Interactable _interact))
             {
                 _interact.Interact();
             }
