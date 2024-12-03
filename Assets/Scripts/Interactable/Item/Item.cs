@@ -19,7 +19,6 @@ public abstract class Item : Interactable
     {
         if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("01j2");
             Use();
         }
     }
@@ -31,9 +30,11 @@ public abstract class Item : Interactable
 
     public void PickUp()
     {//too many references, but works lmao
+        if (Singleton.Instance.player.GetComponent<PlayerInventory>().IsFull() == false) {
         Singleton.Instance.player.GetComponent<PlayerInventory>().AddItem(itemData);
         Singleton.Instance.player.GetComponentInChildren<PlayerInteractHitbox>().RemoveFromList(this.gameObject);
         Destroy(this.gameObject);
+        }
     }
 
     public virtual void Use()

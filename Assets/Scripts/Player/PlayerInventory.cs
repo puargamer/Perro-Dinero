@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
@@ -16,31 +17,22 @@ public class PlayerInventory : MonoBehaviour
 
     [Header("Inventory")]
     public ItemData[] InventoryArray = new ItemData[3];
-    public List<SuperItem> SuperItems = new List<SuperItem>();
     //public List<GameObject> PikminList;       //currently being held in singleton
-
-    [Header("UI")]
-    public GameObject hotbar1;
-    public GameObject hotbar2;
-    public GameObject hotbar3;
 
     public TMP_Text moneyUI;
 
-    private int heldObjectIndex;
+    public int heldObjectIndex;     //1-based index referencing currently held object. 0 means no object is held
 
     private Dictionary<int, GameObject> hotbar = new Dictionary<int, GameObject>();
+
+    //[Header("UnityEvents")]
+    public delegate void InventoryAction();
+    public static event InventoryAction InventoryEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        hotbar.Add(0, hotbar1);
-        hotbar.Add(1, hotbar2);
-        hotbar.Add(2, hotbar3);
-
-        SuperItems.Add(new SuperItem("name", "description"));
-
         InventoryArray = new ItemData[3];
-
     }
 
     // Update is called once per frame
@@ -65,9 +57,6 @@ public class PlayerInventory : MonoBehaviour
         {
             Drop();
         }
-
-        
-        
     }
 
     private void LateUpdate()
@@ -86,10 +75,8 @@ public class PlayerInventory : MonoBehaviour
     #region Inventory Methods
     public void AddItem(ItemData itemData)
     {
-        Debug.Log("additem called");
         for(int i = 0; i < InventoryArray.Length; i++) 
         {
-            Debug.Log("i is " + i);
             if (InventoryArray[i] == null)
             {
                 InventoryArray[i] = itemData;
@@ -97,7 +84,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        UpdateHotbar();
+        InventoryEvent();
     }
 
     public void RemoveItem(ItemData itemData)
@@ -111,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        UpdateHotbar();
+        InventoryEvent();
     }
 
     public bool InInventory(ItemData itemData)
@@ -126,34 +113,51 @@ public class PlayerInventory : MonoBehaviour
 
         return false;
     }
+
+    public bool IsFull()
+    {
+        for (int i = 0; i < InventoryArray.Length; i++)
+        {
+            if (InventoryArray[i] == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
     #endregion 
 
-    //hold item
+    //hold item. Use when item is equipped from hotbar
     public void Equip(int i)
     {
         Unequip();
 
         if (i < InventoryArray.Length && InventoryArray[i])
         {
-            Debug.Log("equipping item");
             ObjectHeld = Instantiate(InventoryArray[i].item);
 
-            heldObjectIndex = i;
-            hotbar[i].GetComponent<Image>().color = Color.green;
+            heldObjectIndex = i+1;
+            //hotbar[i].GetComponent<Image>().color = Color.green;
+            InventoryEvent();
         }
 
     }
 
-    //unhold item
+    //unhold item. Used when switching to another item in hotbar
     public void Unequip()
     {
         if (ObjectHeld != null)
         {
-            hotbar[heldObjectIndex].GetComponent<Image>().color = Color.white;
+            //hotbar[heldObjectIndex].GetComponent<Image>().color = Color.white;
+            heldObjectIndex = 0;
+            InventoryEvent();
 
-            Debug.Log("unequipping item");
             ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
+
+            Singleton.Instance.player.GetComponentInChildren<PlayerInteractHitbox>().RemoveFromList(ObjectHeld);
             Destroy(ObjectHeld);
+            ObjectHeld = null;
 
         }
     }
@@ -166,35 +170,11 @@ public class PlayerInventory : MonoBehaviour
             RemoveItem(ObjectHeld.GetComponent<Item>().itemData);
             ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
             ObjectHeld = null;
+            heldObjectIndex = 0;
+
+            InventoryEvent();
+
         }
-    }
-
-    private void UpdateHotbar()
-    {
-        Debug.Log("Length is " + InventoryArray.Length);
-
-        //clear hotbar
-        for (int i = 0; i < hotbar.Count; i++)
-        {
-            hotbar[heldObjectIndex].GetComponent<Image>().color = Color.white;
-            hotbar[i].SetActive(false);
-        }
-
-
-        //update hotbar
-        for (int i = 0;  i < InventoryArray.Length; i++)
-        {
-            if (InventoryArray[i] != null)
-            {
-                hotbar[i].SetActive(true);
-                hotbar[i].GetComponent<Image>().sprite = InventoryArray[i].icon;
-            }
-            else
-            {
-                hotbar[i].SetActive(false);
-            }
-        }
-
     }
 
     #region Money

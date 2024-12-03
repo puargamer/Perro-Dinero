@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class TabMenu : MonoBehaviour
 {
-    /// <summary>
-    /// Switches between sections
-    /// </summary>
+    //Holds list of submenus in the Tab Menu. Switches between them.
 
     [Header("Sections")]
+    public GameObject inventoryMenu;
     public GameObject materialsMenu;
     public GameObject littleGuysMenu;
     public GameObject fishMenu;
@@ -18,21 +17,13 @@ public class InventoryUI : MonoBehaviour
 
 
     //button methods
-    public void Exit()
+
+    public void OpenInventory()
     {
-        Singleton.Instance.menuInt--;
-        if (Singleton.Instance.menuInt == 0 )
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        
-
-        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-        deployUI.SetActive(true);
-        this.gameObject.SetActive(false);
+        if (currentMenu) { currentMenu.SetActive(false); }
+        inventoryMenu.SetActive(true);
+        currentMenu = inventoryMenu;
     }
-
     public void OpenMaterials()
     {
         if (currentMenu) { currentMenu.SetActive(false); }

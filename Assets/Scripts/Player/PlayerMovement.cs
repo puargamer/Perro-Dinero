@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
+    public AudioClip moveSound;
+    public AudioClip jumpSound;
+
     public GameObject face;     //object that points where the cam is looking without y data
     public GameObject playerModel;
 
@@ -87,7 +90,14 @@ public class PlayerMovement : MonoBehaviour
         bool moving = vertical != 0 || horizontal != 0;
 
         //make sounds when moving
-        if (moving) { if (!audioSource.isPlaying) { audioSource.pitch = Random.Range(1f, 1.5f); audioSource.Play(); } }
+        if (moving) 
+        { 
+            if (!audioSource.isPlaying) {
+                audioSource.clip = moveSound;
+                if (isSprinting) { audioSource.pitch = Random.Range(1.5f, 2f); audioSource.Play(); }
+                else { audioSource.pitch = Random.Range(1f, 1.5f); audioSource.Play(); }
+            } 
+        }
 
         //rotate player
         if (moving)
@@ -107,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded) { yVelocity = jumpHeight; }
         characterController.Move(new Vector3(0, yVelocity, 0));
+
+        //jump sound
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) { audioSource.clip = jumpSound; audioSource.pitch = 1; audioSource.Play();}
     }
 
     void RotationCheck()

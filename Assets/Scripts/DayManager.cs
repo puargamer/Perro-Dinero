@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//internal clock with 3 states of time
 public class DayManager : MonoBehaviour
 {
     [Header("Current Time")]
@@ -10,6 +11,9 @@ public class DayManager : MonoBehaviour
     [SerializeField] private bool dayFinished;
     public enum timeOfDay { Morning, Noon, Night }
     public timeOfDay currentTimeOfDay;
+
+    public enum weekday { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}
+    public weekday currentWeekday;
 
     [Header("Day Length")]
     public float dayLengthInMinutes;    //used for inspector editing
@@ -26,6 +30,7 @@ public class DayManager : MonoBehaviour
     [Header("UI")]
     public TMP_Text clockUI;
     public TMP_Text timeOfDayUI;
+    public TMP_Text weekdayUI;
 
 
     // Start is called before the first frame update
@@ -48,6 +53,7 @@ public class DayManager : MonoBehaviour
 
         UpdateTimeOfDay();
         UpdateUI();
+        NextDay();
     }
 
     void UpdateTimeOfDay()
@@ -57,9 +63,22 @@ public class DayManager : MonoBehaviour
         else if (currentTime >= morningStartInSeconds) { currentTimeOfDay = timeOfDay.Morning; }
     }
 
+    void NextDay()
+    {
+        if (dayFinished)
+        {
+            dayFinished = false;
+            currentTime = 0;
+
+            if (currentWeekday == weekday.Saturday) { currentWeekday = weekday.Sunday; }
+            else {currentWeekday++; }
+        }
+    }
+
     void UpdateUI()
     {
         clockUI.text = Mathf.Floor(currentTime).ToString();
         timeOfDayUI.text = currentTimeOfDay.ToString();
+        weekdayUI.text = currentWeekday.ToString();
     }
 }

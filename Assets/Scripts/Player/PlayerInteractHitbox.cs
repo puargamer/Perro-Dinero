@@ -12,8 +12,6 @@ public class PlayerInteractHitbox : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) { 
-            //playerInteract.hitboxActive = true; 
-            //playerInteract.objectInHitbox = collider.gameObject;
             interactablesInHitbox.Add(collider.gameObject);
 
         }
@@ -21,8 +19,6 @@ public class PlayerInteractHitbox : MonoBehaviour
     void OnTriggerExit(Collider collider) 
     { 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) { 
-            //playerInteract.hitboxActive = false;
-            //playerInteract.objectInHitbox = null;
             interactablesInHitbox.Remove(collider.gameObject);
         }
     }
