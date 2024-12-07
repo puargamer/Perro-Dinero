@@ -25,10 +25,6 @@ public class PlayerInventory : MonoBehaviour
 
     private Dictionary<int, GameObject> hotbar = new Dictionary<int, GameObject>();
 
-    //[Header("UnityEvents")]
-    public delegate void InventoryAction();
-    public static event InventoryAction InventoryEvent;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -84,7 +80,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        InventoryEvent();
+        EventManager.OnInventoryEvent();
     }
 
     public void RemoveItem(ItemData itemData)
@@ -98,7 +94,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        InventoryEvent();
+        EventManager.OnInventoryEvent();
     }
 
     public bool InInventory(ItemData itemData)
@@ -131,15 +127,19 @@ public class PlayerInventory : MonoBehaviour
     //hold item. Use when item is equipped from hotbar
     public void Equip(int i)
     {
+        //if (ObjectHeld == InventoryArray[i]) { return; }
         Unequip();
 
         if (i < InventoryArray.Length && InventoryArray[i])
         {
+            Debug.Log("cuh34");
             ObjectHeld = Instantiate(InventoryArray[i].item);
 
             heldObjectIndex = i+1;
-            //hotbar[i].GetComponent<Image>().color = Color.green;
-            InventoryEvent();
+            EventManager.OnInventoryEvent();
+
+            isHoldingObject = true;
+            EventManager.OnPlayerHoldingItemEvent();
         }
 
     }
@@ -149,16 +149,17 @@ public class PlayerInventory : MonoBehaviour
     {
         if (ObjectHeld != null)
         {
-            //hotbar[heldObjectIndex].GetComponent<Image>().color = Color.white;
             heldObjectIndex = 0;
-            InventoryEvent();
+            EventManager.OnInventoryEvent(); 
 
             ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
 
-            Singleton.Instance.player.GetComponentInChildren<PlayerInteractHitbox>().RemoveFromList(ObjectHeld);
+            //  Singleton.Instance.player.GetComponentInChildren<PlayerInteractHitbox>().RemoveFromList(ObjectHeld);
             Destroy(ObjectHeld);
             ObjectHeld = null;
 
+            isHoldingObject = false;
+            EventManager.OnPlayerHoldingItemEvent();
         }
     }
 
@@ -171,8 +172,10 @@ public class PlayerInventory : MonoBehaviour
             ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
             ObjectHeld = null;
             heldObjectIndex = 0;
+            isHoldingObject = false;
 
-            InventoryEvent();
+            EventManager.OnInventoryEvent();
+            EventManager.OnPlayerHoldingItemEvent();
 
         }
     }

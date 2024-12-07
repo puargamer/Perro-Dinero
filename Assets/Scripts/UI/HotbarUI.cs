@@ -24,12 +24,12 @@ public class HotbarUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerInventory.InventoryEvent += UpdateHotbar;
+        EventManager.InventoryEvent += UpdateHotbar;
     }
 
     private void OnDisable()
     {
-        PlayerInventory.InventoryEvent -= UpdateHotbar;
+        EventManager.InventoryEvent -= UpdateHotbar;
     }
 
     // Start is called before the first frame update
