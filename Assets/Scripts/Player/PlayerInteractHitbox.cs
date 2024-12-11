@@ -14,7 +14,7 @@ public class PlayerInteractHitbox : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) { 
             interactablesInHitbox.Add(collider.gameObject);
 
-            if (interactablesInHitbox.Count == 1) { EventManager.OnPlayerCanInteractEvent(); Debug.Log("cuh1"); }
+            if (interactablesInHitbox.Count == 1) { EventManager.OnPlayerCanInteractEvent(); }
         }
     }
     void OnTriggerExit(Collider collider) 
@@ -22,7 +22,7 @@ public class PlayerInteractHitbox : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) { 
             interactablesInHitbox.Remove(collider.gameObject);
 
-            if (interactablesInHitbox.Count == 0) { EventManager.OnPlayerCanInteractEvent(); Debug.Log("cuh2"); }
+            if (interactablesInHitbox.Count == 0) { EventManager.OnPlayerCanInteractEvent();}
         }
     }
 
@@ -31,7 +31,7 @@ public class PlayerInteractHitbox : MonoBehaviour
     {
         interactablesInHitbox.Remove(gameObject);
 
-        if (interactablesInHitbox.Count == 0) { EventManager.OnPlayerCanInteractEvent(); Debug.Log("cuh3"); }
+        if (interactablesInHitbox.Count == 0) { EventManager.OnPlayerCanInteractEvent();}
     }
 
 }

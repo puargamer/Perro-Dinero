@@ -17,7 +17,7 @@ public abstract class Item : Interactable
     // Update is called once per frame
     public virtual void Update()
     {
-        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.Mouse0))
+        if (Singleton.Instance.player.GetComponent<PlayerInventory>().InInventory(itemData) && Input.GetKeyDown(KeyCode.E))
         {
             Use();
         }

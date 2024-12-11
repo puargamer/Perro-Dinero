@@ -160,6 +160,7 @@ public class PlayerInventory : MonoBehaviour
 
             isHoldingObject = false;
             EventManager.OnPlayerHoldingItemEvent();
+
         }
     }
 

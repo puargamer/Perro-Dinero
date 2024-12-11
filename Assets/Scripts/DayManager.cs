@@ -6,13 +6,16 @@ using UnityEngine;
 //internal clock with 3 states of time
 public class DayManager : MonoBehaviour
 {
+    #region enums
+    public enum timeOfDay { Morning, Noon, Night }
+    public enum weekday { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }
+    #endregion
+
     [Header("Current Time")]
     [SerializeField] private float currentTime;
     [SerializeField] private bool dayFinished;
-    public enum timeOfDay { Morning, Noon, Night }
-    public timeOfDay currentTimeOfDay;
 
-    public enum weekday { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}
+    public timeOfDay currentTimeOfDay;
     public weekday currentWeekday;
 
     [Header("Day Length")]

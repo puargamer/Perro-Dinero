@@ -43439,7 +43439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -71.80859, y: 30}
+  m_AnchoredPosition: {x: -71.80859, y: 70}
   m_SizeDelta: {x: 122.0174, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420766282
@@ -43462,7 +43462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LMB: Use Item
+  m_text: 'E: Use Item
 
     R: Drop Item'
   m_isRightToLeft: 0
@@ -45988,7 +45988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -71.808655, y: 50}
+  m_AnchoredPosition: {x: -71.808655, y: 10}
   m_SizeDelta: {x: 122.0174, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570634828
@@ -50268,6 +50268,22 @@ PrefabInstance:
     - target: {fileID: 1552394626463016505, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618410323618311354, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
+      propertyPath: m_Size.x
+      value: 3.357296
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618410323618311354, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3136384
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618410323618311354, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
+      propertyPath: m_Size.z
+      value: 2.0143776
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618410323618311354, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9431807
       objectReference: {fileID: 0}
     - target: {fileID: 2497226242469909818, guid: dae7d119996e0f2428abcff963390a1f, type: 3}
       propertyPath: m_Color.b

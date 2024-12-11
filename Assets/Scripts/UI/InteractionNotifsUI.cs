@@ -35,12 +35,13 @@ public class InteractionNotifsUI : MonoBehaviour
     void ToggleInteractNotif()
     {
         if (interactNotif.activeSelf) { interactNotif.SetActive(false); } else { interactNotif.SetActive(true);}
+
     }
 
     //tells player can use/drop item
+    //is called when player is holding item
     void ToggleHoldItemNotif()
     {
-        Debug.Log("adsof");
         if (holdItemNotif.activeSelf) { holdItemNotif.SetActive(false); } else { holdItemNotif.SetActive(true); }
     }
 }
