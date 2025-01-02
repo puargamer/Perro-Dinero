@@ -23,7 +23,7 @@ public class PlayerInteract : MonoBehaviour
     {
 
         //on click, calls target obj's interact()
-        if (Input.GetMouseButtonDown(0) && playerInteractHitbox.interactablesInHitbox.Count != 0  && inventory.ObjectHeld == null)
+        if (Input.GetMouseButtonDown(0) && playerInteractHitbox.interactablesInHitbox.Count != 0)  //&& inventory.ObjectHeld == null)
         {
             Debug.Log("thingy called");
             if (playerInteractHitbox.interactablesInHitbox[0].TryGetComponent<Interactable>(out Interactable _interact))

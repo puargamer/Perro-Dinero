@@ -11,8 +11,8 @@ public class DayManager : MonoBehaviour
     public enum weekday { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }
     #endregion
 
-    [Header("Current Time")]
-    [SerializeField] private float currentTime;
+    [field: Header("Current Time")]
+    [field: SerializeField] public float currentTime { get; private set; }
     [SerializeField] private bool dayFinished;
 
     public timeOfDay currentTimeOfDay;
