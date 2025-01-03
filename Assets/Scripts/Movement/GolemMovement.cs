@@ -32,9 +32,11 @@ public class GolemMovement : MonoBehaviour
         RotationCheck();
         doIdropFish();
         move = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
-        move = new Vector3(move.x, 0f, move.z);
+        move = new Vector3(move.x, 0f, move.z).normalized;
         //var speedFactor = (speed - rb.velocity.magnitude) / speed;
-        rb.AddForce(move * speed, ForceMode.Force);
+        //rb.AddForce(move * speed, ForceMode.Force);
+        rb.velocity = new Vector3(move.x * speed, rb.velocity.y, move.z * speed); // directly modify the velocity
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(new Vector3(0f, jumpHeight, 0), ForceMode.Impulse);

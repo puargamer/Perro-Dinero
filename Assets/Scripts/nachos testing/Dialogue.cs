@@ -25,6 +25,8 @@ public class Dialogue : MonoBehaviour
     public float posDiff;
     private bool flip = false;
 
+    private bool isDialogueActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isDialogueActive) return; // if no dialogue is active: do nothing
+
         //continue to next line
         if (text.text == lines[index])
         {
@@ -58,6 +62,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        isDialogueActive = true;
         text.text = "";
         StopAllCoroutines();
         textbox.SetActive(true);
@@ -110,6 +115,7 @@ public class Dialogue : MonoBehaviour
         character.transform.position = new Vector3(character.transform.position.x, originalyPos, character.transform.position.z);
 
         textbox.SetActive(false);
+        isDialogueActive = false;
     }
 
     void nextLine()

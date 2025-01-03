@@ -9,7 +9,7 @@ public class DeathPlane : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("touched death plane");
-        if (other.CompareTag("Player") || other.CompareTag("Golem"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("detected as player");
             Debug.Log(respawnPoint.position);
@@ -18,6 +18,12 @@ public class DeathPlane : MonoBehaviour
             other.gameObject.transform.position = respawnPoint.position;
             other.gameObject.transform.rotation = respawnPoint.rotation;
             other.GetComponent<CharacterController>().enabled = true;
+        }
+        if (other.CompareTag("Golem"))
+        {
+            Debug.Log("detected as little guy");
+            other.gameObject.transform.position = respawnPoint.position;
+            other.gameObject.transform.rotation = respawnPoint.rotation;
         }
     }
 }

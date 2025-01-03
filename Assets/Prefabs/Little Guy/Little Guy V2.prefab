@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpHeight: 10
+  jumpHeight: 15
   hasFish: 0
   sens: 400
   AngleMin: -10
