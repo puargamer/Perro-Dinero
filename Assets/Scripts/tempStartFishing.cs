@@ -27,7 +27,7 @@ public class tempStartFishing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.isLure)
         {
             Debug.Log("tab pressed");
-            Singleton.Instance.menuInt--;
+            Singleton.Instance.isMenuOpened = false;
             tabText.SetActive(false);
             Singleton.Instance.isLure = false;
             player.GetComponent<PlayerMovement>().enabled = true;

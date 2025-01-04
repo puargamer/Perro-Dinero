@@ -43,15 +43,15 @@ public class DeploymentUI : MonoBehaviour
             //}
             if (!deployUIopen)
             {
-                Singleton.Instance.menuInt--;
+                Singleton.Instance.isMenuOpened = false;
             } 
             else
             {
-                Singleton.Instance.menuInt++;
+                Singleton.Instance.isMenuOpened = true;
             }
             Cursor.lockState = deployUIopen ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = deployUIopen;
-            if (Singleton.Instance.menuInt == 0)
+            if (!Singleton.Instance.isMenuOpened)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;

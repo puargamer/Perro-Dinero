@@ -18,15 +18,15 @@ public class TabMenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.menuInt == 0) { OpenMenu(); }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.menuInt != 0) { CloseMenu(); }
+        if (Input.GetKeyDown(KeyCode.Tab) && !Singleton.Instance.isMenuOpened) { OpenMenu(); }
+        else if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.isMenuOpened) { CloseMenu(); }
     }
 
     public void OpenMenu()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Singleton.Instance.menuInt++;
+        Singleton.Instance.isMenuOpened = true;
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
 
@@ -37,7 +37,7 @@ public class TabMenuUI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Singleton.Instance.menuInt--;
+        Singleton.Instance.isMenuOpened = false;
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
 

@@ -54,8 +54,8 @@ public class craftUI : MonoBehaviour
     {
         deployUI.SetActive(true);
         player.GetComponent<PlayerMovement>().enabled = true;
-        Singleton.Instance.menuInt--;
-        if (Singleton.Instance.menuInt == 0 )
+        Singleton.Instance.isMenuOpened = false;
+        if (!Singleton.Instance.isMenuOpened)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

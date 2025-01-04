@@ -9,7 +9,7 @@ public class craftTable : Interactable
 
     public override void Interact()
     {
-        if (Singleton.Instance.menuInt == 0)
+        if (!Singleton.Instance.isMenuOpened)
         {
             deployUI.SetActive(false);
             gameObject.GetComponent<craftUI>().ScrapeFromInventory();
@@ -17,7 +17,7 @@ public class craftTable : Interactable
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             GetComponentInChildren<Canvas>().enabled = true;
-            Singleton.Instance.menuInt++;
+            Singleton.Instance.isMenuOpened = true;
         }
     }
 }

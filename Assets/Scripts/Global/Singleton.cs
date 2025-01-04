@@ -54,7 +54,7 @@ public class Singleton : MonoBehaviour
     public List<GameObject> equippedLittleGuys;
     public List<GameObject> stashedLittleGuys;
 
-    public int menuInt = 0;
+    public bool isMenuOpened = false;
     public bool isLure = false;
 
     #region Prefab List
