@@ -67,7 +67,12 @@ public class DeploymentUI : MonoBehaviour
     public void AddToGrid(Sprite fishsticks, GameObject littleGuy)
     {
         GameObject newLure = Instantiate(lurePrefab, Vector3.zero, Quaternion.identity, deployGrid.transform);
-        newLure.GetComponentInChildren<Image>().sprite = fishsticks;
+        Image lureImage = newLure.GetComponentInChildren<Image>();
+
+        lureImage.sprite = fishsticks;
+        lureImage.preserveAspect = true; // remote stretch
+
+        //newLure.GetComponentInChildren<Image>().sprite = fishsticks;
         newLure.GetComponent<ButtonReferenceHolder>().littleGuy = littleGuy;
         //Debug.Log(fishsticks.name);
     }
