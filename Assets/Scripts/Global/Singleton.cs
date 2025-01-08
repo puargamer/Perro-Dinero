@@ -57,6 +57,8 @@ public class Singleton : MonoBehaviour
     public bool isMenuOpened = false;
     public bool isLure = false;
 
+    private int nextId = 0; // keeps track of the next available id
+
     #region Prefab List
     public GameObject ExampleItem;
     #endregion
@@ -92,6 +94,17 @@ public class Singleton : MonoBehaviour
         stashedLittleGuys.Add(guy);
     }
 
+    public int GrabNewId()
+    {
+        return nextId++;
+    }
+
+    public List<GameObject> GetAllLittleGuys() // needed for future save/load file
+    {
+        List<GameObject> allLittleGuys = new List<GameObject>(equippedLittleGuys);
+        allLittleGuys.AddRange(stashedLittleGuys);
+        return allLittleGuys;
+    }
 }
 
 

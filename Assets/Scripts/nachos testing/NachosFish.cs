@@ -31,14 +31,24 @@ public class NachosFish : Interactable
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && isHeld && throwDelay == false) { isHeld = false; Debug.Log("let yo bih go thru yo phone"); gameObject.GetComponent<Rigidbody>().AddForce(playerPos.forward * .5f); }
+        if (Input.GetMouseButtonDown(1) && isHeld && throwDelay == false) // why was this a one liner in the first place
+        {
+            //fishCol.enabled = true;
+            isHeld = false; 
+            Debug.Log("let yo bih go thru yo phone"); 
+            gameObject.GetComponent<Rigidbody>().AddForce(playerPos.forward * .5f);
+        }
     }
 
     void LateUpdate()
     {
         if (isHeld) {
             transform.position = playerPos.position;// + fishOffset;
+            //transform.rotation = Quaternion.Euler(0, playerPos.rotation.eulerAngles.y + 90f, 0); // force the fish to be static in front of you
+            //fishCol.enabled = false; // disable collider, player keeps floating into the air because of this
         }
+        //else
+        //{ fishCol.enabled = true; }
     }
 
     public override void Interact()

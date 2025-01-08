@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LittleGuyNav : MonoBehaviour
 {
+    public int currentId;
     public Transform pen; // prob can define later
     public float cooldown = 2f;
     private bool isCooldownActive = false;
@@ -40,9 +41,9 @@ public class LittleGuyNav : MonoBehaviour
     {
         spriteUtility = FindObjectOfType<SpriteUtility>();
         materialRenderer = GetComponent<Renderer>(); // not sure if needed still prob not
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // wtf? it forced me to update the line to this
-        //navMeshAgent.speed = 3.5f; // force to 3.5 prob dont need ig if i just put in inspector
-        player = GameObject.FindGameObjectWithTag("PlayerBody").transform;
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        //navMeshAgent.speed = 3.5f; // force to 3.5 for fleeing state
+        player = GameObject.FindGameObjectWithTag("PlayerBody").transform; // set to player
         currentMovementState = MovementState.Fleeing;
 
         currentDesireState = DesireState.None;
@@ -55,6 +56,7 @@ public class LittleGuyNav : MonoBehaviour
 
     public void Setup(CombinationType type)
     {
+        this.currentId = Singleton.Instance.GrabNewId(); // id the little guy
         combinationType = type;
         //SetColor(materialRenderer, materialType);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -84,7 +86,7 @@ public class LittleGuyNav : MonoBehaviour
                 FleeFromPlayer(dist);
                 if (dist < 1.5f) // if you next to/near it
                 {
-                    navMeshAgent.speed = 9f;
+                    navMeshAgent.speed = 10f;
                     navMeshAgent.acceleration = 18f;
                     currentMovementState = MovementState.Following;
                     FollowPlayer(dist);
@@ -237,3 +239,29 @@ public class LittleGuyNav : MonoBehaviour
         isCooldownActive = false;
     }
  }
+
+//[System.Serializable] // save file json template
+//public class LittleGuyData
+//{
+//    private enum MovementState { Following, Fleeing, Still }
+//    private enum DesireState { None, Unwilling, Willing }
+
+//    public int currentId;
+//    public float cooldown;
+//    public bool isCooldownActive;
+//    public bool isInPen;
+//    public float followDistance;
+//    public float fleeDistance;
+//    public CombinationType combinationType;
+//    public MovementState currentMovementState; // unsure if needed
+//    public DesireState currentDesireState; // unsure if needed
+
+//    public LittleGuyData GetLittleGuyData()
+//    {
+//        LittleGuyData data = new LittleGuyData
+//        {
+//        };
+//        return data;
+//    }
+
+//}

@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba5cf7bd577c544d8156e8080099bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentId: 0
   pen: {fileID: 0}
   cooldown: 1
   followDistance: 3
