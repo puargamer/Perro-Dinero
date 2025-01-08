@@ -35,7 +35,7 @@ public class LightingManager : MonoBehaviour
         }
         else
         {
-            UpdateLighting(timeOfDay/24);
+            UpdateLighting(timeOfDay);        //default lighting in edit mode is afternoon
         }
     }
 
