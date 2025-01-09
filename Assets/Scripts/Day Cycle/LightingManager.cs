@@ -10,7 +10,10 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light directionalLight;
     [SerializeField] private LightingPreset preset;
 
-    [SerializeField] private float timeOfDay;
+    [SerializeField,Range(0,1)] private float percentOfDayPassed;
+
+    [Header("Dev")]
+    public bool DevMode;
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +24,18 @@ public class LightingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Application.isPlaying)
+        if (DevMode)        //dev mode: lighting is always afternoon
         {
-            /*
-            timeOfDay += Time.deltaTime;
-            timeOfDay %= 24;
-            UpdateLighting(timeOfDay/24);
-            */
-
-            timeOfDay = DayManager.currentTime;
-            UpdateLighting(timeOfDay / (DayManager.dayLengthInMinutes * 60));
+            UpdateLighting(.5f); 
         }
-        else
+        else if (Application.isPlaying)         //normal mode: dynamic lighting in play mode
         {
-            UpdateLighting(timeOfDay);        //default lighting in edit mode is afternoon
+            percentOfDayPassed = DayManager.currentTime / (DayManager.dayLengthInMinutes * 60);
+            UpdateLighting(percentOfDayPassed);
+        }
+        else    //lighting changes based on slider in editor
+        {
+            UpdateLighting(percentOfDayPassed);
         }
     }
 

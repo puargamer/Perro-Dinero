@@ -21,10 +21,12 @@ public class SaveData : MonoBehaviour
 
     public void Save()
     {
+        //process data
         SaveDataModel model = new SaveDataModel();
         model.name = "test name";
         model.currentWeekday = GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday;
 
+        //save data
         string json = JsonUtility.ToJson(model);
         File.WriteAllText(Application.persistentDataPath + "/save.json", json);
         Debug.Log("Saved Data in " + Application.persistentDataPath);
