@@ -9699,17 +9699,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207470728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1870163410}
   m_Father: {fileID: 1642406870}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -141, y: 187}
+  m_AnchoredPosition: {x: 389.00037, y: -62}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207470730
@@ -33509,7 +33509,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8964244, g: 0.8964244, b: 0.8964244, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -33568,7 +33568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226762085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.061628457, y: 0.70441604, z: -0.70441604, w: 0.061628457}
+  m_LocalRotation: {x: 0, y: 0.9961947, z: 0, w: 0.087155804}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37561,14 +37561,14 @@ RectTransform:
   m_GameObject: {fileID: 450963225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.45903933, y: 0.43983606, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 452006538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 35, y: -0.00006526234}
+  m_AnchoredPosition: {x: 15, y: -0.00079388596}
   m_SizeDelta: {x: 157, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &450963227
@@ -38333,9 +38333,10 @@ MonoBehaviour:
   encyclopediaUI: {fileID: 1642406869}
   lureTabButton: {fileID: 1309413597}
   fishTabButton: {fileID: 207470730}
-  buttonPrefab: {fileID: 7411375447386835747, guid: e4bde7c08a04be14abf1dcd456957c0d, type: 3}
+  buttonPrefab: {fileID: 5881826683620960415, guid: cfb0c695d16910a4b858504f9d6bb69b, type: 3}
   basePanel: {fileID: 1850041997}
   buttonScrollview: {fileID: 450963226}
+  details: {fileID: 742102738}
   itemIconImage: {fileID: 1443997097}
   itemNameText: {fileID: 787367424}
   itemDescText: {fileID: 1461120425}
@@ -51175,16 +51176,16 @@ RectTransform:
   m_GameObject: {fileID: 1156904512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19393, y: 0.4950527, z: 1}
+  m_LocalScale: {x: 1, y: 1.8240247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 452006538}
   - {fileID: 1264251990}
-  m_Father: {fileID: 1850041998}
+  m_Father: {fileID: 2106547636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70.39659, y: 0}
+  m_AnchoredPosition: {x: 255.99998, y: -32.000015}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156904514
@@ -54715,17 +54716,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309413595}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1231662721}
   m_Father: {fileID: 1642406870}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298, y: 187}
+  m_AnchoredPosition: {x: 389, y: 95}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309413597
@@ -61937,7 +61938,8 @@ MonoBehaviour:
   DayManager: {fileID: 1652536024}
   directionalLight: {fileID: 226762086}
   preset: {fileID: 11400000, guid: cf3581ac69af10d47bfbfe9dedb24bcb, type: 2}
-  timeOfDay: 0.5
+  percentOfDayPassed: 0
+  DevMode: 0
 --- !u!1 &1653433465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3294448432075047861, guid: d606cfc1979724c4d879ea29882830a2, type: 3}
@@ -66292,7 +66294,6 @@ RectTransform:
   m_LocalScale: {x: 5.1565, y: 3.6845062, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1156904513}
   - {fileID: 742102739}
   m_Father: {fileID: 2106547636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72082,7 +72083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106547636}
   m_Layer: 5
-  m_Name: Panels
+  m_Name: Elements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72100,6 +72101,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1156904513}
   - {fileID: 1850041998}
   - {fileID: 1113068001}
   m_Father: {fileID: 1642406870}

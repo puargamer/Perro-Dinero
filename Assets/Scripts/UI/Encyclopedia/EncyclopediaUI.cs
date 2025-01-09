@@ -37,6 +37,8 @@ public class EncyclopediaUI : MonoBehaviour
     [Header("UI Elements")]
     public GameObject basePanel;
     public Transform buttonScrollview;
+
+    public GameObject details;
     public Image itemIconImage;
     public TMP_Text itemNameText;
     public TMP_Text itemDescText;
@@ -70,7 +72,7 @@ public class EncyclopediaUI : MonoBehaviour
             foreach (Lure lure in lures)
             {
                 //Button newButton = Instantiate(buttonPrefab, buttonScrollview).GetComponent<Button>();
-                GameObject newButton = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, buttonScrollview.transform);
+                GameObject newButton = Instantiate(buttonPrefab, buttonScrollview.transform); // Vector3.zero, Quaternion.identity,
                 Image buttonImage = newButton.GetComponentInChildren<Image>();
 
                 buttonImage.sprite = lure.icon;
@@ -113,12 +115,16 @@ public class EncyclopediaUI : MonoBehaviour
     // Display information for a selected EncyclopediaItem (can be either a Lure or CatchableFish)
     void DisplayInfo(EncyclopediaItem item, int[] relatedIndices)
     {
+        // hide the buttons and also the scroll views
         // display base info
+
         itemNameText.text = item.name;
         itemDescText.text = item.description;
+
+        itemIconImage.gameObject.SetActive(true);
         itemIconImage.sprite = item.icon;
 
-        // display related items underneath
+        // display related items underneath, probably in another scrollview
         foreach (int index in relatedIndices)
         {
             if (item is Lure)
@@ -162,8 +168,14 @@ public class EncyclopediaUI : MonoBehaviour
 
     void ClearInfo()
     {
-
         // reset all info ui elements
+        foreach (Transform child in buttonScrollview)
+        {
+            Destroy(child.gameObject);
+        }
+        itemNameText.text = "";
+        itemDescText.text = "";
+        itemIconImage.gameObject.SetActive(false);
     }
     #region UI open close func
     void OpenEncyclopediaUI()
