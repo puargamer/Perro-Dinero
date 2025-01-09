@@ -487,7 +487,6 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 622ee8f75e7761247b82d756f104b663, type: 2}
   spotLight: {fileID: 1329161878486335479}
   pointLight: {fileID: 9104918791624608044}
-  on: 0
 --- !u!54 &1331963509492981265
 Rigidbody:
   m_ObjectHideFlags: 0

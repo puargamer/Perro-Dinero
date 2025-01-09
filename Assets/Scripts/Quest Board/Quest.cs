@@ -6,7 +6,13 @@ using UnityEngine;
 public class Quest
 {
     public string name;
-    public int count;
+    public CombinationType combinationType;     //what to fetch
+    public int count;                           //how much to fetch
     public int reward;
     public bool complete;
+
+    public void Generate()
+    {
+
+    }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2443245651025622602}
   m_Layer: 0
-  m_Name: Held Object Pos
+  m_Name: Held Object Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1764088171973947878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.45, z: 1.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,8 +348,8 @@ Transform:
   m_GameObject: {fileID: 4864960577934241437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4641, z: 0.0903}
-  m_LocalScale: {x: 2.5692, y: 3.1042, z: 3.2329938}
+  m_LocalPosition: {x: 0, y: -0.9587, z: 0.0903}
+  m_LocalScale: {x: 2.5692, y: 0.25857985, z: 3.2329938}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4598300771778322930}
@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInteract: {fileID: 5866825382222337911}
+  interactablesInHitbox: []
 --- !u!54 &5659421950966373659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -650,21 +651,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacec76e4ee6cb6478d5003ae9225005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {x: 0, y: 0, z: 0}
   yVelocity: 0
+  vertical: 0
+  horizontal: 0
   isGrounded: 0
   isSprinting: 0
   speed: 8
   sprintSpeed: 12
   gravityValue: -1
-  jumpHeight: 0.25
+  jumpHeight: 0.22
   sens: 400
   AngleMin: -20
   AngleMax: 80
   CameraPositionParent: {fileID: 3243035608172439875}
   audioSource: {fileID: 7519058212961163012}
+  moveSound: {fileID: 8300000, guid: 6dddb25ddb7505b44822f1810fd0632c, type: 3}
+  jumpSound: {fileID: 8300000, guid: de2f174ff93ce7147ab4220060abf1ea, type: 3}
   face: {fileID: 7066736140844078540}
   playerModel: {fileID: 1480847662355757010}
   heldObjectPos: {fileID: 1764088171973947878}
+  cuh: 0
 --- !u!114 &5866825382222337911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,8 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffcee5d178293c40865069793b78e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxActive: 0
-  objectInHitbox: {fileID: 0}
+  playerInteractHitbox: {fileID: 210215858773227746}
   inventory: {fileID: 8198051736874239848}
 --- !u!114 &8198051736874239848
 MonoBehaviour:
@@ -695,11 +701,13 @@ MonoBehaviour:
   heldObjectPosition: {fileID: 2443245651025622602}
   ObjectHeld: {fileID: 0}
   isHoldingObject: 0
-  InventoryList: []
-  SuperItems: []
-  hotbar1: {fileID: 0}
-  hotbar2: {fileID: 0}
-  hotbar3: {fileID: 0}
+  money: 0
+  InventoryArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moneyUI: {fileID: 0}
+  heldObjectIndex: 0
 --- !u!82 &7519058212961163012
 AudioSource:
   m_ObjectHideFlags: 0
