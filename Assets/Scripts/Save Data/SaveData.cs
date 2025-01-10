@@ -10,7 +10,7 @@ public class SaveData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Load();
     }
 
     // Update is called once per frame
@@ -19,12 +19,13 @@ public class SaveData : MonoBehaviour
         
     }
 
-    public void Save()
+    public static void Save()
     {
         //process data
         SaveDataModel model = new SaveDataModel();
         model.name = "test name";
         model.currentWeekday = GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday;
+        model.dayFinished = GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished;
 
         //save data
         string json = JsonUtility.ToJson(model);
@@ -42,6 +43,7 @@ public class SaveData : MonoBehaviour
 
         //process data
         GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
+        GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished = model.dayFinished;
     }
 }
 
@@ -52,4 +54,5 @@ public class SaveDataModel
 {
     public string name;
     public DayManager.weekday currentWeekday;
+    public bool dayFinished;
 }

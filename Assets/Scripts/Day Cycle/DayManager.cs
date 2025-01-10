@@ -13,7 +13,7 @@ public class DayManager : MonoBehaviour
 
     [field: Header("Current Time")]
     [field: SerializeField] public float currentTime { get; private set; }
-    [SerializeField] private bool dayFinished;
+    [SerializeField] public bool dayFinished;
 
     public timeOfDay currentTimeOfDay;
     public weekday currentWeekday;
@@ -43,6 +43,8 @@ public class DayManager : MonoBehaviour
         morningStartInSeconds = morningStartInMinutes * 60;
         noonStartInSeconds = noonStartInMinutes * 60;
         nightStartInSeconds = nightStartInMinutes * 60;
+
+        CheckNextDay();
     }
 
     // Update is called once per frame
@@ -56,7 +58,7 @@ public class DayManager : MonoBehaviour
 
         UpdateTimeOfDay();
         UpdateUI();
-        NextDay();
+        //NextDay();
     }
 
     void UpdateTimeOfDay()
@@ -66,7 +68,7 @@ public class DayManager : MonoBehaviour
         else if (currentTime >= morningStartInSeconds) { currentTimeOfDay = timeOfDay.Morning; }
     }
 
-    void NextDay()
+    void CheckNextDay()     //method called at start. progresses to next day if day was finished in the loaded save
     {
         if (dayFinished)
         {
@@ -75,6 +77,7 @@ public class DayManager : MonoBehaviour
 
             if (currentWeekday == weekday.Saturday) { currentWeekday = weekday.Sunday; }
             else {currentWeekday++; }
+
         }
     }
 
