@@ -52,7 +52,7 @@ public class QuestVisual : MonoBehaviour
         {
             quest.claimed = true;
             UpdateVisual(quest);
-            GameObject.Find("Player").GetComponent<PlayerInventory>().money += quest.reward;
+            GameObject.Find("Player").GetComponent<PlayerInventory>().ChangeMoney(quest.reward);
         }
     }
 }

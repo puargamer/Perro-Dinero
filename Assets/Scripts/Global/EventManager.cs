@@ -12,6 +12,7 @@ public static class EventManager
     #region Events
     //player inventory is updated
     public static event UnityAction InventoryEvent;
+    public static event UnityAction MoneyEvent;
 
     //Player can use/interact with an item
     public static event UnityAction PlayerCanInteractEvent;
@@ -22,6 +23,7 @@ public static class EventManager
     #region Invoke Methods
     //player inventory is updated
     public static void OnInventoryEvent() => InventoryEvent?.Invoke();
+    public static void OnMoneyEvent() => MoneyEvent?.Invoke();
 
     //Player can use/interact with an item
     public static void OnPlayerCanInteractEvent() => PlayerCanInteractEvent?.Invoke();

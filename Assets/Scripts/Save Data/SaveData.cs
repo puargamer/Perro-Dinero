@@ -26,6 +26,7 @@ public class SaveData : MonoBehaviour
         model.name = "test name";
         model.currentWeekday = GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday;
         model.dayFinished = GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished;
+        model.money = GameObject.Find("Player").GetComponent<PlayerInventory>().money;
 
         //save data
         string json = JsonUtility.ToJson(model);
@@ -44,6 +45,17 @@ public class SaveData : MonoBehaviour
         //process data
         GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
         GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished = model.dayFinished;
+        GameObject.Find("Player").GetComponent<PlayerInventory>().money = model.money;
+    }
+
+    public void Reset()
+    {
+        SaveDataModel model = new SaveDataModel();
+
+        //save data
+        string json = JsonUtility.ToJson(model);
+        File.WriteAllText(Application.persistentDataPath + "/save.json", json);
+        Debug.Log("Saved Data in " + Application.persistentDataPath);
     }
 }
 
@@ -55,4 +67,5 @@ public class SaveDataModel
     public string name;
     public DayManager.weekday currentWeekday;
     public bool dayFinished;
+    public int money;
 }

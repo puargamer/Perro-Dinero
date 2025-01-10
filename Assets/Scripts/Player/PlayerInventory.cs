@@ -19,8 +19,6 @@ public class PlayerInventory : MonoBehaviour
     public ItemData[] InventoryArray = new ItemData[3];
     //public List<GameObject> PikminList;       //currently being held in singleton
 
-    public TMP_Text moneyUI;
-
     public int heldObjectIndex;     //1-based index referencing currently held object. 0 means no object is held
 
     private Dictionary<int, GameObject> hotbar = new Dictionary<int, GameObject>();
@@ -185,7 +183,8 @@ public class PlayerInventory : MonoBehaviour
     public void ChangeMoney(int change)
     {
         money += change;
-        moneyUI.text = "Money: " + money;
+        EventManager.OnMoneyEvent();
+        Debug.Log("eventmanager called");
     }
     #endregion
 }
