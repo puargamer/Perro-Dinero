@@ -17,6 +17,9 @@ public static class EventManager
     //Player can use/interact with an item
     public static event UnityAction PlayerCanInteractEvent;
     public static event UnityAction PlayerHoldingItemEvent;
+
+    //Toggle "Default" UI elements
+    public static event UnityAction ToggleUIEvent;
     #endregion
 
     //invoke methods
@@ -28,5 +31,8 @@ public static class EventManager
     //Player can use/interact with an item
     public static void OnPlayerCanInteractEvent() => PlayerCanInteractEvent?.Invoke();
     public static void OnPlayerHoldingItemEvent() => PlayerHoldingItemEvent?.Invoke();
+
+    //Toggle "Default" UI elements
+    public static void OnToggleUIEvent() => ToggleUIEvent?.Invoke();
     #endregion
 }

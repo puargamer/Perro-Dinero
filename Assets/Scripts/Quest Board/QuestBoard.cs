@@ -49,9 +49,10 @@ public class QuestBoard : Interactable
 
 
         questBoardUICanvas.SetActive(true);
-        GeneralUICanvas.SetActive(false);
-        HotbarUICanvas.SetActive(false);
+        EventManager.OnToggleUIEvent();
+
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -60,9 +61,9 @@ public class QuestBoard : Interactable
     public void CloseQuestBoardUI()
     {
         questBoardUICanvas.SetActive(false);
-        GeneralUICanvas.SetActive(true);
-        HotbarUICanvas.SetActive(true);
+        EventManager.OnToggleUIEvent();
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+        GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

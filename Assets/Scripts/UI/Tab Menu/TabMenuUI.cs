@@ -24,23 +24,17 @@ public class TabMenuUI : MonoBehaviour
 
     public void OpenMenu()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         Singleton.Instance.isMenuOpened = true;
-
-        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+        EventManager.OnToggleUIEvent();
 
         tabMenu.SetActive(true);
     }
 
     public void CloseMenu()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         Singleton.Instance.isMenuOpened = false;
 
-        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-
+        EventManager.OnToggleUIEvent();
         tabMenu.SetActive(false);
     }
 }

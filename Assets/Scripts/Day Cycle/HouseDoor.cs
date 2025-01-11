@@ -39,21 +39,13 @@ public class HouseDoor : Interactable
     {
         houseDoorUI.SetActive(true);
 
-        GeneralUICanvas.SetActive(false);
-        HotbarUICanvas.SetActive(false);
-        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        EventManager.OnToggleUIEvent();
     }
 
     public void CloseHouseDoorUI()
     {
         houseDoorUI.SetActive(false);
 
-        GeneralUICanvas.SetActive(true);
-        HotbarUICanvas.SetActive(true);
-        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        EventManager.OnToggleUIEvent();
     }
 }
