@@ -32,6 +32,9 @@ public class EncyclopediaUI : MonoBehaviour
 
     public Button lureTabButton;
     public Button fishTabButton;
+    public Button backButton;
+
+    public Button closeButton;
 
     public GameObject buttonPrefab; // Button prefab for scroll
     [Header("UI Elements")]
@@ -99,32 +102,25 @@ public class EncyclopediaUI : MonoBehaviour
         }
     }
 
-    // show/hide panels
-    void ShowLures()
-    {
-        ClearInfo();
-        CreateButtons(true);
-    }
-
-    void ShowFish()
-    {
-        ClearInfo();
-        CreateButtons(false);
-    }
 
     // Display information for a selected EncyclopediaItem (can be either a Lure or CatchableFish)
     void DisplayInfo(EncyclopediaItem item, int[] relatedIndices)
     {
         // hide the buttons and also the scroll views
-        // display base info
+        ShowHideTabButtons(false);
+        buttonScrollview.parent.parent.gameObject.SetActive(false); 
 
+        // display base info
         itemNameText.text = item.name;
         itemDescText.text = item.description;
 
         itemIconImage.gameObject.SetActive(true);
         itemIconImage.sprite = item.icon;
 
-        // display related items underneath, probably in another scrollview
+        // show the back button
+        backButton.gameObject.SetActive(true);
+
+        // display related items underneath, probably in another scrollview?
         foreach (int index in relatedIndices)
         {
             if (item is Lure)
@@ -142,6 +138,36 @@ public class EncyclopediaUI : MonoBehaviour
                 Debug.Log("EncyclopediaUI.cs displayInfo error what did you do");
             }
         }
+    }
+
+    // helpers
+    // show/hide panels
+    void ShowLures()
+    {
+        //ClearInfo();
+        DestroyButtons();
+        CreateButtons(true);
+    }
+
+    void ShowFish()
+    {
+        //ClearInfo();
+        DestroyButtons();
+        CreateButtons(false);
+    }
+
+    void ShowHideTabButtons(bool show)
+    {
+        lureTabButton.gameObject.SetActive(show);
+        fishTabButton.gameObject.SetActive(show);
+    }
+
+    public void PressedBackButton()
+    {
+        ClearInfo();
+        ShowHideTabButtons(true);
+        backButton.gameObject.SetActive(false); // hide back button
+        buttonScrollview.parent.parent.gameObject.SetActive(true); // show the grid with all the units
     }
 
     #region wack old display test code
@@ -166,24 +192,28 @@ public class EncyclopediaUI : MonoBehaviour
     //    }
     #endregion 
 
-    void ClearInfo()
+    void DestroyButtons()
     {
-        // reset all info ui elements
         foreach (Transform child in buttonScrollview)
         {
             Destroy(child.gameObject);
         }
+    }
+
+    void ClearInfo()
+    {
+        // reset all info ui elements
         itemNameText.text = "";
         itemDescText.text = "";
         itemIconImage.gameObject.SetActive(false);
     }
     #region UI open close func
-    void OpenEncyclopediaUI()
+    public void OpenEncyclopediaUI()
     {
         UIUtility.ToggleMenu(encyclopediaUI, true);
     }
 
-    void CloseEncyclopediaUI()
+    public void CloseEncyclopediaUI()
     {
         UIUtility.ToggleMenu(encyclopediaUI, false);
     }
