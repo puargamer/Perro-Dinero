@@ -10,6 +10,9 @@ public class Money : MonoBehaviour
 
     private void Update()
     {
-        moneyUI.text = "$" + GameObject.Find("Player").GetComponent<PlayerInventory>().money.ToString();
+        if (GameObject.Find("Player") != null)
+        {
+            moneyUI.text = "$" + GameObject.Find("Player").GetComponent<PlayerInventory>().money.ToString();
+        }
     }
 }

@@ -40,6 +40,6 @@ public static class EventManager
     public static void OnToggleUIEvent() => ToggleUIEvent?.Invoke();
 
     //Update Clock UI
-    public static void OnClockUIEvent(float time, float dayLength) => ClockUIEvent.Invoke(time,dayLength);
+    public static void OnClockUIEvent(float time, float dayLength) => ClockUIEvent?.Invoke(time,dayLength);
     #endregion
 }
