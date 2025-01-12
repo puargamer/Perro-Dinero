@@ -35,6 +35,13 @@ public class DayManager : MonoBehaviour
     public TMP_Text timeOfDayUI;
     public TMP_Text weekdayUI;
 
+    [Header("Dynamic Skybox")]
+    public UnityEngine.Material skyboxMaterial;
+    [Range(0,1)]public float blend;
+    [SerializeField] private float blendStartTime;
+    [SerializeField] private float blendEndTime;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +50,7 @@ public class DayManager : MonoBehaviour
         morningStartInSeconds = morningStartInMinutes * 60;
         noonStartInSeconds = noonStartInMinutes * 60;
         nightStartInSeconds = nightStartInMinutes * 60;
+        skyboxMaterial.SetFloat("_Blend", 0);
 
         CheckNextDay();
     }
@@ -58,7 +66,8 @@ public class DayManager : MonoBehaviour
 
         UpdateTimeOfDay();
         UpdateUI();
-        //NextDay();
+
+        CheckBlend();
     }
 
     void UpdateTimeOfDay()
@@ -88,5 +97,16 @@ public class DayManager : MonoBehaviour
         weekdayUI.text = currentWeekday.ToString();
 
         EventManager.OnClockUIEvent(currentTime, dayLengthInSeconds);
+
+    }
+
+    void CheckBlend()
+    {
+        //blend = currentTime / dayLengthInSeconds;
+        if (currentTime >= blendStartTime)
+        {
+            blend = Mathf.Clamp((currentTime - blendStartTime) / (blendEndTime-blendStartTime), 0, 1);
+            skyboxMaterial.SetFloat("_Blend", blend);
+        }
     }
 }

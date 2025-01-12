@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d48a7646f5d0547e889733d84b50cb9f, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 84811133181be4b42b611fa54193bf9c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -67343,6 +67343,10 @@ MonoBehaviour:
   clockUI: {fileID: 240498568}
   timeOfDayUI: {fileID: 1889757162}
   weekdayUI: {fileID: 673225599}
+  skyboxMaterial: {fileID: 2100000, guid: 84811133181be4b42b611fa54193bf9c, type: 2}
+  blend: 0
+  blendStartTime: 40
+  blendEndTime: 48
 --- !u!114 &1652536025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68067,6 +68071,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2311891836342427437, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311891836342427437, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311891836342427437, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4598300771778322930, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_LocalPosition.x
       value: 78.75
