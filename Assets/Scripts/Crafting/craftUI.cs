@@ -9,15 +9,18 @@ public class craftUI : MonoBehaviour
 {
     public GameObject player;
     public RawImage[] craftIngredients;
-    public List<Texture2D> items;
-    public List<TMP_Text> textCounts;
-    public List<int> counts;
+    public List<Texture2D> items; // deprecated
+    public List<TMP_Text> textCounts; // deprecated
+    private List<int> scrapedCounts;
+    private List<int> counts;
     private int currSelected;
     public LittleGuyFactory littleGuyFactory; // shouldnt need to be filled in inspector
-    public RecipeBook recipeBook; // shouldnt need to be filled in inspector
     public GameObject deployUI;
     [SerializeField]
     private Transform littleGuySpawnArea;
+
+    public Transform inventoryGridView;
+    public GameObject inventoryButtonPrefab;
 
     public TMP_Text recipeText;
     public GameObject recipePanel;
@@ -38,15 +41,44 @@ public class craftUI : MonoBehaviour
         deploymentUI = FindObjectOfType<DeploymentUI>();
         ResetCraft();
         ScrapeFromInventory();
+        SetRecipes();
         DisplayRecipes();
     }
 
     public void ScrapeFromInventory()
     {
-        for (int i = 0; i < counts.Count; i++)
+        scrapedCounts = new List<int>( new int[MaterialTypeHelper.Count] );
+        counts = new List<int>(new int[MaterialTypeHelper.Count]);
+        for (int i = 0; i < MaterialTypeHelper.Count; i++) // if we plan on adding more mats
         {
             counts[i] = Singleton.Instance.mats[i];
-            textCounts[i].text = counts[i].ToString();   
+            scrapedCounts[i] = Singleton.Instance.mats[i];
+
+            CreateInventoryEntry(i);
+        }
+    }
+
+    void CreateInventoryEntry(int index) 
+    {
+        GameObject newButton = Instantiate(inventoryButtonPrefab, inventoryGridView);
+        Image buttonImage = newButton.GetComponentInChildren<Image>();
+
+        buttonImage.sprite = spriteUtility.GetSprite((MaterialType)index);
+        buttonImage.preserveAspect = true;
+
+        newButton.GetComponent<Button>().onClick.AddListener(() => InventoryInteract(index));
+    }
+    public void InventoryInteract(int index)
+    {
+        MaterialType material = (MaterialType)index;
+
+        if (currSelected <= 1 && counts[index] >= 1)
+        {
+            textCounts[index].text = (--counts[index]).ToString();
+            craftIngredients[currSelected].texture = spriteUtility.GetSprite(material).texture; // modified line, can remove items now
+            craftIngredients[currSelected].gameObject.SetActive(true);
+            selectedMaterials.Add(material);
+            currSelected++;
         }
     }
 
@@ -69,11 +101,15 @@ public class craftUI : MonoBehaviour
     {
         for (int i = 0; i < craftIngredients.Length; i++)
         {
+
             craftIngredients[i].texture = null;
+            craftIngredients[i].gameObject.SetActive(false);
         }
         currSelected = 0;
         selectedMaterials.Clear();
-        ScrapeFromInventory();
+
+        counts = scrapedCounts;
+        //ScrapeFromInventory();
     }
 
     public void AddMaterial(MaterialType materialType)
@@ -83,7 +119,8 @@ public class craftUI : MonoBehaviour
         if (currSelected <= 1 && counts[index] >= 1)
         {
             textCounts[index].text = (--counts[index]).ToString();
-            craftIngredients[currSelected].texture = items[index];
+            craftIngredients[currSelected].texture = spriteUtility.GetSprite(materialType).texture; // modified line, can remove items now
+            craftIngredients[currSelected].gameObject.SetActive(true);
             selectedMaterials.Add(materialType);
             currSelected++;
         }
@@ -111,7 +148,7 @@ public class craftUI : MonoBehaviour
             Singleton.Instance.mats[(int)firstMaterial]--; // bye bye mats
             Singleton.Instance.mats[(int)secondMaterial]--;
 
-            CombinationType combination = recipeBook.UseRecipe(firstMaterial, secondMaterial);
+            CombinationType combination = RecipeBook.UseRecipe(firstMaterial, secondMaterial);
 
             GameObject createdLittleGuy = littleGuyFactory.CreateLittleGuy(littleGuySpawnArea.position, combination);
 
@@ -121,17 +158,20 @@ public class craftUI : MonoBehaviour
         }
     }
 
+    // deprecated?
+    void SetRecipes()
+    {
+        var recipes = RecipeBook.GetFormattedValidRecipes();
+        string recipeList = string.Join("\n", recipes);
+        recipeText.text = recipeList;
+    }
+
     public void DisplayRecipes()
     {
-        var recipes = recipeBook.GetValidRecipes();
-        string recipeList = string.Join("\n", recipes);
-        //recipeText.text = recipeList;
-
         openPanel = !openPanel;
 
         if (!openPanel)
         {
-            recipeText.text = recipeList;
             recipePanel.SetActive(true);
             recipeButtonText.text = "Close Recipes";
         }

@@ -17,11 +17,11 @@ public class MaterialRecipe
     }
 }
 
-public class RecipeBook : MonoBehaviour
+public static class RecipeBook
 {
-    private List<MaterialRecipe> recipes;
+    private static List<MaterialRecipe> recipes;
 
-    void Start() // holds all of the recipes to be used in the crafting thus far
+    static RecipeBook()// holds all of the recipes to be used in the crafting thus far
     {
         recipes = new List<MaterialRecipe>
         {
@@ -36,7 +36,7 @@ public class RecipeBook : MonoBehaviour
     }
 
     // check if valid recipe
-    public CombinationType UseRecipe(MaterialType first, MaterialType second)
+    public static CombinationType UseRecipe(MaterialType first, MaterialType second)
     {
         foreach (var recipe in recipes)
         {
@@ -49,8 +49,11 @@ public class RecipeBook : MonoBehaviour
         Debug.Log("invalid recipe, defaulting to BaitG");
         return CombinationType.BaitG;  // default value
     }
-
-    public List<string> GetValidRecipes()
+    public static List<MaterialRecipe> GetAllRecipes()
+    {
+        return new List<MaterialRecipe>(recipes);
+    }
+    public static List<string> GetFormattedValidRecipes()
     {
         List<string> validRecipes = new List<string>();
 
