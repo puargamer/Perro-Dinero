@@ -44,6 +44,8 @@ public class HotbarUI : MonoBehaviour
         hotbarHighlight.Add(1, highlight2);
         hotbarHighlight.Add(2, highlight3);
 
+        UpdateHotbar();
+
     }
 
     // Update is called once per frame

@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InventoryArray = new ItemData[3];
+        //InventoryArray = new ItemData[3];
     }
 
     // Update is called once per frame
@@ -130,7 +130,6 @@ public class PlayerInventory : MonoBehaviour
 
         if (i < InventoryArray.Length && InventoryArray[i])
         {
-            Debug.Log("cuh34");
             ObjectHeld = Instantiate(InventoryArray[i].item);
 
             heldObjectIndex = i+1;

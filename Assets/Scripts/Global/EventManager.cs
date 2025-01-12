@@ -24,6 +24,10 @@ public static class EventManager
     //Update Clock UI
     public static event UnityAction<float,float> ClockUIEvent;
 
+    //Save and Load
+    public static event UnityAction SaveEvent;
+    public static event UnityAction LoadEvent;
+
     #endregion
 
     //invoke methods
@@ -41,5 +45,9 @@ public static class EventManager
 
     //Update Clock UI
     public static void OnClockUIEvent(float time, float dayLength) => ClockUIEvent?.Invoke(time,dayLength);
+
+    //Save and Load
+    public static void OnSaveEvent() => SaveEvent?.Invoke();
+    public static void OnLoadEvent() => LoadEvent?.Invoke();
     #endregion
 }

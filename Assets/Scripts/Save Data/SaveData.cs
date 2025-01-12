@@ -7,6 +7,17 @@ public class SaveData : MonoBehaviour
 {
     public SaveDataModel loadedData;    //reference to object that stores the save data loaded in Load()
 
+    private void OnEnable()
+    {
+        EventManager.SaveEvent += Save;
+        EventManager.LoadEvent += Load;
+    }
+    private void OnDisable()
+    {
+        EventManager.SaveEvent -= Save;
+        EventManager.LoadEvent -= Load;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +30,7 @@ public class SaveData : MonoBehaviour
         
     }
 
-    public static void Save()
+    public void Save()
     {
         //process data
         SaveDataModel model = new SaveDataModel();
@@ -27,6 +38,7 @@ public class SaveData : MonoBehaviour
         model.currentWeekday = GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday;
         model.dayFinished = GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished;
         model.money = GameObject.Find("Player").GetComponent<PlayerInventory>().money;
+        model.InventoryArray = GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray;
 
         //save data
         string json = JsonUtility.ToJson(model);
@@ -46,6 +58,7 @@ public class SaveData : MonoBehaviour
         GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
         GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished = model.dayFinished;
         GameObject.Find("Player").GetComponent<PlayerInventory>().money = model.money;
+        GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray = model.InventoryArray;
     }
 
     public void Reset()
@@ -68,4 +81,5 @@ public class SaveDataModel
     public DayManager.weekday currentWeekday;
     public bool dayFinished;
     public int money;
+    public ItemData[] InventoryArray;
 }

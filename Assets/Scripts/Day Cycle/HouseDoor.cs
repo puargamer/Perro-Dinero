@@ -30,7 +30,7 @@ public class HouseDoor : Interactable
 
     public void Reset()
     {
-        SaveData.Save();
+        EventManager.OnSaveEvent();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
