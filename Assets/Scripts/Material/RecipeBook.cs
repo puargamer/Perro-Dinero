@@ -53,6 +53,18 @@ public static class RecipeBook
     {
         return new List<MaterialRecipe>(recipes);
     }
+
+    public static MaterialRecipe GetRecipeFor(CombinationType combType)
+    {
+        foreach (var recipe in recipes)
+        {
+            if (recipe.Result == combType)
+            {
+                return recipe;
+            }
+        }
+        return null;
+    }
     public static List<string> GetFormattedValidRecipes()
     {
         List<string> validRecipes = new List<string>();

@@ -9,11 +9,12 @@ public class craftUI : MonoBehaviour
 {
     public GameObject player;
     public RawImage[] craftIngredients;
-    public List<Texture2D> items; // deprecated
-    public List<TMP_Text> textCounts; // deprecated
+    public List<Texture2D> items;
+    public List<TMP_Text> textCounts;
     private List<int> scrapedCounts;
     private List<int> counts;
     private int currSelected;
+    public SpriteUtility spriteManager;
     public LittleGuyFactory littleGuyFactory; // shouldnt need to be filled in inspector
     public GameObject deployUI;
     [SerializeField]
@@ -21,6 +22,9 @@ public class craftUI : MonoBehaviour
 
     public Transform inventoryGridView;
     public GameObject inventoryButtonPrefab;
+
+    public Transform recipeGridView;
+    public GameObject recipeButtonPrefab;
 
     public TMP_Text recipeText;
     public GameObject recipePanel;
@@ -43,44 +47,46 @@ public class craftUI : MonoBehaviour
         ScrapeFromInventory();
         SetRecipes();
         DisplayRecipes();
+        CreateRecipeButtons();
     }
 
     public void ScrapeFromInventory()
     {
-        scrapedCounts = new List<int>( new int[MaterialTypeHelper.Count] );
+        //scrapedCounts = new List<int>( new int[MaterialTypeHelper.Count] );
         counts = new List<int>(new int[MaterialTypeHelper.Count]);
         for (int i = 0; i < MaterialTypeHelper.Count; i++) // if we plan on adding more mats
         {
             counts[i] = Singleton.Instance.mats[i];
-            scrapedCounts[i] = Singleton.Instance.mats[i];
+            //scrapedCounts[i] = Singleton.Instance.mats[i];
+            textCounts[i].text = counts[i].ToString();
 
-            CreateInventoryEntry(i);
+            //CreateInventoryEntry(i);
         }
     }
 
-    void CreateInventoryEntry(int index) 
-    {
-        GameObject newButton = Instantiate(inventoryButtonPrefab, inventoryGridView);
-        Image buttonImage = newButton.GetComponentInChildren<Image>();
+    //void CreateInventoryEntry(int index) // dynamically adds the buttons (somehow doesnt work!!!!)
+    //{
+    //    GameObject newButton = Instantiate(inventoryButtonPrefab, inventoryGridView);
+    //    Image buttonImage = newButton.GetComponentInChildren<Image>();
 
-        buttonImage.sprite = spriteUtility.GetSprite((MaterialType)index);
-        buttonImage.preserveAspect = true;
+    //    buttonImage.sprite = spriteUtility.GetSprite((MaterialType)index);
+    //    buttonImage.preserveAspect = true;
 
-        newButton.GetComponent<Button>().onClick.AddListener(() => InventoryInteract(index));
-    }
-    public void InventoryInteract(int index)
-    {
-        MaterialType material = (MaterialType)index;
+    //    newButton.GetComponent<Button>().onClick.AddListener(() => InventoryInteract(index));
+    //}
+    //public void InventoryInteract(int index)
+    //{
+    //    MaterialType material = (MaterialType)index;
 
-        if (currSelected <= 1 && counts[index] >= 1)
-        {
-            textCounts[index].text = (--counts[index]).ToString();
-            craftIngredients[currSelected].texture = spriteUtility.GetSprite(material).texture; // modified line, can remove items now
-            craftIngredients[currSelected].gameObject.SetActive(true);
-            selectedMaterials.Add(material);
-            currSelected++;
-        }
-    }
+    //    if (currSelected <= 1 && counts[index] >= 1)
+    //    {
+    //        textCounts[index].text = (--counts[index]).ToString();
+    //        craftIngredients[currSelected].texture = spriteUtility.GetSprite(material).texture; // modified line, can remove items now
+    //        craftIngredients[currSelected].gameObject.SetActive(true);
+    //        selectedMaterials.Add(material);
+    //        currSelected++;
+    //    }
+    //}
 
     public void CloseCraft()
     {
@@ -108,13 +114,41 @@ public class craftUI : MonoBehaviour
         currSelected = 0;
         selectedMaterials.Clear();
 
-        counts = scrapedCounts;
-        //ScrapeFromInventory();
+        //counts = scrapedCounts;
+        ScrapeFromInventory();
+        //for (int i = 0; i < MaterialTypeHelper.Count; i++) // reset text
+        //{
+        //    textCounts[i].text = counts[i].ToString();
+        //}
+    }
+    void CreateRecipeButtons()
+    {
+        List<MaterialRecipe> recipes = RecipeBook.GetAllRecipes();
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            //Debug.Log(recipes[i].FishColor);
+            int index = i;
+            GameObject newButton = Instantiate(recipeButtonPrefab, recipeGridView);
+            newButton.GetComponentInChildren<TMP_Text>().text = $"{recipes[i].FishColor}";
+            Image buttonImage = newButton.GetComponentInChildren<Image>();
+            
+            buttonImage.sprite = spriteManager.GetSprite(recipes[i].Result);
+            newButton.GetComponent<Button>().onClick.AddListener(() => AddLittleGuyRecipe(index));
+        }
+    }
+    public void AddLittleGuyRecipe(int index)
+    {
+        Debug.Log($"index is {index}");
+        ResetCraft();
+        MaterialRecipe currRecipe = RecipeBook.GetAllRecipes()[index];
+        AddMaterial(currRecipe.MaterialOne);
+        AddMaterial(currRecipe.MaterialTwo);
     }
 
     public void AddMaterial(MaterialType materialType)
     {
         int index = (int)materialType;
+        //Debug.Log(counts[index]);
 
         if (currSelected <= 1 && counts[index] >= 1)
         {
@@ -158,7 +192,7 @@ public class craftUI : MonoBehaviour
         }
     }
 
-    // deprecated?
+    #region deprecated
     void SetRecipes()
     {
         var recipes = RecipeBook.GetFormattedValidRecipes();
@@ -181,6 +215,7 @@ public class craftUI : MonoBehaviour
             recipeButtonText.text = "Open Recipes";
         }
     }
+    #endregion
 
     //private CombinationType GetCombination(MaterialType first, MaterialType second) // TODO: fix this
     //{

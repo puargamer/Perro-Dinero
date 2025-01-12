@@ -6029,7 +6029,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4996015444184761207}
   - {fileID: 1936383100118481199}
   - {fileID: 8349635710433936648}
   - {fileID: 4599009696207812923}
@@ -6099,11 +6098,14 @@ MonoBehaviour:
   - {fileID: 6387549876766208925}
   - {fileID: 7713446809898577472}
   - {fileID: 339731689201688083}
-  counts: 0000000000000000000000000000000000000000
   littleGuyFactory: {fileID: 7720116172214535562}
-  recipeBook: {fileID: 4195948470719814005}
   deployUI: {fileID: 0}
   littleGuySpawnArea: {fileID: 7726922212029900019}
+  inventoryGridView: {fileID: 0}
+  inventoryButtonPrefab: {fileID: 0}
+  recipeText: {fileID: 0}
+  recipePanel: {fileID: 0}
+  recipeButtonText: {fileID: 0}
 --- !u!1 &8490162604200413685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,76 +6462,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1001 &6136687630410878744
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2189150464577494873}
-    m_Modifications:
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.13925
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.4273224
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.3252325
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911584135331602036, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-      propertyPath: m_Name
-      value: RecipeBook
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
---- !u!114 &4195948470719814005 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8003710201292494445, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-  m_PrefabInstance: {fileID: 6136687630410878744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5ade2d2e29b274298ff8c688ef097f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &4996015444184761207 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1187979920183331951, guid: cb67377bc332933458bcf43c9fad02ba, type: 3}
-  m_PrefabInstance: {fileID: 6136687630410878744}
-  m_PrefabAsset: {fileID: 0}
