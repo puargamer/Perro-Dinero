@@ -264,7 +264,7 @@ Material:
     - _BlendMode: 0
     - _BlurLevelMatcap: 0
     - _BlurLevelSGM: 0
-    - _BumpScale: 1
+    - _BumpScale: 0
     - _BumpScaleMatcap: 1
     - _CameraRolling_Stabilizer: 0
     - _ClippingMatteMode: 0
@@ -328,7 +328,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _HighColor_Power: 0.87
+    - _HighColor_Power: 0
     - _HighlightOverridden: 0
     - _HighlightVisible: 1
     - _InvTilingScale: 1
@@ -484,8 +484,8 @@ Material:
     - _simpleUI: 0
     - _utsTechnique: 0
     - _utsVersionX: 0
-    - _utsVersionY: 10
-    - _utsVersionZ: 2
+    - _utsVersionY: 11
+    - _utsVersionZ: 0
     m_Colors:
     - _1st_ShadeColor: {r: 0.9137255, g: 0.9137255, b: 0.9137255, a: 1}
     - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
