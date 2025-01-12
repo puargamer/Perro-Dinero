@@ -86,5 +86,7 @@ public class DayManager : MonoBehaviour
         clockUI.text = Mathf.Floor(currentTime).ToString();
         timeOfDayUI.text = currentTimeOfDay.ToString();
         weekdayUI.text = currentWeekday.ToString();
+
+        EventManager.OnClockUIEvent(currentTime, dayLengthInSeconds);
     }
 }

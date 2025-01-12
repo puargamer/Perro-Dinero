@@ -20,6 +20,10 @@ public static class EventManager
 
     //Toggle "Default" UI elements
     public static event UnityAction ToggleUIEvent;
+
+    //Update Clock UI
+    public static event UnityAction<float,float> ClockUIEvent;
+
     #endregion
 
     //invoke methods
@@ -34,5 +38,8 @@ public static class EventManager
 
     //Toggle "Default" UI elements
     public static void OnToggleUIEvent() => ToggleUIEvent?.Invoke();
+
+    //Update Clock UI
+    public static void OnClockUIEvent(float time, float dayLength) => ClockUIEvent.Invoke(time,dayLength);
     #endregion
 }
