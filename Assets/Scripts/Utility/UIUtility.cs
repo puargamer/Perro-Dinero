@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class UIUtility
 {
@@ -22,6 +23,25 @@ public static class UIUtility
         }
 
         menuToToggle.SetActive(isOpening);
+    }
+
+    public static void PreserveAspectRatio(RawImage rawImage)
+    {
+        if (rawImage.texture == null) return;
+
+        RectTransform rt = rawImage.GetComponent<RectTransform>();
+        float textureWidth = rawImage.texture.width;
+        float textureHeight = rawImage.texture.height;
+        float aspectRatio = textureWidth / textureHeight;
+
+        if (rt.rect.width / rt.rect.height > aspectRatio)
+        {
+            rt.sizeDelta = new Vector2(rt.rect.height * aspectRatio, rt.rect.height);
+        }
+        else
+        {
+            rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.width / aspectRatio);
+        }
     }
 }
 

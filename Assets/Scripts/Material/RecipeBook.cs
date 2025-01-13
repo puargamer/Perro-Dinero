@@ -36,7 +36,7 @@ public static class RecipeBook
     }
 
     // check if valid recipe
-    public static CombinationType UseRecipe(MaterialType first, MaterialType second)
+    public static CombinationType? UseRecipe(MaterialType first, MaterialType second)
     {
         foreach (var recipe in recipes)
         {
@@ -46,8 +46,8 @@ public static class RecipeBook
                 return recipe.Result;
             }
         }
-        Debug.Log("invalid recipe, defaulting to BaitG");
-        return CombinationType.BaitG;  // default value
+        Debug.Log("invalid recipe, returning null");
+        return null;  // default value
     }
     public static List<MaterialRecipe> GetAllRecipes()
     {
@@ -65,7 +65,19 @@ public static class RecipeBook
         }
         return null;
     }
-    public static List<string> GetFormattedValidRecipes()
+    public static bool IsValidRecipe(MaterialType one, MaterialType two) // Check if both materials create a valid recipe
+    {
+        foreach (var recipe in recipes)
+        {
+            if ((recipe.MaterialOne == one && recipe.MaterialTwo == two) ||
+                (recipe.MaterialOne == two && recipe.MaterialTwo == one))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static List<string> GetFormattedValidRecipes() // Get all recipes in a string format
     {
         List<string> validRecipes = new List<string>();
 

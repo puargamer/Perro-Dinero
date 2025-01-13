@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SocialPlatforms;
 
 public class craftUI : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class craftUI : MonoBehaviour
     private int currSelected;
     public SpriteUtility spriteManager;
     public LittleGuyFactory littleGuyFactory; // shouldnt need to be filled in inspector
+    public GameObject craftingTableUI;
     public GameObject deployUI;
     [SerializeField]
     private Transform littleGuySpawnArea;
@@ -30,6 +32,9 @@ public class craftUI : MonoBehaviour
     public GameObject recipePanel;
     public TMP_Text recipeButtonText;
 
+    public GameObject canCatchArea;
+    public Image canCatchPicture;
+
     private SpriteUtility spriteUtility;
     private DeploymentUI deploymentUI;
 
@@ -38,6 +43,7 @@ public class craftUI : MonoBehaviour
     private List<MaterialType> selectedMaterials = new List<MaterialType>(); // store curr materials used
 
     private bool openPanel = false;
+    private bool canCraft = true;
 
     void Start()
     {
@@ -64,7 +70,7 @@ public class craftUI : MonoBehaviour
         }
     }
 
-    //void CreateInventoryEntry(int index) // dynamically adds the buttons (somehow doesnt work!!!!)
+    //void CreateInventoryEntry(int index) // dynamically adds the buttons (somehow doesnt work even though the one for recipe does!!!!)
     //{
     //    GameObject newButton = Instantiate(inventoryButtonPrefab, inventoryGridView);
     //    Image buttonImage = newButton.GetComponentInChildren<Image>();
@@ -98,9 +104,10 @@ public class craftUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        
-        GetComponentInChildren<Canvas>().enabled = false;
+
+        //GetComponentInChildren<Canvas>().enabled = false;
         ResetCraft();
+        craftingTableUI.SetActive(false);
     }
 
     public void ResetCraft()
@@ -110,9 +117,14 @@ public class craftUI : MonoBehaviour
 
             craftIngredients[i].texture = null;
             craftIngredients[i].gameObject.SetActive(false);
+            craftIngredients[i].color = new Color(1f, 1f, 1f, 1f); // Back to full opacity
+            craftIngredients[i].rectTransform.sizeDelta = new Vector2(170, 170); // HARD CODED, based off of craftIngredient1 w and h
         }
         currSelected = 0;
         selectedMaterials.Clear();
+        canCraft = true;
+
+        canCatchArea.SetActive(false); // Hide the fish that you can catch
 
         //counts = scrapedCounts;
         ScrapeFromInventory();
@@ -138,25 +150,52 @@ public class craftUI : MonoBehaviour
     }
     public void AddLittleGuyRecipe(int index)
     {
-        Debug.Log($"index is {index}");
+        //Debug.Log($"index is {index}");
         ResetCraft();
         MaterialRecipe currRecipe = RecipeBook.GetAllRecipes()[index];
         AddMaterial(currRecipe.MaterialOne);
         AddMaterial(currRecipe.MaterialTwo);
     }
 
+    public void CanCatchVisual()
+    {
+        CombinationType? fish = RecipeBook.UseRecipe(selectedMaterials[0], selectedMaterials[1]);
+        if (fish != null) 
+        {
+            Sprite fishCanCatch = spriteManager.GetFishSprite(fish.Value);
+            canCatchPicture.sprite = fishCanCatch;
+            canCatchArea.SetActive(true);
+        }
+    }
+
     public void AddMaterial(MaterialType materialType)
     {
         int index = (int)materialType;
-        //Debug.Log(counts[index]);
 
-        if (currSelected <= 1 && counts[index] >= 1)
+        if (currSelected <= 1) // If less than 2 items are selected
         {
-            textCounts[index].text = (--counts[index]).ToString();
-            craftIngredients[currSelected].texture = spriteUtility.GetSprite(materialType).texture; // modified line, can remove items now
-            craftIngredients[currSelected].gameObject.SetActive(true);
-            selectedMaterials.Add(materialType);
-            currSelected++;
+            RawImage rawImage = craftIngredients[currSelected].GetComponent<RawImage>();
+            rawImage.texture = spriteUtility.GetSprite(materialType).texture; // Apply corresponding sprite
+            rawImage.gameObject.SetActive(true);
+            UIUtility.PreserveAspectRatio(rawImage); // RawImage aspect ratio save
+
+            if (counts[index] >= 1) // if the user has this material
+            {
+                textCounts[index].text = (--counts[index]).ToString();
+                rawImage.color = new Color(1f, 1f, 1f, 1f); // Full opacity
+                selectedMaterials.Add(materialType);
+            }
+            else // if the user does not have enough material, show ghost of mat, disallow crafting
+            {
+                rawImage.color = new Color(1f, 1f, 1f, 0.2f); // 20% opacity
+                canCraft = false;
+            }
+            //currSelected++;
+            if (++currSelected == 2)
+            {
+                // setup UI on which fish it can catch with this recipe
+                CanCatchVisual();
+            }
         }
     }
     // LMAO
@@ -167,26 +206,26 @@ public class craftUI : MonoBehaviour
     public void AddTwig() => AddMaterial(MaterialType.Twig);
 
 
-    //private MaterialType GetSelectedMaterial(int index) // prob not needed idk what i was doing
-    //{ // if not null, return index else return wtf am i looking at
-    //    return (MaterialType)(craftIngredients[index].texture != null ? index : -1);
-    //}
-
     public void CraftGuy()
     {
-        if (currSelected == 2)
+        if (currSelected == 2 && canCraft)
         {
+
             MaterialType firstMaterial = selectedMaterials[0];
             MaterialType secondMaterial = selectedMaterials[1];
 
-            Singleton.Instance.mats[(int)firstMaterial]--; // bye bye mats
+            CombinationType? combination = RecipeBook.UseRecipe(firstMaterial, secondMaterial);
+
+            // if recipe is not valid
+            if (combination == null) { return; }
+
+            GameObject createdLittleGuy = LittleGuyFactory.Instance.CreateLittleGuy(littleGuySpawnArea.position, combination.Value);
+
+            UpdateLittleGuyList(combination.Value, createdLittleGuy);
+
+            // Remove used materials from inventory
+            Singleton.Instance.mats[(int)firstMaterial]--; 
             Singleton.Instance.mats[(int)secondMaterial]--;
-
-            CombinationType combination = RecipeBook.UseRecipe(firstMaterial, secondMaterial);
-
-            GameObject createdLittleGuy = LittleGuyFactory.Instance.CreateLittleGuy(littleGuySpawnArea.position, combination);
-
-            UpdateLittleGuyList(combination, createdLittleGuy);
 
             ResetCraft();
         }
@@ -255,6 +294,7 @@ public class craftUI : MonoBehaviour
                 Singleton.Instance.BaitGLittleGuys.Add(littleGuy);
                 break;
             default:
+                // this should not reach this point
                 Debug.LogWarning("Unknown combination type: " + combination);
                 break;
         }

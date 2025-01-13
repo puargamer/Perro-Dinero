@@ -91,7 +91,9 @@ public class SaveData : MonoBehaviour
 
     public void Reset()
     {
-        SaveDataModel model = new SaveDataModel();
+        SaveDataModel model = new SaveDataModel(); // set defaults
+        model.savedMaterials = new List<int> (new int[5]);
+        model.InventoryArray = new ItemData[3];
 
         //save data
         string json = JsonUtility.ToJson(model);

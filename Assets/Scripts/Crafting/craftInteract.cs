@@ -6,6 +6,7 @@ public class craftTable : Interactable
 {
     public GameObject player;
     public GameObject deployUI;
+    public GameObject craftingTableUI;
 
     public override void Interact()
     {
@@ -16,7 +17,8 @@ public class craftTable : Interactable
             player.GetComponent<PlayerMovement>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            GetComponentInChildren<Canvas>().enabled = true;
+            //GetComponentInChildren<Canvas>().enabled = true;
+            craftingTableUI.SetActive(true);
             Singleton.Instance.isMenuOpened = true;
         }
     }
