@@ -6,7 +6,7 @@ using UnityEngine;
 public class SaveData : MonoBehaviour
 {
     public SaveDataModel loadedData;    //reference to object that stores the save data loaded in Load()
-
+    //private int VERSION = 1;
     private void OnEnable()
     {
         EventManager.SaveEvent += Save;
@@ -42,6 +42,7 @@ public class SaveData : MonoBehaviour
         model.nextId = Singleton.Instance.GrabNewId();
         model.littleGuysData = Singleton.Instance.GetAllLittleGuysData();
         model.savedMaterials = Singleton.Instance.mats;
+        //model.version = VERSION;
 
         //save data
         string json = JsonUtility.ToJson(model);
@@ -59,6 +60,19 @@ public class SaveData : MonoBehaviour
             SaveDataModel model = JsonUtility.FromJson<SaveDataModel>(File.ReadAllText(Application.persistentDataPath + "/save.json"));
             Debug.Log("Loaded Data");
             loadedData = model;
+
+            //try // check for old saves, more error handling
+            //{
+            //    if (model.version != VERSION)
+            //    {
+            //        Debug.LogWarning($"Version mismatch");
+            //    }
+            //}
+            //catch (System.Exception)
+            //{
+            //    Debug.LogWarning("Version field does not exist in the loaded data, version mismatch");
+            //    return;
+            //}
 
             //process data
             GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
@@ -92,6 +106,7 @@ public class SaveData : MonoBehaviour
 public class SaveDataModel
 {
     public string name;
+    //public int version;
     public int nextId;
     public DayManager.weekday currentWeekday;
     public bool dayFinished;

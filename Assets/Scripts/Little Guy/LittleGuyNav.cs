@@ -69,6 +69,9 @@ public class LittleGuyNav : MonoBehaviour
         //SetColor(materialRenderer, materialType);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = spriteUtility.GetSprite(type);
+
+        navMeshAgent.speed = 10f;
+        navMeshAgent.acceleration = 18f;
     }
 
     // Update is called once per frame

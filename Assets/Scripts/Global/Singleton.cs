@@ -61,7 +61,6 @@ public class Singleton : MonoBehaviour
 
     #region Prefab List
     public GameObject ExampleItem;
-    public GameObject littleGuyPrefab;
     #endregion
 
     public void test()
@@ -124,10 +123,9 @@ public class Singleton : MonoBehaviour
         stashedLittleGuys.Clear();
         foreach (var data in allLittleGuysData) // respawn them all, might have to ask factory to do this?
         {
-            GameObject newGuy = Instantiate(littleGuyPrefab); // need to set location
-            newGuy.GetComponent<LittleGuyNav>().SetLittleGuyData(data);
+            GameObject newGuy = LittleGuyFactory.Instance.LoadLittleGuy(data);
 
-            if (data.isInPen)
+            if (data.isInPen) // none of these should be in pen
             {
                 stashedLittleGuys.Add(newGuy);
                 newGuy.SetActive(false);

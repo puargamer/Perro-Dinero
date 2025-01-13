@@ -184,7 +184,7 @@ public class craftUI : MonoBehaviour
 
             CombinationType combination = RecipeBook.UseRecipe(firstMaterial, secondMaterial);
 
-            GameObject createdLittleGuy = littleGuyFactory.CreateLittleGuy(littleGuySpawnArea.position, combination);
+            GameObject createdLittleGuy = LittleGuyFactory.Instance.CreateLittleGuy(littleGuySpawnArea.position, combination);
 
             UpdateLittleGuyList(combination, createdLittleGuy);
 
