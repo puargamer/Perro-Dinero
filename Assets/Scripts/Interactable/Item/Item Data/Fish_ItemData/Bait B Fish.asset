@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Bait B Fish
   description: A red fish
   icon: {fileID: 21300000, guid: ff26157167e07d34daff121ca50055bd, type: 3}
-  item: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
+  item: {fileID: 7357224805975685279, guid: 9658082da4b0a9c4fb857651ac129a8e, type: 3}
   itemType: 1
   combinationType: 1
   price: 0

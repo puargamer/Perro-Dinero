@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Bait E Fish
   description: A blue fish
   icon: {fileID: 21300000, guid: 69c78fecd74e41540a86c2ca4babf790, type: 3}
-  item: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
+  item: {fileID: 7357224805975685279, guid: 3338f395b0011b14eb9923091dc3416e, type: 3}
   itemType: 1
   combinationType: 4
   price: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Bait C Fish
   description: An orange fish
   icon: {fileID: 21300000, guid: f97bfa3b0850e914db09ba5c36bf37b9, type: 3}
-  item: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
+  item: {fileID: 7357224805975685279, guid: 8db10fe0408549a4aa263a69044b76ca, type: 3}
   itemType: 1
   combinationType: 2
   price: 0
