@@ -99,11 +99,47 @@ public class Singleton : MonoBehaviour
         return nextId++;
     }
 
-    public List<GameObject> GetAllLittleGuys() // needed for future save/load file
+    // saving and loading
+    public List<LittleGuyData> GetAllLittleGuysData()
     {
-        List<GameObject> allLittleGuys = new List<GameObject>(equippedLittleGuys);
-        allLittleGuys.AddRange(stashedLittleGuys);
-        return allLittleGuys;
+        List<LittleGuyData> allLittleGuysData = new List<LittleGuyData>();
+
+        foreach (var guy in equippedLittleGuys)
+        {
+            allLittleGuysData.Add(guy.GetComponent<LittleGuyNav>().GetLittleGuyData());
+        }
+
+        foreach (var guy in stashedLittleGuys)
+        {
+            allLittleGuysData.Add(guy.GetComponent<LittleGuyNav>().GetLittleGuyData());
+        }
+
+        return allLittleGuysData;
+    }
+
+    public void SetAllLittleGuysData(List<LittleGuyData> allLittleGuysData)
+    {
+        equippedLittleGuys.Clear(); // nuke the current little guys
+        stashedLittleGuys.Clear();
+        foreach (var data in allLittleGuysData) // respawn them all, might have to ask factory to do this?
+        {
+            GameObject newGuy = Instantiate(littleGuyPrefab); // need to set location
+            newGuy.GetComponent<LittleGuyNav>().SetLittleGuyData(data);
+
+            if (data.isInPen)
+            {
+                stashedLittleGuys.Add(newGuy);
+                newGuy.SetActive(false);
+            }
+            else
+            {
+                equippedLittleGuys.Add(newGuy);
+            }
+        }
+    }
+    public void SetNextId(int next)
+    {
+        nextId = next;
     }
 }
 

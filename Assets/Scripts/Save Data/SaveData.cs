@@ -39,6 +39,9 @@ public class SaveData : MonoBehaviour
         model.dayFinished = GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished;
         model.money = GameObject.Find("Player").GetComponent<PlayerInventory>().money;
         model.InventoryArray = GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray;
+        model.nextId = Singleton.Instance.GrabNewId();
+        model.littleGuysData = Singleton.Instance.GetAllLittleGuysData();
+        model.savedMaterials = Singleton.Instance.mats;
 
         //save data
         string json = JsonUtility.ToJson(model);
@@ -49,16 +52,27 @@ public class SaveData : MonoBehaviour
 
     public void Load()
     {
-        //load data
-        SaveDataModel model = JsonUtility.FromJson<SaveDataModel>(File.ReadAllText(Application.persistentDataPath + "/save.json"));
-        Debug.Log("Loaded Data");
-        loadedData = model;
+        string path = Application.persistentDataPath + "/save.json";
+        if (File.Exists(path)) // adding error handling
+        {
+            //load data
+            SaveDataModel model = JsonUtility.FromJson<SaveDataModel>(File.ReadAllText(Application.persistentDataPath + "/save.json"));
+            Debug.Log("Loaded Data");
+            loadedData = model;
 
-        //process data
-        GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
-        GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished = model.dayFinished;
-        GameObject.Find("Player").GetComponent<PlayerInventory>().money = model.money;
-        GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray = model.InventoryArray;
+            //process data
+            GameObject.Find("DayManager").GetComponent<DayManager>().currentWeekday = model.currentWeekday;
+            GameObject.Find("DayManager").GetComponent<DayManager>().dayFinished = model.dayFinished;
+            GameObject.Find("Player").GetComponent<PlayerInventory>().money = model.money;
+            GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray = model.InventoryArray;
+            Singleton.Instance.SetAllLittleGuysData(model.littleGuysData);
+            Singleton.Instance.SetNextId(model.nextId);
+            Singleton.Instance.mats = model.savedMaterials;
+        }
+        else
+        {
+            Debug.LogWarning($"Failed to load data, file doesn't exist at {path}");
+        }
     }
 
     public void Reset()
@@ -78,8 +92,11 @@ public class SaveData : MonoBehaviour
 public class SaveDataModel
 {
     public string name;
+    public int nextId;
     public DayManager.weekday currentWeekday;
     public bool dayFinished;
     public int money;
     public ItemData[] InventoryArray;
+    public List<LittleGuyData> littleGuysData;
+    public List<int> savedMaterials;
 }

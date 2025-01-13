@@ -62,6 +62,14 @@ public class LittleGuyNav : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = spriteUtility.GetSprite(type);
     }
+    public void Setup(CombinationType type, int id) // loaded data
+    {
+        this.currentId = id; // id the little guy
+        combinationType = type;
+        //SetColor(materialRenderer, materialType);
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = spriteUtility.GetSprite(type);
+    }
 
     // Update is called once per frame
     void Update()
@@ -238,30 +246,42 @@ public class LittleGuyNav : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         isCooldownActive = false;
     }
- }
 
-//[System.Serializable] // save file json template
-//public class LittleGuyData
-//{
-//    private enum MovementState { Following, Fleeing, Still }
-//    private enum DesireState { None, Unwilling, Willing }
+    // saving and loading
+    public LittleGuyData GetLittleGuyData()
+    {
+        LittleGuyData data = new LittleGuyData
+        {
+            currentId = this.currentId,
+            isInPen = this.isInPen,
+            combinationType = this.combinationType,
+            currentMovementState = (LittleGuyData.MovementState)this.currentMovementState
+        };
+        return data;
+    }
 
-//    public int currentId;
-//    public float cooldown;
-//    public bool isCooldownActive;
-//    public bool isInPen;
-//    public float followDistance;
-//    public float fleeDistance;
-//    public CombinationType combinationType;
-//    public MovementState currentMovementState; // unsure if needed
-//    public DesireState currentDesireState; // unsure if needed
+    public void SetLittleGuyData(LittleGuyData data)
+    {
+        Setup(data.combinationType, data.currentId);
+        // first check if in pen, then set corresponding movement state
+        currentMovementState = MovementState.Following;
+    }
+}
 
-//    public LittleGuyData GetLittleGuyData()
-//    {
-//        LittleGuyData data = new LittleGuyData
-//        {
-//        };
-//        return data;
-//    }
+[System.Serializable] // save file json template
+public class LittleGuyData
+{
+    public enum MovementState { Following, Fleeing, Still }
+    //private enum DesireState { None, Unwilling, Willing }
 
-//}
+    public int currentId;
+    //public float cooldown;
+    //public bool isCooldownActive;
+    public bool isInPen;
+    //public float followDistance;
+    //public float fleeDistance;
+    public CombinationType combinationType;
+    public MovementState currentMovementState; // unsure if needed
+    //public DesireState currentDesireState; // unsure if needed
+
+}
