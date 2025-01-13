@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
             canvasList[i].SetActive(!canvasList[i].activeInHierarchy);
         }
 
+        Singleton.Instance.isMenuOpened = !Singleton.Instance.isMenuOpened;
+
         //toggle player options
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled  = !GameObject.Find("Player").GetComponent<PlayerMovement>().enabled;
         GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = !GameObject.Find("Player").GetComponent<PlayerInteract>().enabled;

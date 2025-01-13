@@ -19,12 +19,12 @@ public class TabMenuUI : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && !Singleton.Instance.isMenuOpened) { OpenMenu(); }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.isMenuOpened) { CloseMenu(); }
+        else if (Input.GetKeyDown(KeyCode.Tab) && Singleton.Instance.isMenuOpened && tabMenu.activeSelf) { CloseMenu(); }
     }
 
     public void OpenMenu()
     {
-        Singleton.Instance.isMenuOpened = true;
+        //Singleton.Instance.isMenuOpened = true;
         EventManager.OnToggleUIEvent();
 
         tabMenu.SetActive(true);
@@ -32,7 +32,7 @@ public class TabMenuUI : MonoBehaviour
 
     public void CloseMenu()
     {
-        Singleton.Instance.isMenuOpened = false;
+        //Singleton.Instance.isMenuOpened = false;
 
         EventManager.OnToggleUIEvent();
         tabMenu.SetActive(false);
