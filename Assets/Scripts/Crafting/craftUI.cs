@@ -38,6 +38,8 @@ public class craftUI : MonoBehaviour
     private SpriteUtility spriteUtility;
     private DeploymentUI deploymentUI;
 
+    private Vector2 originalSize;
+
     private int totalMaterials = System.Enum.GetValues(typeof(MaterialType)).Length;
 
     private List<MaterialType> selectedMaterials = new List<MaterialType>(); // store curr materials used
@@ -49,6 +51,7 @@ public class craftUI : MonoBehaviour
     {
         spriteUtility = FindObjectOfType<SpriteUtility>();
         deploymentUI = FindObjectOfType<DeploymentUI>();
+        originalSize = craftIngredients[0].GetComponent<RawImage>().rectTransform.sizeDelta;
         ResetCraft();
         ScrapeFromInventory();
         SetRecipes();
@@ -118,7 +121,8 @@ public class craftUI : MonoBehaviour
             craftIngredients[i].texture = null;
             craftIngredients[i].gameObject.SetActive(false);
             craftIngredients[i].color = new Color(1f, 1f, 1f, 1f); // Back to full opacity
-            craftIngredients[i].rectTransform.sizeDelta = new Vector2(170, 170); // HARD CODED, based off of craftIngredient1 w and h
+            //craftIngredients[i].rectTransform.sizeDelta = new Vector2(170, 170); // HARD CODED, based off of craftIngredient1 w and h\
+            craftIngredients[i].rectTransform.sizeDelta = originalSize;
         }
         currSelected = 0;
         selectedMaterials.Clear();
@@ -159,12 +163,18 @@ public class craftUI : MonoBehaviour
 
     public void CanCatchVisual()
     {
-        CombinationType? fish = RecipeBook.UseRecipe(selectedMaterials[0], selectedMaterials[1]);
-        if (fish != null) 
+        try
         {
-            Sprite fishCanCatch = spriteManager.GetFishSprite(fish.Value);
-            canCatchPicture.sprite = fishCanCatch;
-            canCatchArea.SetActive(true);
+            CombinationType? fish = RecipeBook.UseRecipe(selectedMaterials[0], selectedMaterials[1]);
+            if (fish != null)
+            {
+                Sprite fishCanCatch = spriteManager.GetFishSprite(fish.Value);
+                canCatchPicture.sprite = fishCanCatch;
+                canCatchArea.SetActive(true);
+            }
+        }
+        catch (ArgumentOutOfRangeException)
+        {
         }
     }
 

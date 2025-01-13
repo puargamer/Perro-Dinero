@@ -40674,6 +40674,34 @@ PrefabInstance:
       propertyPath: materialSprites.Array.data[4].sprite
       value: 
       objectReference: {fileID: 21300000, guid: ae93453ceea94184fad47b8a847edce0, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d2ae5917ae53b814cac87357f2512308, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d929a38466f1d4408f77d16bf868307, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d60c8ee97a696424986215b7dd0516ef, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b74163ddff21f7641ad004cac6596cb0, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eed7482e5793ff24786890800e14a3b7, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[5].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b20d30ac48d763499e6f3444f088a37, type: 3}
+    - target: {fileID: 4464373725842052156, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
+      propertyPath: littleGuySprites.Array.data[6].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18e6321cbe7cffa46b36fd6b8d07158c, type: 3}
     - target: {fileID: 5951079004478177362, guid: d8b43b3e429641d4596fcc055313c492, type: 3}
       propertyPath: m_Name
       value: SpriteManager
