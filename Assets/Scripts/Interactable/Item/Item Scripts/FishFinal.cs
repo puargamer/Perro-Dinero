@@ -8,7 +8,7 @@ public class FishFinal : Item
     public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spriteRenderer.sprite = base.itemData.icon;
     }

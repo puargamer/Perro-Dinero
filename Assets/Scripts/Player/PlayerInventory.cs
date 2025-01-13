@@ -85,9 +85,13 @@ public class PlayerInventory : MonoBehaviour
     {
         for (int i = 0; i < InventoryArray.Length; i++)
         {
-            if (InventoryArray[i] == itemData)
+            Debug.Log((InventoryArray[i]));
+            Debug.Log(itemData);
+
+            if (InventoryArray[i].name == itemData.name)
             {
                 InventoryArray[i] = null;
+                Debug.Log("item removed");
                 break;
             }
         }

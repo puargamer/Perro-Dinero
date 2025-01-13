@@ -17,7 +17,7 @@ public class Quest
         RandomName();
         RandomCombinationType();
         RandomReward();
-        complete = true;
+        complete = false;
         claimed = false;
     }
 

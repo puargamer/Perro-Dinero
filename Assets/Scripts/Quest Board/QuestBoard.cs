@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,6 +72,20 @@ public class QuestBoard : Interactable
 
     public void CheckQuests()
     {
+        ItemData[] inventory = GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray;
 
+        for (int i = 0; i < questArray.Length; i++)
+        {
+            for (int j = 0; j < inventory.Length; j++)
+            {
+                if (inventory[j] is Fish_ItemData cuh)
+                {
+                    if (cuh.combinationType == questArray[i].combinationType)
+                    {
+                        questArray[i].complete = true;
+                    }
+                }
+            }
+        }
     }
 }

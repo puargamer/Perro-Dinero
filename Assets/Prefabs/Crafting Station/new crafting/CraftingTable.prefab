@@ -4761,7 +4761,7 @@ MonoBehaviour:
   - {fileID: 3393911959449912557}
   - {fileID: 7107795029719108490}
   spriteManager: {fileID: 0}
-  littleGuyFactory: {fileID: 8573659953440276940}
+  littleGuyFactory: {fileID: 0}
   deployUI: {fileID: 0}
   littleGuySpawnArea: {fileID: 7029175711120672218}
   inventoryGridView: {fileID: 0}
@@ -4780,7 +4780,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7029175711120672218}
-  - component: {fileID: 8573659953440276940}
   - component: {fileID: 7634830944295673531}
   m_Layer: 6
   m_Name: littleGuySpawn
@@ -4804,19 +4803,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9033605578667424459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8573659953440276940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415102258144332271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d04b81da143ad42a86b509474d3a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  littleGuyPrefab: {fileID: 5929718078234512488, guid: 1fec6aa89cf0144458832f7e916b315c, type: 3}
 --- !u!114 &7634830944295673531
 MonoBehaviour:
   m_ObjectHideFlags: 0

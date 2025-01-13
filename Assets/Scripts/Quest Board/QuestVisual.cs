@@ -17,6 +17,7 @@ public class QuestVisual : MonoBehaviour
     public TMP_Text claimed;
 
     public GameObject claimButton;
+    public GameObject itemToRemove;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,20 @@ public class QuestVisual : MonoBehaviour
             quest.claimed = true;
             UpdateVisual(quest);
             GameObject.Find("Player").GetComponent<PlayerInventory>().ChangeMoney(quest.reward);
+
+            for (int j = 0; j < GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray.Length; j++)
+            {
+                if (GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray[j] is Fish_ItemData cuh)
+                {
+                    if (cuh.combinationType == quest.combinationType)
+                    {
+                        GameObject.Find("Player").GetComponent<PlayerInventory>().RemoveItem(GameObject.Find("Player").GetComponent<PlayerInventory>().InventoryArray[j]);
+                        break;
+                    }
+                }
+            }
+
+            
         }
     }
 }
