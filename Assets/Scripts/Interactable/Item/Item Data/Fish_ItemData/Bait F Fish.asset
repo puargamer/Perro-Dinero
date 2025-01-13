@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Bait F Fish
   description: A green fish
   icon: {fileID: 21300000, guid: 3949c03e6a1072349b689249797010fe, type: 3}
-  item: {fileID: 0}
+  item: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
+  itemType: 1
   combinationType: 5
   price: 0

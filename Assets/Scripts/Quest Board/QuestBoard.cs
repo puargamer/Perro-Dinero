@@ -29,7 +29,7 @@ public class QuestBoard : Interactable
     // Update is called once per frame
     void Update()
     {
-        
+        CheckQuests();
     }
 
     public override void Interact()
@@ -66,6 +66,11 @@ public class QuestBoard : Interactable
         GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+    }
+
+    public void CheckQuests()
+    {
 
     }
 }

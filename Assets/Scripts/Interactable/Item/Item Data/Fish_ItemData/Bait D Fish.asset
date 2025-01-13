@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Bait D Fish
   description: A yellow fish
   icon: {fileID: 21300000, guid: 41a78db048ef732459ac1157cac328d2, type: 3}
-  item: {fileID: 0}
+  item: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
+  itemType: 1
   combinationType: 3
   price: 0

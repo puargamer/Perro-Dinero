@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("States")]
     public bool isGrounded;
+    public bool isMoving;
     public bool isSprinting;
 
     [Header("Speed")]
@@ -42,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject heldObjectPos;
 
-    public bool cuh;
+    //public bool cuh;
+
+    [Header("Animator")]
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         GravityCheck();
         JumpCheck();
         RotationCheck();
+
+        AnimationCheck();
     }
 
     void GroundCheck()
@@ -105,6 +111,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, move, 10 * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
+
+        isMoving = moving;
     }
 
     void GravityCheck()
@@ -134,6 +142,12 @@ public class PlayerMovement : MonoBehaviour
         face.gameObject.transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
         CameraPositionParent.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
+
+    void AnimationCheck()
+    {
+            animator.SetBool("walk", isMoving);
+            animator.SetBool("run", isSprinting && isMoving);
     }
     //public void Respawn()
     //{
