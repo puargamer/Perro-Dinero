@@ -61,6 +61,7 @@ public class Singleton : MonoBehaviour
 
     #region Prefab List
     public GameObject ExampleItem;
+    public GameObject littleGuyPrefab;
     #endregion
 
     public void test()
