@@ -7,6 +7,8 @@ public class SpriteUtility : MonoBehaviour
     private Dictionary<MaterialType, Sprite> spriteDictionary;
     private Dictionary<CombinationType, Sprite> playerSpriteDictionary;
 
+    public static SpriteUtility Instance { get; private set; }
+
     [System.Serializable] // why did i need this
     public class MaterialSprite
     {
@@ -45,6 +47,16 @@ public class SpriteUtility : MonoBehaviour
         foreach (var lilSprite in littleGuySprites)
         {
             playerSpriteDictionary[lilSprite.type] = lilSprite.sprite;
+        }
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

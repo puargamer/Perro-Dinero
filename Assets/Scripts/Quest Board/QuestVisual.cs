@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Visual representation of a Quest; contains Quest data and fields to visually represent data
 public class QuestVisual : MonoBehaviour
@@ -15,6 +16,8 @@ public class QuestVisual : MonoBehaviour
     public TMP_Text reward;
     public TMP_Text complete;
     public TMP_Text claimed;
+
+    public Image fishImage;
 
     public GameObject claimButton;
     public GameObject itemToRemove;
@@ -31,19 +34,25 @@ public class QuestVisual : MonoBehaviour
         if (quest.complete)
         {
             claimButton.SetActive(true);
+            claimed.text = "CLAIMED";
         }
-        else { claimButton.SetActive(false); }
+        else 
+        { 
+            claimButton.SetActive(false);
+        }
     }
 
     public void UpdateVisual(Quest _quest)
     {
         quest = _quest;
 
-        name.text = quest.name;
+        //name.text = quest.name;
         combinationType.text = quest.combinationType.ToString();
-        reward.text = "Reward:" + quest.reward.ToString();
-        complete.text = "Complete: " + quest.complete.ToString();
-        claimed.text = "Claimed: " + quest.claimed.ToString();
+        reward.text = "Reward: $" + quest.reward.ToString();
+        fishImage.sprite = SpriteUtility.Instance.GetSprite(quest.combinationType);
+        claimed.text = "CLAIM";
+        //complete.text = "Complete: " + quest.complete.ToString();
+        //claimed.text = "Claimed: " + quest.claimed.ToString();
     }
 
     //claim the quest reward and mark it as claimed

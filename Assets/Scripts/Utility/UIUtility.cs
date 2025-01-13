@@ -13,6 +13,7 @@ public static class UIUtility
             Cursor.visible = true;
             Singleton.Instance.isMenuOpened = true;
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = false;
         }
         else
         {
@@ -20,6 +21,7 @@ public static class UIUtility
             Cursor.visible = false;
             Singleton.Instance.isMenuOpened = false;
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = true;
         }
 
         menuToToggle.SetActive(isOpening);
