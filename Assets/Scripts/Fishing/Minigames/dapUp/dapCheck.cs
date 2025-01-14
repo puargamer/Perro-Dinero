@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dapCheck : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class dapCheck : MonoBehaviour
             {
                 if (child.name == "Win")
                 {
-                    child.gameObject.SetActive(true); break;
+                    child.gameObject.SetActive(true); 
+                    break;
                 }
             }
         }
@@ -51,7 +53,8 @@ public class dapCheck : MonoBehaviour
             {
                 if (child.name == "PerfectWin")
                 {
-                    child.gameObject.SetActive(true); break;
+                    child.gameObject.SetActive(true); 
+                    break;
                 }
             }
         }
@@ -67,9 +70,31 @@ public class dapCheck : MonoBehaviour
             {
                 if (child.name == "Lose")
                 {
-                    child.gameObject.SetActive(true); break;
+                    child.gameObject.SetActive(true); 
+                    break;
                 }
             }
         }
+        SetButtonListener(dapUI.transform);
+    }
+
+
+
+    private void SetButtonListener(Transform parent) // sets the button to destroy the prefab
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == "Button") 
+            {
+                Button button = child.GetComponent<Button>();
+                button.onClick.AddListener(DestroyMinigamePrefab);
+            }
+        }
+    }
+
+    private void DestroyMinigamePrefab()
+    {
+        GameObject minigamePrefab = GameObject.FindGameObjectWithTag("Minigame");
+        Destroy(minigamePrefab);
     }
 }

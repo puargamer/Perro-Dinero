@@ -36,7 +36,8 @@ public class craftUI : MonoBehaviour
     public Image canCatchPicture;
 
     private SpriteUtility spriteUtility;
-    private DeploymentUI deploymentUI;
+    // private DeploymentUI deploymentUI;
+    private MinigameDeployUI minigameDeployUI;
 
     private Vector2 originalSize;
 
@@ -50,7 +51,8 @@ public class craftUI : MonoBehaviour
     void Start()
     {
         spriteUtility = FindObjectOfType<SpriteUtility>();
-        deploymentUI = FindObjectOfType<DeploymentUI>();
+        // deploymentUI = FindObjectOfType<DeploymentUI>();
+        minigameDeployUI = FindObjectOfType<MinigameDeployUI>();
         originalSize = craftIngredients[0].GetComponent<RawImage>().rectTransform.sizeDelta;
         ResetCraft();
         ScrapeFromInventory();
@@ -308,7 +310,7 @@ public class craftUI : MonoBehaviour
                 Debug.LogWarning("Unknown combination type: " + combination);
                 break;
         }
-        deploymentUI.AddToGrid(spriteUtility.GetSprite(combination), littleGuy);
+        minigameDeployUI.AddToGrid(spriteUtility.GetSprite(combination), littleGuy);
         Singleton.Instance.EquipGuy(littleGuy);
     }
 }

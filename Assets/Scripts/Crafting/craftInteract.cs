@@ -10,6 +10,7 @@ public class craftTable : Interactable
 
     public override void Interact()
     {
+        Debug.Log("craft table interact being called");
         if (!Singleton.Instance.isMenuOpened)
         {
             deployUI.SetActive(false);
