@@ -105,6 +105,11 @@ public class dapCheck : MonoBehaviour
     {
         GameObject minigamePrefab = GameObject.FindGameObjectWithTag("Minigame");
         playerCam.SetActive(true);
+        playerCam.transform.parent.GetComponent<PlayerInteract>().enabled = true;
+        playerCam.transform.parent.GetComponent<PlayerMovement>().enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Singleton.Instance.isLure = false;
         Destroy(minigamePrefab);
     }
 }

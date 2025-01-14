@@ -56,11 +56,11 @@ public class MinigameDeployUI : MonoBehaviour
                 summon.GetComponentInChildren<SpriteRenderer>().sprite = selectionSprite;
                 break;
             }
-            if (child.name == "DapMinigameUI")
+            /*if (child.name == "DapMinigameUI")
             {
                 Button prefabButton = child.GetComponentInChildren<Button>();
                 prefabButton.onClick.AddListener(() => StartCoroutine(DestroyMinigameCoroutine()));
-            }
+            }*/
         }
 
         /*Camera[] allCameras = Camera.allCameras;
@@ -74,6 +74,7 @@ public class MinigameDeployUI : MonoBehaviour
             }
         }*/
         playerCamera.SetActive(false);
+        Singleton.Instance.isLure = true;
     }
 
     private IEnumerator DestroyMinigameCoroutine()
