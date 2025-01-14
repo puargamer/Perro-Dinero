@@ -63,7 +63,7 @@ public class MinigameDeployUI : MonoBehaviour
             }
         }
 
-        Camera[] allCameras = Camera.allCameras;
+        /*Camera[] allCameras = Camera.allCameras;
         foreach (Camera cam in allCameras)
         {
             if (cam.gameObject.name == "Main Camera")
@@ -72,8 +72,8 @@ public class MinigameDeployUI : MonoBehaviour
                 AudioListener audioListener = cam.GetComponent<AudioListener>();
                 audioListener.enabled = false;
             }
-        }
-        // playerCamera.SetActive(false);
+        }*/
+        playerCamera.SetActive(false);
     }
 
     private IEnumerator DestroyMinigameCoroutine()

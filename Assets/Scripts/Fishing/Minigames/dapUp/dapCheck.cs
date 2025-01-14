@@ -8,6 +8,7 @@ public class dapCheck : MonoBehaviour
     public GameObject playerDap;
     public GameObject fishDap;
     public GameObject dapUI;
+    public GameObject playerCam;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,6 +20,14 @@ public class dapCheck : MonoBehaviour
             if (child.name == "WinScreen")
             {
                 dapUI = child.gameObject; break;
+            }
+        }
+        playerCam = GameObject.Find("Player");
+        foreach (Transform child in playerCam.transform)
+        {
+            if (child.name == "Camera Position Parent")
+            {
+                playerCam = child.gameObject;
             }
         }
     }
@@ -95,6 +104,7 @@ public class dapCheck : MonoBehaviour
     private void DestroyMinigamePrefab()
     {
         GameObject minigamePrefab = GameObject.FindGameObjectWithTag("Minigame");
+        playerCam.SetActive(true);
         Destroy(minigamePrefab);
     }
 }

@@ -72239,7 +72239,7 @@ PrefabInstance:
     - target: {fileID: 7181090772250700759, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
       propertyPath: playerCamera
       value: 
-      objectReference: {fileID: 381646787}
+      objectReference: {fileID: 1933633290}
     - target: {fileID: 8778353632711494986, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
