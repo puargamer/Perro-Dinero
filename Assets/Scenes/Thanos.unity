@@ -1443,7 +1443,6 @@ MonoBehaviour:
   - {fileID: 530665712}
   - {fileID: 77583784}
   - {fileID: 783863462}
-  - {fileID: 1849312063}
 --- !u!1 &73268408
 GameObject:
   m_ObjectHideFlags: 0
@@ -72172,6 +72171,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5302364559579313554, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 5384914347123579706, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -72246,6 +72249,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8778353632711494986, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778353632711494986, guid: 5e6dfd896417c454e902f55c43c13242, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

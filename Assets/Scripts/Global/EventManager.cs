@@ -30,6 +30,7 @@ public static class EventManager
 
     //Dialogue
     public static event UnityAction<string[]> DialogueEvent;
+    public static event UnityAction EndDialogueEvent;
 
     #endregion
 
@@ -55,5 +56,6 @@ public static class EventManager
 
     //Dialogue
     public static void OnDialogueEvent(string[] stringArray) => DialogueEvent?.Invoke(stringArray);
+    public static void OnEndDialogueEvent() => EndDialogueEvent?.Invoke();
     #endregion
 }

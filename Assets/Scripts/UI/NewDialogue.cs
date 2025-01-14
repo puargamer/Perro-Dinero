@@ -21,11 +21,13 @@ public class NewDialogue : MonoBehaviour
     private void OnEnable()
     {
         EventManager.DialogueEvent += StartDialogue;
+        EventManager.EndDialogueEvent += EndDialogue;
     }
 
     private void OnDisable()
     {
         EventManager.DialogueEvent -= StartDialogue;
+        EventManager.EndDialogueEvent -= EndDialogue;
     }
 
     // Update is called once per frame
@@ -53,6 +55,16 @@ public class NewDialogue : MonoBehaviour
         text.text = "";
         index = 0;
         StartCoroutine(TypeLine());
+    }
+
+    //force ends dialogue
+    void EndDialogue()
+    {
+        canvas.SetActive(false);
+        lines = null;
+        text.text = "";
+        index = 0;
+        StopAllCoroutines();
     }
 
     IEnumerator TypeLine()

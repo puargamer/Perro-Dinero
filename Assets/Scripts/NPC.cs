@@ -42,6 +42,7 @@ public class NPC : Interactable
 
     public void exit()
     {
+        EventManager.OnEndDialogueEvent();
         EventManager.OnToggleUIEvent();
         inMenu = false; canvas.SetActive(false);
     }
