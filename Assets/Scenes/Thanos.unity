@@ -56734,6 +56734,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 962212058}
     - target: {fileID: 1148497041443584004, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6263d6688e7292b4c84cc766c0ef1639, type: 3}
+    - target: {fileID: 1148497041443584004, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: jumpHeight
       value: 0.22
       objectReference: {fileID: 0}
