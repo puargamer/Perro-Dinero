@@ -28,6 +28,9 @@ public static class EventManager
     public static event UnityAction SaveEvent;
     public static event UnityAction LoadEvent;
 
+    //Dialogue
+    public static event UnityAction<string[]> DialogueEvent;
+
     #endregion
 
     //invoke methods
@@ -49,5 +52,8 @@ public static class EventManager
     //Save and Load
     public static void OnSaveEvent() => SaveEvent?.Invoke();
     public static void OnLoadEvent() => LoadEvent?.Invoke();
+
+    //Dialogue
+    public static void OnDialogueEvent(string[] stringArray) => DialogueEvent?.Invoke(stringArray);
     #endregion
 }

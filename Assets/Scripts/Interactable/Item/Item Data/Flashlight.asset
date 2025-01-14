@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Flashlight
   description: Its a flashlight
-  icon: {fileID: 21300000, guid: 9612538cc62a02a478bb3c29f860f1a1, type: 3}
+  icon: {fileID: 21300000, guid: 69694da643798d14394303c011db511f, type: 3}
   item: {fileID: 7433430027567125056, guid: 3271398419781f44c8c78eaa0f26d92b, type: 3}
+  itemType: 0

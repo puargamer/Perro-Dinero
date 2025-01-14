@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Thanos.unity
     guid: 38320150ebe2d9344a4d8c249ab2941f
+  - enabled: 1
+    path: Assets/Scenes/MiniGame1.unity
+    guid: 8bb73e4aa1314264babc16ba1c68f39a
   m_configObjects: {}
