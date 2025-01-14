@@ -61,7 +61,6 @@ public class NewDialogue : MonoBehaviour
     void EndDialogue()
     {
         canvas.SetActive(false);
-        lines = null;
         text.text = "";
         index = 0;
         StopAllCoroutines();
