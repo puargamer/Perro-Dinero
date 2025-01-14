@@ -9,6 +9,8 @@ public class dapCheck : MonoBehaviour
     public GameObject fishDap;
     public GameObject dapUI;
     public GameObject playerCam;
+
+    public static event System.Action OnGameWon;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -49,6 +51,7 @@ public class dapCheck : MonoBehaviour
                     break;
                 }
             }
+            OnGameWon?.Invoke();
         }
         else if (other.gameObject.name == "perfectHitbox")
         {
@@ -66,6 +69,7 @@ public class dapCheck : MonoBehaviour
                     break;
                 }
             }
+            OnGameWon?.Invoke();
         }
         else if (other.gameObject.name == "FailCube")
         {

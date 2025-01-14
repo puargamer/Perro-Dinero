@@ -9,6 +9,7 @@ public class MinigameDeployUI : MonoBehaviour
     // public GameObject playerCam;
     public GameObject playerCamera;
     public GameObject minigameDeployUI;
+    public Transform fishSpawnLocation;
 
     public GameObject dapMinigamePrefab;
     public GameObject deployIconPrefab;
@@ -20,8 +21,15 @@ public class MinigameDeployUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dapCheck.OnGameWon += SpawnFishReward;
         // mainCamera = Camera.main.gameObject;
     }
+
+    private void OnDestroy()
+    {
+        dapCheck.OnGameWon -= SpawnFishReward;
+    }
+
     public void AddToGrid(Sprite icon, GameObject littleGuy) /// little guy probably not needed
     {
         GameObject newIcon = Instantiate(deployIconPrefab, Vector3.zero, Quaternion.identity, gridView.transform);
@@ -80,7 +88,6 @@ public class MinigameDeployUI : MonoBehaviour
     private IEnumerator DestroyMinigameCoroutine()
     {
         // playerCamera.SetActive(true); // activate main camera again
-
         Camera[] allCameras = Camera.allCameras;
         foreach (Camera cam in allCameras)
         {
@@ -104,8 +111,50 @@ public class MinigameDeployUI : MonoBehaviour
         // please.gameObject.SetActive(true);
         GameObject.Find("Player").GetComponent<PlayerInteract>().enabled = true;
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+
     }
 
+    public void SpawnFishReward()
+    {
+        string path = "";
+        switch (selectionCombType)
+        {
+            case CombinationType.BaitA:
+                path = "Item Prefabs/Fish Object A";
+                break;
+            case CombinationType.BaitB:
+                path = "Item Prefabs/Fish Object B";
+                break;
+            case CombinationType.BaitC:
+                path = "Item Prefabs/Fish Object C";
+                break;
+            case CombinationType.BaitD:
+                path = "Item Prefabs/Fish Object D";
+                break;
+            case CombinationType.BaitE:
+                path = "Item Prefabs/Fish Object E";
+                break;
+            case CombinationType.BaitF:
+                path = "Item Prefabs/Fish Object F";
+                break;
+            case CombinationType.BaitG:
+                path = "Item Prefabs/Fish Object G";
+                break;
+            default:
+                Debug.LogWarning("Invalid CombinationType in MinigameDeployUI.cs");
+                return;
+        }
+
+        GameObject fishPrefab = Resources.Load<GameObject>(path);
+        if (fishPrefab != null)
+        {
+            Instantiate(fishPrefab, fishSpawnLocation.position, fishSpawnLocation.rotation);
+        }
+        else
+        {
+            Debug.LogWarning("Fish prefab not found at path: " + path);
+        }
+    }
 
     public void OpenUI()
     {
