@@ -32565,7 +32565,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8964244, g: 0.8964244, b: 0.8964244, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -32624,7 +32624,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226762085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.061628457, y: 0.70441604, z: -0.70441604, w: 0.061628457}
+  m_LocalRotation: {x: 0, y: 0.9961947, z: 0, w: 0.087155804}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34387,9 +34387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   welcomeMessage:
-  - sup
-  - hey
-  - hey again
+  - Welcome to Perro Fishing!
+  - Here you can sell fish at the quest sign.
+  - Please come again (with fish)!
   tutorialMessage:
   - tutorial 1
   - tutorial 2
@@ -37184,7 +37184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 8abdedec82c6d4046a547d9c57f87fb7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41227,7 +41227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 2b62a0005c746f9438ab83efc7f1a23e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45983,7 +45983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 8db10fe0408549a4aa263a69044b76ca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47909,6 +47909,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8825989131237729346, guid: 36e510a49a6e0ed4ba207647a8483051, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1452655398}
+    - target: {fileID: 8825989131237729346, guid: 36e510a49a6e0ed4ba207647a8483051, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48366,7 +48374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 3338f395b0011b14eb9923091dc3416e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48733,7 +48741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 9658082da4b0a9c4fb857651ac129a8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52543,6 +52551,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4686762862096340593, guid: f40f3de029d447f46bb8ba884404fc87, type: 3}
   m_PrefabInstance: {fileID: 58272340}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452655398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4047282740065447085, guid: 36e510a49a6e0ed4ba207647a8483051, type: 3}
+  m_PrefabInstance: {fileID: 1183317676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30dbac26f52fd540b9ba9fc5d04034c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455764587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1856550509934225861, guid: fb376d49972ec3b4790baae5bf482252, type: 3}
@@ -54282,7 +54301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 8593c11b030f01d4d8e03d0f710e93e4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56004,7 +56023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357224805975685279, guid: 1170c39b7c6b69f408de3b27ba587694, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56149,7 +56168,7 @@ MonoBehaviour:
   dayFinished: 0
   currentTimeOfDay: 0
   currentWeekday: 0
-  dayLengthInMinutes: 1
+  dayLengthInMinutes: 5
   morningStartInMinutes: 0
   noonStartInMinutes: 0.3333333
   nightStartInMinutes: 0.6666667
@@ -56176,7 +56195,7 @@ MonoBehaviour:
   directionalLight: {fileID: 226762086}
   preset: {fileID: 11400000, guid: cf3581ac69af10d47bfbfe9dedb24bcb, type: 2}
   percentOfDayPassed: 0
-  DevMode: 1
+  DevMode: 0
 --- !u!1001 &1652679935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56887,6 +56906,10 @@ PrefabInstance:
     - target: {fileID: 7336462387602305269, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519058212961163012, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8198051736874239848, guid: 5d7d91d24ebb5a8478d89983663ea221, type: 3}
       propertyPath: moneyUI
@@ -65075,6 +65098,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1408986624798023693, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2600884198271391782, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -65097,6 +65124,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600884198271391782, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852187886668021929, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3061706007733727919, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
@@ -65135,6 +65166,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3891210942027449002, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
+      propertyPath: m_text
+      value: 'Exit
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3931169976397907474, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -65167,6 +65204,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1654353540}
+    - target: {fileID: 6209126288964074663, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7203610976287220059, guid: d132b1cb29617a1459b574a6fb10424a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
