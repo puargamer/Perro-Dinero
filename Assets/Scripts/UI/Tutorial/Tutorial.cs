@@ -13,6 +13,8 @@ public class Tutorial : MonoBehaviour
     {
         EventManager.OnToggleUIEvent();
         popUpIndex = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -35,10 +37,15 @@ public class Tutorial : MonoBehaviour
         {
             popUps[0].SetActive(true);
             popUps[1].SetActive(false);
-        }else if (popUpIndex == 1)
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (popUpIndex == 1)
         {
             popUps[0].SetActive(false);
             popUps[1].SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
